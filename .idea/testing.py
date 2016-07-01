@@ -55,3 +55,4 @@ while True:
     pygame.display.update()
 
 
+rect= pygame.draw.rect(DISPLAYSURF, (255, 255, 255), (70, 70, 70, 70))
