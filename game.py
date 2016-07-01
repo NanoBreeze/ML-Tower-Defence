@@ -5,6 +5,7 @@ import pygame.sprite
 
 import ballon
 import tower
+import path
 
 
 class Hi(pygame.sprite.Sprite):
@@ -28,8 +29,9 @@ pygame.display.set_caption('HelloWorld!')
 
 
 
-t1 = tower.LinearTower((50, 30))
-b1 = ballon.BallonL1((0, 0, 255), (150, 200), 1, 30, 30)
+t1 = tower.LinearTower((50, 30), DISPLAYSURF)
+pa = path.Path()
+b1 = ballon.BallonL1((0, 0, 255), (150, 200), pa.points, 30, 30)
 
 tower_sprites = pygame.sprite.Group(t1)
 #all_ballons = pygame.sprite.Group(b1)
@@ -39,16 +41,24 @@ ballon_sprites = pygame.sprite.Group(b1)
 #backs = pygame.sprite.OrderedUpdates()
 #t1 = tower.LinearTower()
 
+fpsClock = pygame.time.Clock()
+
 while True:
     for event in pygame.event.get():
         if event.type==pygame.locals.QUIT:
             pygame.quit()
             sys.exit()
     #tower_sprites.update()
+    DISPLAYSURF.fill((0, 0, 0))
+    tower_sprites.update(ballon_sprites)
     tower_sprites.draw(DISPLAYSURF)
+    ballon_sprites.update()
     ballon_sprites.draw(DISPLAYSURF)
-    #DISPLAYSURF.blit(t1, (300, 300))
 
+    #hit = pygame.sprite.spritecollide(t1., all_sprites, False)
+
+    #DISPLAYSURF.blit(t1, (300, 300))
+    fpsClock.tick(15)
     pygame.display.update()
 
 

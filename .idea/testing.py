@@ -35,6 +35,7 @@ wow.rect.y = 400
 all_sprites = pygame.sprite.Group(hi, hey, wow)
 
 hit = pygame.sprite.spritecollide(hi, all_sprites, False)
+pygame.sprite.collide_circle()
 for i in hit:
     print('hey')
 
