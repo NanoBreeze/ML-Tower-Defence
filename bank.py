@@ -2,6 +2,7 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
+
 class Singleton(type):
     """Metaclass for making a Singleton Bank object"""
     instance = None
