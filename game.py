@@ -8,6 +8,9 @@ import tower
 import sprite_groups
 import colours
 import path
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 
@@ -21,11 +24,14 @@ pygame.display.set_caption('ML Tower Defence')
 main_path = path.Path()
 
 t1 = tower.create_tower(tower.LINEAR_TOWER, DISPLAYSURF)
-b1= ballon.create_ballon(ballon.BALLON_L1, (100, 50), main_path)
-
+b1= ballon.create_ballon_context(ballon.BALLON_L2, main_path)
+assert type(b1) is ballon.BallonContext, 'b1 is not a BallonContext'
 
 sprite_groups.tower_sprites.add(t1)
+
 sprite_groups.ballon_sprites.add(b1)
+
+
 
 fpsClock = pygame.time.Clock()
 

@@ -28,6 +28,8 @@ class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self.rect.centerx += self.step_x
         self.rect.centery += self.step_y
 
+    
+
 
 class StandardBullet(Bullet):
     def __init__(self, start, destination):

@@ -62,15 +62,14 @@ class LinearTower(Tower):
 
         #possible to attack again
         if self.attack_again_counter == 10:
-
             #check if any ballons are within the range of the circle, which is currently set to 80
             for ballon in ballon_sprites:
                 #if within range, print and create a bullet
-                    if math.hypot(ballon.rect.centerx - self.rect.centerx, ballon.rect.centery - self.rect.centery) <= self.attack_radius:
-                        logging.debug('Detected. x distance: {0}, y distance:{1}'.format(ballon.rect.centerx - self.rect.centerx, ballon.rect.centery - self.rect.centery))
-                        bullet_sprites.add(bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery), destination=(ballon.rect.centerx, ballon.rect.centery)))
-                        self.attack_again_counter = 0
-                        break
+                if math.hypot(ballon.get_centerX() - self.rect.centerx, ballon.get_centerY() - self.rect.centery) <= self.attack_radius:
+                    logging.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
+                    bullet_sprites.add(bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery), destination=(ballon.get_centerX(), ballon.get_centerY())))
+                    self.attack_again_counter = 0
+                    break
         else:
             self.attack_again_counter += 1
 
