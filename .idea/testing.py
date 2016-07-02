@@ -6,7 +6,19 @@ import pygame.sprite
 import ballon
 import tower
 
+A = "HEY"
 
+def hey(s):
+    s = 'hi'
+    if s == A:
+        print("YES")
+    else:
+        print("NO")
+
+k = "HEY"
+hey(k)
+print(k)
+'''
 class Hi(pygame.sprite.Sprite):
 
     def __init__(self, color, width, height, something):
@@ -56,3 +68,4 @@ while True:
 
 
 rect= pygame.draw.rect(DISPLAYSURF, (255, 255, 255), (70, 70, 70, 70))
+'''
