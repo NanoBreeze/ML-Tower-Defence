@@ -23,11 +23,14 @@ pygame.display.set_caption('ML Tower Defence')
 
 main_path = path.Path()
 
-t1 = tower.create_tower(tower.LINEAR_TOWER, DISPLAYSURF)
-b1= ballon.create_ballon_context(ballon.BALLON_L2, main_path)
+linear_tower = tower.create_tower(tower.LINEAR_TOWER, (150, 150), DISPLAYSURF)
+three_sixty_tower = tower.create_tower(tower.THREE_SIXTY_TOWER, (80, 100), DISPLAYSURF)
+teleportation_tower = tower.create_tower(tower.TELEPORTATION_TOWER, (150, 150), DISPLAYSURF)
+
+b1= ballon.create_ballon_context(ballon.BALLON_L5, main_path, 0)
 assert type(b1) is ballon.BallonContext, 'b1 is not a BallonContext'
 
-sprite_groups.tower_sprites.add(t1)
+sprite_groups.tower_sprites.add(linear_tower, three_sixty_tower, teleportation_tower)
 
 sprite_groups.ballon_sprites.add(b1)
 

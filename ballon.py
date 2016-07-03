@@ -3,88 +3,102 @@ import pygame
 import path
 import abc
 import logging
+import bullet
 
 logging.basicConfig(level=logging.DEBUG)
 
 BALLON_L1 = 'BALLON_L1'
 BALLON_L2 = 'BALLON_L2'
 BALLON_L3 = 'BALLON_L3'
+BALLON_L4 = 'BALLON_L4'
+BALLON_L5 = 'BALLON_L5'
 
 class Ballon(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     """Base class for all Ballons, which are the enemies"""
-
-
-
-    def __init__(self, colour, dimension, path) :
-
+    def __init__(self, colour, dimension, path, path_indexer=0) :
+        logging.debug('PATH_INDEXER is at' + str(path_indexer))
         super().__init__()
 
         self.image = pygame.Surface([dimension[0], dimension[1]])
         self.image.fill(colour)
         self.rect = self.image.get_rect()
-        self.rect.centerx = path[0][0]
-        self.rect.centery = path[0][1]
-        self.counter = 1 #this is used for iterating witht he path. This is a bad idea, might need a generator instead
+        self.path_index= path_indexer #this is used for iterating which tuple of the path to move to. Very useful with teleportation
+        self.rect.centerx = path[self.path_index][0]
+        self.rect.centery = path[self.path_index][1]
         self.path = path
 
-
-
     def update(self, bullet_sprites):
-        if pygame.sprite.spritecollide(self, bullet_sprites, False):
-            #self.kill()
-            self.handle_pop()
+        collided_bullets = pygame.sprite.spritecollide(self, bullet_sprites, False)
+        if collided_bullets:
+            for collided_bullet in collided_bullets:
+                if type(collided_bullet) is bullet.StandardBullet:
+                    logging.debug('=================== STANDARD BULLET=======================')
+                    collided_bullet.handle_ballon_collision()
+                    return True  # represents should handle pop
+                elif type(collided_bullet) is bullet.ExplosionBullet:
+                    logging.debug('=================== EXPLOSION BULLET=======================')
+                    #explosion bullet will create more bullets
+                    collided_bullet.handle_ballon_collision(bullet_sprites)
+                    return True  # represents should handle pop
+                elif type(collided_bullet) is bullet.TeleportationBullet:
+                    logging.debug('=================== TELEPORTATION BULLET=======================')
+                    collided_bullet.handle_ballon_collision()
+                    self.teleport()
+                    return False
+
         else:
             self.move()
 
-    @abc.abstractmethod
-    def handle_pop(self):
-        """This method is called when the ballon is popped"""
-        pass
-
     def move(self):
         try:
-            self.rect.centerx = self.path[self.counter][0]
-            self.rect.centery = self.path[self.counter][1]
-            self.counter += 1
+            print('inside the move() method. The path indexer is: ' + str(self.path_index))
+            self.rect.centerx = self.path[self.path_index][0]
+            self.rect.centery = self.path[self.path_index][1]
+            self.path_index += 1
+            print('just changed teh move() path_indexer value to 2. It is actually: ' + str(self.path_index))
         except:
             pass
+
+
+    def teleport(self, back_track_path_indexer=20):
+        """Teleports back 20 tuples on the path"""
+        logging.debug('inside teleport()')
+        if back_track_path_indexer > self.path_index:
+            self.path_index = 0
+        else:
+            self.path_index -= back_track_path_indexer
 
 
 
 class BallonL1(Ballon):
    """First, and lowest, level of Ballon"""
-
-   def handle_pop(self):
-       logging.debug('inside BallonL1s hanlde_pop()')
-
-   def update(self, bullet_sprites):
-       if pygame.sprite.spritecollide(self, bullet_sprites, True):
-           # self.kill()
-           return True  # represents should handle pop
-       else:
-           self.move()
-
    def peel_layer(self):
         logging.debug('inside BallonL1s peel_layer() method')
         return None #there is no layer to return
 
+
+
 class BallonL2(Ballon):
-
-    def handle_pop(self):
-        logging.debug('inside BallonL2s hanlde_pop()')
-
     def peel_layer(self):
         logging.debug('inside BallonL2s peel_layer() method')
-        self.path = self.path[self.counter:]
-        return create_ballon(BALLON_L1, self.path)
+        return create_ballon(BALLON_L1, self.path, self.path_index)
 
-    def update(self, bullet_sprites):
-        if pygame.sprite.spritecollide(self, bullet_sprites, True): #setting this to True might be against decoupling
-            # self.kill()
-            return True #represents should handle pop
-        else:
-            self.move()
+class BallonL3(Ballon):
+    def peel_layer(self):
+        logging.debug('inside BallonL3s peel_layer() method')
+        return create_ballon(BALLON_L2, self.path, self.path_index)
 
+
+class BallonL4(Ballon):
+    def peel_layer(self):
+        logging.debug('inside BallonL4s peel_layer() method')
+        return create_ballon(BALLON_L3, self.path, self.path_index)
+
+
+class BallonL5(Ballon):
+    def peel_layer(self):
+        logging.debug('inside BallonL5s peel_layer() method. The path index is: ' + str(self.path_index))
+        return create_ballon(BALLON_L4, self.path, self.path_index)
 
 
 class BallonContext(Ballon):
@@ -93,8 +107,9 @@ class BallonContext(Ballon):
         self.current_ballon = current_ballon
 
     def update(self, bullet_sprites):
+        #if is_handle_pop is true, then it is destroyed. If it is false, then it has moved
         is_handle_pop = self.current_ballon.update(bullet_sprites)
-        if (is_handle_pop):
+        if is_handle_pop:
             self.handle_pop()
 
     def handle_pop(self):
@@ -114,25 +129,38 @@ class BallonContext(Ballon):
 
 
 
-
-def create_ballon(ballon_type, path):
+def create_ballon(ballon_type, path, path_indexer=0):
+    """Creates appropriate ballon. Used by BallonContext"""
     if ballon_type == BALLON_L1:
-        return BallonL1(colours.RED, (30, 30), path)
-
+        return BallonL1(colours.RED, (30, 30), path, path_indexer)
     elif ballon_type == BALLON_L2:
-        return BallonL2(colours.ORANGE, (30, 30), path)
-
+        return BallonL2(colours.ORANGE, (30, 30), path, path_indexer)
+    elif ballon_type == BALLON_L3:
+        return BallonL3(colours.YELLOW, (30, 30), path, path_indexer)
+    elif ballon_type == BALLON_L4:
+        return BallonL4(colours.GREEN, (30, 30), path, path_indexer)
+    elif ballon_type == BALLON_L5:
+        return BallonL5(colours.BLUE, (30, 30), path, path_indexer)
     else:
         raise NotImplementedError('Not implemented yet!')
 
-def create_ballon_context(ballon_type, path):
+
+def create_ballon_context(ballon_type, path, path_indexer=0):
+    """Creates BallonContext objects with the appropriate ballon as the state"""
     if ballon_type == BALLON_L1:
-        ballonL1 = BallonL1(colours.RED, (30, 30), path)
+        ballonL1 = BallonL1(colours.RED, (30, 30), path, 0)
         return BallonContext(ballonL1)
-
     elif ballon_type == BALLON_L2:
-        ballonL2 = BallonL2(colours.ORANGE, (30, 30), path)
+        ballonL2 = BallonL2(colours.ORANGE, (30, 30), path, 0)
         return BallonContext(ballonL2)
-
+    elif ballon_type == BALLON_L3:
+        ballonL3 = BallonL3(colours.YELLOW, (30, 30), path, 0)
+        return BallonContext(ballonL3)
+    elif ballon_type == BALLON_L4:
+        ballonL4 = BallonL4(colours.GREEN, (30, 30), path, 0)
+        return BallonContext(ballonL4)
+    elif ballon_type == BALLON_L5:
+        ballonL5 = BallonL5(colours.BLUE, (30, 30), path, 0)
+        return BallonContext(ballonL5)
     else:
         raise NotImplementedError('Not implemented yet!')
