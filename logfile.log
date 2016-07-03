@@ -1,0 +1,69 @@
+07/03/2016 01:52:09 PM - balloon.py - __init__(...) - Line#: 28 - DEBUG - PATH_INDEXER is at0
+07/03/2016 01:52:09 PM - tower.py - update(...) - Line#: 148 - DEBUG - ATTACK! x is: 100. y is 30
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 0
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 1
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 1
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 2
+07/03/2016 01:52:09 PM - balloon.py - update(...) - Line#: 49 - DEBUG - =================== EXPLOSION BULLET=======================
+07/03/2016 01:52:09 PM - balloon.py - handle_pop(...) - Line#: 126 - DEBUG - inside BallonContext handle_pop()
+07/03/2016 01:52:09 PM - balloon.py - peel_layer(...) - Line#: 109 - DEBUG - inside BallonL5s peel_layer() method. The path index is: 2
+07/03/2016 01:52:09 PM - balloon.py - __init__(...) - Line#: 28 - DEBUG - PATH_INDEXER is at2
+07/03/2016 01:52:09 PM - balloon.py - handle_pop(...) - Line#: 131 - DEBUG - last line of handle_pop()
+07/03/2016 01:52:09 PM - balloon.py - update(...) - Line#: 45 - DEBUG - =================== STANDARD BULLET=======================
+07/03/2016 01:52:09 PM - balloon.py - handle_pop(...) - Line#: 126 - DEBUG - inside BallonContext handle_pop()
+07/03/2016 01:52:09 PM - balloon.py - peel_layer(...) - Line#: 103 - DEBUG - inside BallonL4s peel_layer() method
+07/03/2016 01:52:09 PM - balloon.py - __init__(...) - Line#: 28 - DEBUG - PATH_INDEXER is at2
+07/03/2016 01:52:09 PM - balloon.py - handle_pop(...) - Line#: 131 - DEBUG - last line of handle_pop()
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 2
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 3
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 3
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 4
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 4
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 5
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 5
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 6
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 6
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 7
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 7
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 8
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 8
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 9
+07/03/2016 01:52:09 PM - tower.py - update(...) - Line#: 148 - DEBUG - ATTACK! x is: 100. y is 38
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 9
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 10
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 10
+07/03/2016 01:52:09 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 11
+07/03/2016 01:52:09 PM - balloon.py - update(...) - Line#: 49 - DEBUG - =================== EXPLOSION BULLET=======================
+07/03/2016 01:52:09 PM - balloon.py - handle_pop(...) - Line#: 126 - DEBUG - inside BallonContext handle_pop()
+07/03/2016 01:52:09 PM - balloon.py - peel_layer(...) - Line#: 97 - DEBUG - inside BallonL3s peel_layer() method
+07/03/2016 01:52:09 PM - balloon.py - __init__(...) - Line#: 28 - DEBUG - PATH_INDEXER is at11
+07/03/2016 01:52:09 PM - balloon.py - handle_pop(...) - Line#: 131 - DEBUG - last line of handle_pop()
+07/03/2016 01:52:10 PM - balloon.py - update(...) - Line#: 45 - DEBUG - =================== STANDARD BULLET=======================
+07/03/2016 01:52:10 PM - balloon.py - handle_pop(...) - Line#: 126 - DEBUG - inside BallonContext handle_pop()
+07/03/2016 01:52:10 PM - balloon.py - peel_layer(...) - Line#: 91 - DEBUG - inside BallonL2s peel_layer() method
+07/03/2016 01:52:10 PM - balloon.py - __init__(...) - Line#: 28 - DEBUG - PATH_INDEXER is at11
+07/03/2016 01:52:10 PM - balloon.py - handle_pop(...) - Line#: 131 - DEBUG - last line of handle_pop()
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 11
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 12
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 12
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 13
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 13
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 14
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 14
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 15
+07/03/2016 01:52:10 PM - tower.py - update(...) - Line#: 102 - DEBUG - ATTACK! x is: 100. y is 44
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 15
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 16
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 16
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 17
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 17
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 18
+07/03/2016 01:52:10 PM - tower.py - update(...) - Line#: 148 - DEBUG - ATTACK! x is: 100. y is 47
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 18
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 19
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 64 - DEBUG - inside the move() method. The path indexer is: 19
+07/03/2016 01:52:10 PM - balloon.py - move(...) - Line#: 68 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 20
+07/03/2016 01:52:10 PM - balloon.py - update(...) - Line#: 49 - DEBUG - =================== EXPLOSION BULLET=======================
+07/03/2016 01:52:10 PM - balloon.py - handle_pop(...) - Line#: 126 - DEBUG - inside BallonContext handle_pop()
+07/03/2016 01:52:10 PM - balloon.py - peel_layer(...) - Line#: 85 - DEBUG - inside BallonL1s peel_layer() method
+07/03/2016 01:52:10 PM - balloon.py - handle_pop(...) - Line#: 131 - DEBUG - last line of handle_pop()

@@ -6,8 +6,14 @@ import math
 import bullet
 import colours
 import logging
+import logging.config
 
-logging.basicConfig(level=logging.DEBUG)
+
+logging.config.fileConfig('logging.conf')
+
+# create logger
+logger = logging.getLogger('simpleLogger')
+
 
 LINEAR_TOWER = 'LINEAR_TOWER'
 THREE_SIXTY_TOWER = 'THREE_SIXTY_TOWER'
@@ -64,7 +70,7 @@ class LinearTower(Tower):
                 # if within range, print and create a bullet
                 if math.hypot(ballon.get_centerX() - self.rect.centerx,
                               ballon.get_centerY() - self.rect.centery) <= self.attack_radius:
-                    logging.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
+                    logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
                         bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
                                              destination=(ballon.get_centerX(), ballon.get_centerY())))
@@ -93,7 +99,7 @@ class ThreeSixtyTower(Tower):
                 # if within range, print and create a bullet
                 if math.hypot(ballon.get_centerX() - self.rect.centerx,
                               ballon.get_centerY() - self.rect.centery) <= self.attack_radius:
-                    logging.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
+                    logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
                         bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx, self.rect.centery - 100)),
@@ -139,7 +145,7 @@ class ExplosionTower(Tower):
                 # if within range, print and create a bullet
                 if math.hypot(ballon.get_centerX() - self.rect.centerx,
                               ballon.get_centerY() - self.rect.centery) <= self.attack_radius:
-                    logging.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
+                    logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
                         bullet.create_bullet(bullet.EXPLOSION_BULLET, start=(self.rect.centerx, self.rect.centery),
                                              destination=(ballon.get_centerX(), ballon.get_centerY()))
@@ -171,7 +177,7 @@ class TeleportationTower(Tower):
                 # if within range, print and create a bullet
                 if math.hypot(ballon.get_centerX() - self.rect.centerx,
                               ballon.get_centerY() - self.rect.centery) <= self.attack_radius:
-                    logging.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
+                    logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
                         bullet.create_bullet(bullet.TELEPORTATION_BULLET, start=(self.rect.centerx, self.rect.centery),
                                              destination=(ballon.get_centerX(), ballon.get_centerY()))
