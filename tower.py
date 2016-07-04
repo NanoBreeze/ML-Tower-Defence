@@ -8,12 +8,10 @@ import colours
 import logging
 import logging.config
 
-
 logging.config.fileConfig('logging.conf')
 
 # create logger
 logger = logging.getLogger('simpleLogger')
-
 
 LINEAR_TOWER = 'LINEAR_TOWER'
 THREE_SIXTY_TOWER = 'THREE_SIXTY_TOWER'

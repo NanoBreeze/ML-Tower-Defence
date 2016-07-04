@@ -1,10 +1,13 @@
 import pygame
 import logging
+import logging.config
 
-logging.basicConfig(level=logging.DEBUG)
+
+logging.config.fileConfig('logging.conf')
+logger = logging.getLogger('simpleLogger')
+
 
 class BallonGroup(pygame.sprite.AbstractGroup):
-
     def __init__(self):
         super().__init__()
 
@@ -18,8 +21,12 @@ class BallonGroup(pygame.sprite.AbstractGroup):
         self.lostsprites = []
 
 
-
-
 bullet_sprites = pygame.sprite.Group()
 tower_sprites = pygame.sprite.Group()
 ballon_sprites = BallonGroup()
+
+# contains all the tower icons
+tower_icon_sprites = pygame.sprite.Group()
+
+# the tower icon the user has selected. If this icon is present, it is always positioned at the mouse position
+selected_tower_icon_sprite = pygame.sprite.GroupSingle()
