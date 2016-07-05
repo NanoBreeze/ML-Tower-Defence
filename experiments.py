@@ -30,10 +30,6 @@ coolios()
 
 
 '''
-
-def hey():
-    logger.debug('hello')
-
 import logging
 import logging.config
 
@@ -41,6 +37,17 @@ logging.config.fileConfig('logging.conf')
 
 # create logger
 logger = logging.getLogger('simpleExample')
+
+
+
+class Square():
+    def square(self, x):
+        return x*x
+
+def hey():
+    logger.debug('hello')
+
+
 
 hey()
 # 'application' code

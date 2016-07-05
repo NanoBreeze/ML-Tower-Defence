@@ -39,35 +39,39 @@ class Balloon(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
 
     def update(self, bullet_sprites):
         collided_bullets = pygame.sprite.spritecollide(self, bullet_sprites, False)
+        logger.critical(str(collided_bullets))
         if collided_bullets:
             for collided_bullet in collided_bullets:
-                if type(collided_bullet) is bullet.StandardBullet:
+                if isinstance(collided_bullet, bullet.StandardBullet):
                     logger.debug('=================== STANDARD BULLET=======================')
                     collided_bullet.handle_ballon_collision()
+                    logger.warn('inside the standard bullet')
                     return True  # represents should handle pop
-                elif type(collided_bullet) is bullet.ExplosionBullet:
+                elif isinstance(collided_bullet, bullet.ExplosionBullet):
                     logger.debug('=================== EXPLOSION BULLET=======================')
                     # explosion bullet will create more bullets
                     collided_bullet.handle_ballon_collision(bullet_sprites)
+                    logger.warn('inside the explosion bullet')
                     return True  # represents should handle pop
-                elif type(collided_bullet) is bullet.TeleportationBullet:
+                elif isinstance(collided_bullet, bullet.TeleportationBullet):
                     logger.debug('=================== TELEPORTATION BULLET=======================')
                     collided_bullet.handle_ballon_collision()
                     self.teleport()
                     return False  # represents don't hanlde pop. This ballon is being teleported
-
+                raise NotImplementedError('the collided_bullet type is not allowed!')
         else:
             self.move()
 
     def move(self):
-        try:
+        if self.path_index >= len(self.path) -1:
+            raise NotImplementedError('if balloon reaches end. Not sure what happens')
+        else:
             logger.debug('inside the move() method. The path indexer is: ' + str(self.path_index))
             self.rect.centerx = self.path[self.path_index][0]
             self.rect.centery = self.path[self.path_index][1]
             self.path_index += 1
             logger.debug('just changed teh move() path_indexer value to 2. It is actually: ' + str(self.path_index))
-        except:
-            pass
+
 
     def teleport(self, back_track_path_indexer=20):
         """Teleports back 20 tuples on the path"""
@@ -80,7 +84,6 @@ class Balloon(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
 
 class BalloonL1(Balloon):
     """First, and lowest, level of Ballon"""
-
     def peel_layer(self):
         logger.debug('inside BallonL1s peel_layer() method')
         return None  # there is no layer to return
@@ -109,7 +112,6 @@ class BalloonL5(Balloon):
         logger.debug('inside BallonL5s peel_layer() method. The path index is: ' + str(self.path_index))
         return create_balloon(BALLOON_L4, self.path, self.path_index)
 
-
 class BalloonContext(Balloon):
     def __init__(self, current_ballon):
         pygame.sprite.Sprite.__init__(self)
@@ -125,10 +127,10 @@ class BalloonContext(Balloon):
         """Allocate money and peel layer"""
         logger.debug('inside BallonContext handle_pop()')
         bank.deposit(self.current_ballon.bounty)
+        logger.warn(str(self.current_ballon.bounty))
         self.current_ballon = self.current_ballon.peel_layer()
         if self.current_ballon is None:
             self.kill()
-        logger.debug('last line of handle_pop()')
 
     def get_centerX(self):
         return self.current_ballon.rect.centerx
