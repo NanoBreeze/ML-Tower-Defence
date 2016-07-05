@@ -48,6 +48,8 @@ sprite_groups.tower_icon_sprites.add(linear_tower_icon,
                                      explosion_tower_icon,
                                      teleportation_tower_icon)
 
+basic_dashboard = pygame.draw.rect(DISPLAYSURF, colours.GRAY, (0, 300, 400, 100))
+
 fpsClock = pygame.time.Clock()
 
 while True:
@@ -78,7 +80,11 @@ while True:
             sys.exit()
 
     #tower_sprites.update()
+
+
     DISPLAYSURF.fill(colours.BLACK)
+    basic_dashboard = pygame.draw.rect(DISPLAYSURF, colours.GRAY, (0, 300, 400, 100))
+
     sprite_groups.tower_sprites.update(sprite_groups.ballon_sprites, sprite_groups.bullet_sprites)
     sprite_groups.tower_sprites.draw(DISPLAYSURF)
 
