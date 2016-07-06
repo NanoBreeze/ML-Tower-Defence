@@ -40,6 +40,7 @@ class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def handle_ballon_collision(self):
         """What happens when this bullet hits a ballon"""
+        pass
 
 
 class StandardBullet(Bullet):

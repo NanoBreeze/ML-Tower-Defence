@@ -56,7 +56,8 @@ while True:
     for event in pygame.event.get():
 
         #left mouse button clicked, if a tower_icon had already been selected, make a tower there
-        # otherwise, create a tower icon at the cursor position
+        # otherwise, if the click is on a tower, show stats of tower.
+        # if it was on an icon, create a tower icon at the cursor position
         if event.type == pygame.locals.MOUSEBUTTONUP and event.button == 1:
             pos = pygame.mouse.get_pos()
             if sprite_groups.selected_tower_icon_sprite:
@@ -64,12 +65,21 @@ while True:
                 sprite_groups.tower_sprites.add(new_tower)
                 sprite_groups.selected_tower_icon_sprite.empty()
             else:
+                is_tower_icon = False #this is bad design will change later, maybe use returns
                 for tower_icon in sprite_groups.tower_icon_sprites:
                     if tower_icon.rect.collidepoint(pos):
                         tower_icon.on_left_mouse_button_up()
                         duplicate_tower_icon = tower_icon.duplicate()
                         logger.info('type of duplicate_tower is: ' + str(type(duplicate_tower_icon)))
                         sprite_groups.selected_tower_icon_sprite.add(duplicate_tower_icon)
+                        is_tower_icon = True
+                        break #only one tower at a time, thus after finding it, no need to continue for looping
+
+                if is_tower_icon == False:
+                    for tow in sprite_groups.tower_sprites: #must not be named with tower, will result in name clashes
+                        if tow.rect.collidepoint(pos):
+                            tow.handle_is_clicked()
+                            break
 
         #right mouse button is clicked. Remove the tower icon currently on the cursor (if it exists)
         elif event.type == pygame.locals.MOUSEBUTTONUP and event.button == 3:

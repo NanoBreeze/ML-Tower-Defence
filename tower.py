@@ -46,6 +46,10 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     def update(self, ballon_sprites):
         pass
 
+    @abc.abstractmethod
+    def handle_is_clicked(self):
+        pass
+
 
 class LinearTower(Tower):
     """Attacks in a straight line"""
@@ -63,11 +67,14 @@ class LinearTower(Tower):
 
         # possible to attack again
         if self.attack_again_counter == 10:
+            logger.info('INSIDE self.attack_again_counter_loop')
             # check if any ballons are within the range of the circle, which is currently set to 80
             for ballon in ballon_sprites:
+                logger.info('INSIDE ballon_sprites for loop')
                 # if within range, print and create a bullet
                 if math.hypot(ballon.get_centerX() - self.rect.centerx,
                               ballon.get_centerY() - self.rect.centery) <= self.attack_radius:
+                    logger.info('INSIDE math.hypot if statement')
                     logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
                         bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
@@ -76,6 +83,9 @@ class LinearTower(Tower):
                     break
         else:
             self.attack_again_counter += 1
+
+    def handle_is_clicked(self):
+        logger.info('LinearTower is clicked')
 
 
 class ThreeSixtyTower(Tower):
@@ -121,6 +131,9 @@ class ThreeSixtyTower(Tower):
         else:
             self.attack_again_counter += 1
 
+    def handle_is_clicked(self):
+        logger.info('ThreeSixtyTower is clicked')
+
 
 class ExplosionTower(Tower):
     """Shots ExplosionBullets"""
@@ -153,6 +166,8 @@ class ExplosionTower(Tower):
         else:
             self.attack_again_counter += 1
 
+    def handle_is_clicked(self):
+        logger.info('ExplosionTower is clicked')
 
 class TeleportationTower(Tower):
     """Shoots TeleportationBullets"""
@@ -165,6 +180,7 @@ class TeleportationTower(Tower):
                          DISPLAYSURF=DISPLAYSURF)
 
     def update(self, ballon_sprites, bullet_sprites):
+
         pygame.draw.circle(self.DISPLAYSURF, colours.WHITE, (self.rect.centerx, self.rect.centery), self.attack_radius,
                            1)
 
@@ -185,6 +201,8 @@ class TeleportationTower(Tower):
         else:
             self.attack_again_counter += 1
 
+    def handle_is_clicked(self):
+        logger.info('TeleportationTower is clicked')
 
 def create_tower(tower_type, position, DISPLAYSURF):
     if tower_type == LINEAR_TOWER:
