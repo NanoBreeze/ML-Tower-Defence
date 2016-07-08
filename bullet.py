@@ -10,7 +10,8 @@ TELEPORTATION_BULLET = 'TELEPORTATION_BULLET'
 
 
 class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
-    def __init__(self, start, destination, frame_destroy_after=5, dimension=(10, 10), colour=colours.GREEN):
+
+    def __init__(self, start, destination, pop_power, frame_destroy_after=5, dimension=(10, 10), colour=colours.GREEN):
         super().__init__()
         self.image = pygame.Surface([dimension[0], dimension[1]])
         self.image.fill(colour)
@@ -21,11 +22,14 @@ class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self.destination_y = destination[1]
         self.frame_destroy_after = frame_destroy_after
 
+        self.pop_power = pop_power
+
         # step_x and step_y represents how far the bullet goes each frame
         self.frame_to_hit_Ballon = math.hypot(self.destination_x - self.rect.centerx,
                                               self.destination_y - self.rect.centery) / 20
         self.step_x = (self.destination_x - self.rect.centerx) / self.frame_to_hit_Ballon
         self.step_y = (self.destination_y - self.rect.centery) / self.frame_to_hit_Ballon
+
         sprite_groups.bullet_sprites.add(self)
 
     def update(self):
@@ -44,54 +48,61 @@ class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
 
 
 class StandardBullet(Bullet):
-    def __init__(self, start, destination):
+    def __init__(self, start, destination, pop_power):
         assert isinstance(start, tuple), 'start must be a tuple'
         assert isinstance(destination, tuple), 'destination must be a tuple'
+        assert isinstance(pop_power, int), 'pop_power must be an integer'
 
-        super().__init__(start, destination)
+        super().__init__(start, destination, pop_power)
 
     def handle_ballon_collision(self):
         self.kill()
 
 
 class ExplosionBullet(Bullet):
-    def __init__(self, start, destination):
+    def __init__(self, start, destination, pop_power):
         assert isinstance(start, tuple), 'start must be a tuple'
         assert isinstance(destination, tuple), 'destination must be a tuple'
+        assert isinstance(pop_power, int), 'pop_power must be an integer'
 
-        super().__init__(start, destination)
+        super().__init__(start, destination, pop_power)
 
     def handle_ballon_collision(self, bullet_sprites):
         bullet_sprites.add(
             create_bullet(STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
-                          destination=(self.rect.centerx, self.rect.centery - 20)),
+                          destination=(self.rect.centerx, self.rect.centery - 20),
+                          pop_power=self.pop_power),
             create_bullet(STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
-                          destination=(self.rect.centerx + 20, self.rect.centery)),
+                          destination=(self.rect.centerx + 20, self.rect.centery),
+                          pop_power=self.pop_power),
             create_bullet(STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
-                          destination=(self.rect.centerx, self.rect.centery + 20)),
+                          destination=(self.rect.centerx, self.rect.centery + 20),
+                          pop_power=self.pop_power),
             create_bullet(STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
-                          destination=(self.rect.centerx - 20, self.rect.centery)),
+                          destination=(self.rect.centerx - 20, self.rect.centery),
+                          pop_power=self.pop_power),
         )
         self.kill()
 
 
 class TeleportationBullet(Bullet):
-    def __init__(self, start, destination):
+    def __init__(self, start, destination, pop_power):
         assert isinstance(start, tuple), 'start must be a tuple'
         assert isinstance(destination, tuple), 'destination must be a tuple'
+        assert isinstance(pop_power, int), 'pop_power must be an integer'
 
-        super().__init__(start, destination)
+        super().__init__(start, destination, pop_power)
 
     def handle_ballon_collision(self):
         self.kill()
 
 
-def create_bullet(bullet_type, start, destination):
+def create_bullet(bullet_type, start, destination, pop_power):
     if bullet_type == STANDARD_BULLET:
-        return StandardBullet(start, destination)
+        return StandardBullet(start, destination, pop_power)
     elif bullet_type == EXPLOSION_BULLET:
-        return ExplosionBullet(start, destination)
+        return ExplosionBullet(start, destination, pop_power)
     elif bullet_type == TELEPORTATION_BULLET:
-        return TeleportationBullet(start, destination)
+        return TeleportationBullet(start, destination, pop_power)
 
     raise NotImplementedError('the specified Bullet type is invalid')

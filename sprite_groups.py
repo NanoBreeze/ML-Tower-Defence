@@ -28,5 +28,8 @@ ballon_sprites = BallonGroup()
 # contains all the tower icons
 tower_icon_sprites = pygame.sprite.Group()
 
+#contains the current three upgrade icons to show in the dashboard
+upgrade_icon_sprites = pygame.sprite.Group()
+
 # the tower icon the user has selected. If this icon is present, it is always positioned at the mouse position
 selected_tower_icon_sprite = pygame.sprite.GroupSingle()

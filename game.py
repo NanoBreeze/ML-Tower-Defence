@@ -39,10 +39,10 @@ main_path = path.Path()
 b1= balloon.create_balloon_context(balloon.BALLOON_L5, main_path, 0)
 sprite_groups.ballon_sprites.add(b1)
 
-linear_tower_icon = icon.create_icon(icon.LINEAR_TOWER_ICON, (300, 100))
-three_sixty_tower_icon = icon.create_icon(icon.THREE_SIXTY_TOWER_ICON, (300, 150))
-explosion_tower_icon = icon.create_icon(icon.EXPLOSION_TOWER_ICON, (300, 200))
-teleportation_tower_icon = icon.create_icon(icon.TELEPORTATION_TOWER_ICON, (300, 250))
+linear_tower_icon = icon.create_tower_icon(icon.LINEAR_TOWER_ICON, (300, 100))
+three_sixty_tower_icon = icon.create_tower_icon(icon.THREE_SIXTY_TOWER_ICON, (300, 150))
+explosion_tower_icon = icon.create_tower_icon(icon.EXPLOSION_TOWER_ICON, (300, 200))
+teleportation_tower_icon = icon.create_tower_icon(icon.TELEPORTATION_TOWER_ICON, (300, 250))
 sprite_groups.tower_icon_sprites.add(linear_tower_icon,
                                      three_sixty_tower_icon,
                                      explosion_tower_icon,
@@ -61,7 +61,7 @@ while True:
         if event.type == pygame.locals.MOUSEBUTTONUP and event.button == 1:
             pos = pygame.mouse.get_pos()
             if sprite_groups.selected_tower_icon_sprite:
-                new_tower = tower.create_tower(sprite_groups.selected_tower_icon_sprite.sprite.tower_type, pos, DISPLAYSURF)
+                new_tower = tower.create_tower(sprite_groups.selected_tower_icon_sprite.sprite._tower_type, pos, DISPLAYSURF)
                 sprite_groups.tower_sprites.add(new_tower)
                 sprite_groups.selected_tower_icon_sprite.empty()
             else:
@@ -78,8 +78,9 @@ while True:
                 if is_tower_icon == False:
                     for tow in sprite_groups.tower_sprites: #must not be named with tower, will result in name clashes
                         if tow.rect.collidepoint(pos):
-                            tow.handle_is_clicked()
+                            tow.handle_is_clicked(sprite_groups.upgrade_icon_sprites)
                             break
+                        sprite_groups.upgrade_icon_sprites.empty() #empties the icons if no tower is selected
 
         #right mouse button is clicked. Remove the tower icon currently on the cursor (if it exists)
         elif event.type == pygame.locals.MOUSEBUTTONUP and event.button == 3:
@@ -93,7 +94,10 @@ while True:
 
 
     DISPLAYSURF.fill(colours.BLACK)
+
+    #draw dashboard and upgrade sprites
     basic_dashboard = pygame.draw.rect(DISPLAYSURF, colours.GRAY, (0, 300, 400, 100))
+    sprite_groups.upgrade_icon_sprites.draw(DISPLAYSURF)
 
     sprite_groups.tower_sprites.update(sprite_groups.ballon_sprites, sprite_groups.bullet_sprites)
     sprite_groups.tower_sprites.draw(DISPLAYSURF)

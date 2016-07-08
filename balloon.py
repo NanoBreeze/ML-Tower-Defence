@@ -7,8 +7,6 @@ import logging.config
 import bullet
 import bank
 
-
-
 logging.config.fileConfig('logging.conf')
 
 # create logger
@@ -46,13 +44,13 @@ class Balloon(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
                     logger.debug('=================== STANDARD BULLET=======================')
                     collided_bullet.handle_ballon_collision()
                     logger.warn('inside the standard bullet')
-                    return True  # represents should handle pop
+                    return collided_bullet.pop_power  # represents should handle pop
                 elif isinstance(collided_bullet, bullet.ExplosionBullet):
                     logger.debug('=================== EXPLOSION BULLET=======================')
                     # explosion bullet will create more bullets
                     collided_bullet.handle_ballon_collision(bullet_sprites)
                     logger.warn('inside the explosion bullet')
-                    return True  # represents should handle pop
+                    return collided_bullet.pop_power  # represents should handle pop
                 elif isinstance(collided_bullet, bullet.TeleportationBullet):
                     logger.debug('=================== TELEPORTATION BULLET=======================')
                     collided_bullet.handle_ballon_collision()
@@ -63,7 +61,7 @@ class Balloon(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
             self.move()
 
     def move(self):
-        if self.path_index >= len(self.path) -1:
+        if self.path_index >= len(self.path) - 1:
             raise NotImplementedError('if balloon reaches end. Not sure what happens')
         else:
             logger.debug('inside the move() method. The path indexer is: ' + str(self.path_index))
@@ -71,7 +69,6 @@ class Balloon(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
             self.rect.centery = self.path[self.path_index][1]
             self.path_index += 1
             logger.debug('just changed teh move() path_indexer value to 2. It is actually: ' + str(self.path_index))
-
 
     def teleport(self, back_track_path_indexer=20):
         """Teleports back 20 tuples on the path"""
@@ -84,6 +81,7 @@ class Balloon(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
 
 class BalloonL1(Balloon):
     """First, and lowest, level of Ballon"""
+
     def peel_layer(self):
         logger.debug('inside BallonL1s peel_layer() method')
         return None  # there is no layer to return
@@ -112,25 +110,27 @@ class BalloonL5(Balloon):
         logger.debug('inside BallonL5s peel_layer() method. The path index is: ' + str(self.path_index))
         return create_balloon(BALLOON_L4, self.path, self.path_index)
 
+
 class BalloonContext(Balloon):
     def __init__(self, current_ballon):
         pygame.sprite.Sprite.__init__(self)
         self.current_ballon = current_ballon
 
     def update(self, bullet_sprites):
-        # if is_handle_pop is true, then it is destroyed. If it is false, then it has moved
-        is_handle_pop = self.current_ballon.update(bullet_sprites)
-        if is_handle_pop:
-            self.handle_pop()
+        # if layers_to_peel is a number, then the balloon is to be popped and the number of layers (of layers_to_peel) is to be peeled
+        layers_to_peel = self.current_ballon.update(bullet_sprites)
+        if layers_to_peel:
+            self.handle_pop(layers_to_peel)
 
-    def handle_pop(self):
+    def handle_pop(self, layers_to_peel):
         """Allocate money and peel layer"""
         logger.debug('inside BallonContext handle_pop()')
         bank.deposit(self.current_ballon.bounty)
-        logger.warn(str(self.current_ballon.bounty))
-        self.current_ballon = self.current_ballon.peel_layer()
-        if self.current_ballon is None:
-            self.kill()
+        for layer in range(layers_to_peel):
+            self.current_ballon = self.current_ballon.peel_layer()
+            if self.current_ballon is None:
+                self.kill()
+                break
 
     def get_centerX(self):
         return self.current_ballon.rect.centerx
