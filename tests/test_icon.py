@@ -158,11 +158,11 @@ class TestUpgradeSpeedIcon(unittest.TestCase):
         self.position = (10, 20)
         self.dimension = (50, 60)
 
-        self.u = icon.UpgradeSpeedIcon(self.colour, self.position, self.dimension)
+        self.u = icon.UpgradeSpeedBaseIcon(self.colour, self.position, self.dimension, )
 
     @patch.object(icon.UpgradeIcon, '__init__')
     def test_init(self, mock_upgrade_icon_init):
-        self.u = icon.UpgradeSpeedIcon(self.colour, self.position, self.dimension)
+        self.u = icon.UpgradeSpeedBaseIcon(self.colour, self.position, self.dimension, )
         mock_upgrade_icon_init.called_with(self.colour, self.position, self.dimension)
 
     @patch.object(logging.Logger, 'info')
@@ -177,11 +177,11 @@ class TestUpgradeRadiusIcon(unittest.TestCase):
         self.position = (10, 20)
         self.dimension = (50, 60)
 
-        self.u = icon.UpgradeRadiusIcon(self.colour, self.position, self.dimension)
+        self.u = icon.UpgradeRadiusBaseIcon(self.colour, self.position, self.dimension)
 
     @patch.object(icon.UpgradeIcon, '__init__')
     def test_init(self, mock_upgrade_icon_init):
-        self.u = icon.UpgradeRadiusIcon(self.colour, self.position, self.dimension)
+        self.u = icon.UpgradeRadiusBaseIcon(self.colour, self.position, self.dimension)
         mock_upgrade_icon_init.called_with(self.colour, self.position, self.dimension)
 
     @patch.object(logging.Logger, 'info')
@@ -196,11 +196,11 @@ class TestUpgradePopPowerIcon(unittest.TestCase):
         self.position = (10, 20)
         self.dimension = (50, 60)
 
-        self.u = icon.UpgradePopPowerIcon(self.colour, self.position, self.dimension)
+        self.u = icon.UpgradePopPowerBaseIcon(self.colour, self.position, self.dimension)
 
     @patch.object(icon.UpgradeIcon, '__init__')
     def test_init(self, mock_upgrade_icon_init):
-        self.u = icon.UpgradePopPowerIcon(self.colour, self.position, self.dimension)
+        self.u = icon.UpgradePopPowerBaseIcon(self.colour, self.position, self.dimension)
         mock_upgrade_icon_init.called_with(self.colour, self.position, self.dimension)
 
     @patch.object(logging.Logger, 'info')
@@ -244,17 +244,17 @@ class TestIconModule(unittest.TestCase):
 
         self.assertRaises(NotImplementedError, icon.create_tower_icon, icon_type, position)
 
-    @patch.object(icon.UpgradeSpeedIcon, '__init__')
+    @patch.object(icon.UpgradeSpeedBaseIcon, '__init__')
     def test_upgrade_icon_type_with_UPGRADE_SPEED_ICON_TYPE(self, mock_upgrade_speed_icon):
-        icon_type = icon.UPGRADE_SPEED_ICON
+        icon_type = icon.UPGRADE_SPEED_ICON_1
         mock_upgrade_speed_icon.return_value = None
         icon.create_upgrade_icon(icon_type)
 
         mock_upgrade_speed_icon.assert_called_with(colour=colours.WHITE, position=(100, 350), dimension=(50, 50))
 
-    @patch.object(icon.UpgradeRadiusIcon, '__init__')
+    @patch.object(icon.UpgradeRadiusBaseIcon, '__init__')
     def test_upgrade_icon_type_with_UPGRADE_RADIUS_ICON_TYPE(self, mock_upgrade_speed_icon):
-        icon_type = icon.UPGRADE_RADIUS_ICON
+        icon_type = icon.UPGRADE_RADIUS_ICON_1
         mock_upgrade_speed_icon.return_value = None
 
         icon.create_upgrade_icon(icon_type)
@@ -262,9 +262,9 @@ class TestIconModule(unittest.TestCase):
         mock_upgrade_speed_icon.assert_called_with(colour=colours.WHITE, position=(200, 350), dimension=(50, 50))
 
 
-    @patch.object(icon.UpgradePopPowerIcon, '__init__')
+    @patch.object(icon.UpgradePopPowerBaseIcon, '__init__')
     def test_upgrade_icon_type_with_UPGRADE_POP_POWER_ICON_TYPE(self, mock_upgrade_speed_icon):
-        icon_type = icon.UPGRADE_POP_POWER_ICON
+        icon_type = icon.UPGRADE_POP_POWER_ICON_1
         mock_upgrade_speed_icon.return_value = None
 
         icon.create_upgrade_icon(icon_type)

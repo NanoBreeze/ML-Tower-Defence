@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0492b4e4-75ae-4e35-8aa2-bebf18fa31fb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/requirements.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/test_balloon.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/balloon.py" afterPath="$PROJECT_DIR$/balloon.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bank.py" afterPath="$PROJECT_DIR$/bank.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bullet.py" afterPath="$PROJECT_DIR$/bullet.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/experiments.py" afterPath="$PROJECT_DIR$/experiments.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.py" afterPath="$PROJECT_DIR$/game.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icon.py" afterPath="$PROJECT_DIR$/icon.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logfile.log" afterPath="$PROJECT_DIR$/logfile.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/path.py" afterPath="$PROJECT_DIR$/path.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sprite_groups.py" afterPath="$PROJECT_DIR$/sprite_groups.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_bullet.py" afterPath="$PROJECT_DIR$/tests/test_bullet.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_icon.py" afterPath="$PROJECT_DIR$/tests/test_icon.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_tower.py" afterPath="$PROJECT_DIR$/tests/test_tower.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tower.py" afterPath="$PROJECT_DIR$/tower.py" />
     </list>
     <ignored path="ML-Tower Defence.iws" />
@@ -40,7 +30,7 @@
       <file leaf-file-name="sprite_groups.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sprite_groups.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
+            <state relative-caret-position="112">
               <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
               <folding />
             </state>
@@ -70,28 +60,18 @@
       <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1152">
-              <caret line="87" column="61" selection-start-line="87" selection-start-column="61" selection-end-line="87" selection-end-column="61" />
+            <state relative-caret-position="262">
+              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="icon.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="icon.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/icon.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-502">
-              <caret line="254" column="97" selection-start-line="254" selection-start-column="97" selection-end-line="254" selection-end-column="97" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logfile.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logfile.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="96">
+              <caret line="304" column="0" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -127,14 +107,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tower.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tower.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tower.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1680">
-              <caret line="105" column="124" selection-start-line="105" selection-start-column="124" selection-end-line="105" selection-end-column="124" />
+            <state relative-caret-position="-64">
+              <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_balloon.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_balloon.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="165" column="0" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -171,7 +161,6 @@
         <option value="$PROJECT_DIR$/tests/test_sprite_groups.py" />
         <option value="$PROJECT_DIR$/tests/test_colours.py" />
         <option value="$PROJECT_DIR$/colours.py" />
-        <option value="$PROJECT_DIR$/game.py" />
         <option value="$PROJECT_DIR$/test_balloon.py" />
         <option value="$PROJECT_DIR$/tests/test_bullet.py" />
         <option value="$PROJECT_DIR$/tests/test_icon.py" />
@@ -181,17 +170,18 @@
         <option value="$PROJECT_DIR$/path.py" />
         <option value="$PROJECT_DIR$/sprite_groups.py" />
         <option value="$PROJECT_DIR$/balloon.py" />
-        <option value="$PROJECT_DIR$/icon.py" />
         <option value="$PROJECT_DIR$/bullet.py" />
         <option value="$PROJECT_DIR$/tower.py" />
+        <option value="$PROJECT_DIR$/game.py" />
+        <option value="$PROJECT_DIR$/icon.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1358" />
-    <option name="y" value="-407" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -536,12 +526,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_ML-Tower_Defence_(1) - 2016.07.07 at 23h 25m 45s.xml">
-      <configuration name="Unittests in ML-Tower Defence (1)" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_ML-Tower_Defence_(1) - 2016.07.07 at 23h 29m 19s.xml">
-      <configuration name="Unittests in ML-Tower Defence (1)" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_ML-Tower_Defence_(1) - 2016.07.07 at 23h 30m 56s.xml">
       <configuration name="Unittests in ML-Tower Defence (1)" configurationId="tests" />
     </history-entry>
@@ -566,18 +550,24 @@
     <history-entry file="Unittests_in_ML-Tower_Defence_(1) - 2016.07.07 at 23h 36m 07s.xml">
       <configuration name="Unittests in ML-Tower Defence (1)" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_in_ML-Tower_Defence_(1) - 2016.07.08 at 03h 12m 59s.xml">
+      <configuration name="Unittests in ML-Tower Defence (1)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_ML-Tower_Defence_(1) - 2016.07.08 at 12h 54m 09s.xml">
+      <configuration name="Unittests in ML-Tower Defence (1)" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-407" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19912152" sideWeight="0.4937304" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3734756" sideWeight="0.50292826" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27376032" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27286586" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.49707174" order="0" side_tool="false" content_ui="tabs" x="75" y="82" width="1088" height="620" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37195122" sideWeight="0.49707174" order="0" side_tool="false" content_ui="tabs" x="75" y="82" width="1088" height="620" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19955157" sideWeight="0.5062696" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -615,7 +605,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -842,14 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_balloon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4112">
-          <caret line="266" column="36" selection-start-line="266" selection-start-column="36" selection-end-line="266" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2016.1/system/python_stubs/-1442825926/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -932,14 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sprite_groups.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/path.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
@@ -956,22 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/icon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-502">
-          <caret line="254" column="97" selection-start-line="254" selection-start-column="97" selection-end-line="254" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="87" column="61" selection-start-line="87" selection-start-column="61" selection-end-line="87" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bullet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1686">
@@ -980,13 +938,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test_balloon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="165" column="0" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tower.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="105" column="124" selection-start-line="105" selection-start-column="124" selection-end-line="105" selection-end-column="124" />
+        <state relative-caret-position="-64">
+          <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprite_groups.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="304" column="0" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

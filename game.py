@@ -69,10 +69,11 @@ while True:
                 is_tower_icon = False #this is bad design will change later, maybe use returns
                 for tower_icon in sprite_groups.tower_icon_sprites:
                     if tower_icon.rect.collidepoint(pos):
+                        logger.debug('A tower icon is pressed')
                         tower_icon.on_left_mouse_button_up()
                         duplicate_tower_icon = tower_icon.duplicate()
-                        logger.info('type of duplicate_tower is: ' + str(type(duplicate_tower_icon)))
                         sprite_groups.selected_tower_icon_sprite.add(duplicate_tower_icon)
+                        sprite_groups.upgrade_icon_sprites.empty()
                         is_tower_icon = True
                         break #only one tower at a time, thus after finding it, no need to continue for looping
 
@@ -80,18 +81,20 @@ while True:
                 if is_tower_icon == False: #if a tower icon wasn't pressed, check if a legit tower was pressed
                     for tow in sprite_groups.tower_sprites: #must not be named with tower, will result in name clashes
                         if tow.rect.collidepoint(pos):
+                            logger.debug('A legit tower is pressed on')
+                            sprite_groups.upgrade_icon_sprites.empty()
                             tow.handle_is_clicked(sprite_groups.upgrade_icon_sprites)
                             is_tower = True
                             break
 
-                if is_tower == False:
+                if is_tower == False: #if a legit tower wasn't pressed, check if press was elsewhere
                     if not basic_dashboard.collidepoint(pos):
                         sprite_groups.upgrade_icon_sprites.empty() #empties the icons if no tower is selected and the click isn't in the dashboard
 
                 #check if an Upgrade type was pressed
                 for upgrade_icon in sprite_groups.upgrade_icon_sprites:
                     if upgrade_icon.rect.collidepoint(pos):
-                        upgrade_icon.on_left_mouse_button_up()
+                        upgrade_icon.on_left_mouse_button_up(sprite_groups.upgrade_icon_sprites)
                         break
 
         #right mouse button is clicked. Remove the tower icon currently on the cursor (if it exists)

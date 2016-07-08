@@ -53,22 +53,49 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self.cost = cost
 
 
-    def update_speed(self):
+    def upgrade_speed(self):
         self._attk_props.upgrade_speed()
 
-    def update_radius(self):
+    def upgrade_radius(self):
         self._attk_props.upgrade_radius()
 
-    def update_pop_power(self):
-        self._attk_props.update_pop_power()
+    def upgrade_pop_power(self):
+        self._attk_props.upgrade_pop_power()
 
     @abc.abstractmethod
     def update(self, ballon_sprites):
         pass
 
-    @abc.abstractmethod
-    def handle_is_clicked(self):
-        pass
+
+    def handle_is_clicked(self, upgrade_icon_sprites):
+        """
+        :param upgrade_icon_sprites: pygame.sprite.Group, contains all three upgrade icons in the game
+        :return: None, upgrade_icon_sprites is changed here to include the three upgrade sprite
+        Fills the upgrade_icon_sprite group with the upgrade icon sprites associated with this tower. If upgrade is already at max, show nothing
+        """
+        assert isinstance(upgrade_icon_sprites, pygame.sprite.Group), 'upgrade_icon_sprites must be a pygame.sprite.Group() instance'
+
+        next_speed_upgrade_index = self._attk_props.get_next_speed_index_for_upgrade()
+        logger.info('next_speed_upgrade_index is ' + str(next_speed_upgrade_index))
+        next_radius_upgrade_index = self._attk_props.get_next_radius_index_for_upgrade()
+        next_pop_power_upgrade_index = self._attk_props.get_next_pop_power_index_for_upgrade()
+
+        if next_speed_upgrade_index == 1:
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON_1, self))
+        elif next_speed_upgrade_index == 2:
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON_2, self))
+
+        if next_radius_upgrade_index == 1:
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON_1, self))
+        elif next_radius_upgrade_index == 2:
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON_2, self))
+
+        if next_pop_power_upgrade_index == 1:
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_POP_POWER_ICON_1, self))
+        elif next_pop_power_upgrade_index == 2:
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_POP_POWER_ICON_2, self))
+
+        return None
 
 
 class LinearTower(Tower):
@@ -90,7 +117,7 @@ class LinearTower(Tower):
                          cost=10,
                          DISPLAYSURF=DISPLAYSURF)
 
-        self._attk_props = AttackUpgrades((10, 20, 30), (80, 90, 100), (2, 3, 3)) #set the upgrades appropriately
+        self._attk_props = AttackUpgrades((10, 20, 30), (80, 90, 100), (1, 2, 3)) #set the upgrades appropriately
         self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
 
     def update(self, ballon_sprites, bullet_sprites):
@@ -125,20 +152,7 @@ class LinearTower(Tower):
         else:
             self._attack_again_counter += 1
 
-    def handle_is_clicked(self, upgrade_icon_sprites):
-        """
-        :param upgrade_icon_sprites: pygame.sprite.Group, contains all three upgrade icons in the game
-        :return: None, upgrade_icon_sprites is changed here to include the three upgrade sprite
-        Fills the upgrade_icon_sprite group with the upgrade icon sprites associated with this tower
-        """
-        assert isinstance(upgrade_icon_sprites, pygame.sprite.Group), 'upgrade_icon_sprites must be a pygame.sprite.Group() instance'
 
-        logger.info('LinearTower is clicked')
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON))
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON))
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_POP_POWER_ICON))
-
-        return None
 
 
 class ThreeSixtyTower(Tower):
@@ -229,21 +243,6 @@ class ThreeSixtyTower(Tower):
         else:
             self._attack_again_counter += 1
 
-    def handle_is_clicked(self, upgrade_icon_sprites):
-        """
-        :param upgrade_icon_sprites: pygame.sprite.Group
-        :return: None, upgrade_icon_sprites is changed here
-        Fills the upgrade_icon_sprite group with the upgrade icon sprites associated with this tower
-        """
-
-        assert isinstance(upgrade_icon_sprites, pygame.sprite.Group), 'upgrade_icon_sprites must be a pygame.sprite.Group() instance'
-
-        logger.info('ThreeSixtyTower is clicked')
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON))
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON))
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_POP_POWER_ICON))
-
-        return None
 
 
 class ExplosionTower(Tower):
@@ -299,20 +298,6 @@ class ExplosionTower(Tower):
         else:
             self._attack_again_counter += 1
 
-    def handle_is_clicked(self, upgrade_icon_sprites):
-        """
-        :param upgrade_icon_sprites: pygame.sprite.Group
-        :return: None, upgrade_icon_sprites is changed here
-        Fills the upgrade_icon_sprite group with the upgrade icon sprites associated with this tower
-        """
-        assert isinstance(upgrade_icon_sprites, pygame.sprite.Group), 'upgrade_icon_sprites must be a pygame.sprite.Group() instance'
-
-        logger.info('ExplosionTower is clicked')
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON))
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON))
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_POP_POWER_ICON))
-
-        return None
 
 
 class TeleportationTower(Tower):
@@ -365,21 +350,6 @@ class TeleportationTower(Tower):
         else:
             self._attack_again_counter += 1
 
-    def handle_is_clicked(self, upgrade_icon_sprites):
-        """
-        :param upgrade_icon_sprites: pygame.sprite.Group
-        :return: None, upgrade_icon_sprites is changed here
-        Fills the upgrade_icon_sprite group with the upgrade icon sprites associated with this tower
-        """
-
-        assert isinstance(upgrade_icon_sprites, pygame.sprite.Group), 'upgrade_icon_sprites must be a pygame.sprite.Group() instance'
-
-        logger.info('TeleportationTower is clicked')
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON))
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON))
-        upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_POP_POWER_ICON))
-
-        return None
 
 
 def create_tower(tower_type, position, DISPLAYSURF):
@@ -432,17 +402,53 @@ class AttackUpgrades:
         self.radius = upgrade_radii[self.radius_index]
         self.pop_power = upgrade_pop_powers[self.pop_power_index]
 
+    def get_next_speed_index_for_upgrade(self):
+        """
+        :return: int or None, self.speed_index + 1, get the index of the next speed (to upgrade to) from the speeds tuple
+        """
+        next_speed_index = self.speed_index + 1
+
+        if next_speed_index <= len(self.speeds): #make sure that the next speed index isn't out of bounds
+            return next_speed_index
+        else:
+            return None
+
+
     def upgrade_speed(self):
         self.speed_index += 1
         assert self.speed_index <= len(self.speeds) -1, 'speed_index must be within the range of speeds list'
         self.speed = self.speeds[self.speed_index]
+
+    def get_next_radius_index_for_upgrade(self):
+        """
+        :return: int or None, self.speed_index + 1, get the index of the next speed (to upgrade to) from the speeds tuple
+        """
+        next_radius_index = self.radius_index + 1
+
+        if next_radius_index <= len(self.radii): #make sure that the next radius index isn't out of bounds
+            return next_radius_index
+        else:
+            return None
 
     def upgrade_radius(self):
         self.radius_index += 1
         assert self.radius_index <= len(self.radii) - 1, 'radius_index must be within the range of radii list'
         self.radius = self.radii[self.radius_index]
 
+
+    def get_next_pop_power_index_for_upgrade(self):
+        """
+        :return: int or None, get the index of the next speed (to upgrade to) from the speeds tuple
+        """
+        next_pop_power_index = self.pop_power_index + 1
+
+        if next_pop_power_index <= len(self.pop_powers): #make sure that the next pop power index isn't out of bounds
+            return next_pop_power_index
+        else:
+            return None
+
     def upgrade_pop_power(self):
         self.pop_power_index += 1
         assert self.pop_power_index <= len(self.pop_powers) - 1, 'pop_power_index must be within the range of pop_powers list'
-        self.pop_power = self.pop_power[self.pop_power_index]
+        self.pop_power = self.pop_powers[self.pop_power_index]
+
