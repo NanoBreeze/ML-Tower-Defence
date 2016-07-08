@@ -1,615 +1,506 @@
-07/07/2016 08:39:24 PM - balloon.py - __init__(...) - Line#: 26 - DEBUG - PATH_INDEXER is at0
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 0
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 1
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 1
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 2
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 2
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 3
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 3
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 4
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 4
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 5
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 5
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 6
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 6
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 7
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 7
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 8
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 8
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 9
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 9
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 10
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 10
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 11
-07/07/2016 08:39:24 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 11
-07/07/2016 08:39:24 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 12
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 12
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 13
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 13
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 14
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 14
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 15
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 15
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 16
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 16
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 17
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 17
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 18
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 18
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 19
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 19
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 20
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 20
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 21
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 21
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 22
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 22
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 23
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 23
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 24
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 24
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 25
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 25
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 26
-07/07/2016 08:39:25 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 26
-07/07/2016 08:39:25 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 27
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 27
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 28
-07/07/2016 08:39:26 PM - icon.py - on_left_mouse_button_up(...) - Line#: 76 - INFO - The ThreeSixtyTowerIcon is pressed
-07/07/2016 08:39:26 PM - game.py - <module>(...) - Line#: 73 - INFO - type of duplicate_tower is: <class 'icon.ThreeSixtyTowerIcon'>
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 28
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 29
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 29
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 30
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 30
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 31
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 31
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 32
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 32
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 33
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 33
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 34
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 34
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 35
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 35
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 36
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 36
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 37
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 37
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 38
-07/07/2016 08:39:26 PM - tower.py - update(...) - Line#: 138 - DEBUG - ATTACK! x is: 100. y is 67
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 38
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 39
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 39
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 40
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 40
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 41
-07/07/2016 08:39:26 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 41
-07/07/2016 08:39:26 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 42
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 42
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 43
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 43
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 44
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 44
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 45
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 45
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 46
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 46
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 47
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 47
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 48
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 48
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 49
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 49
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 50
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 50
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 51
-07/07/2016 08:39:27 PM - icon.py - on_left_mouse_button_up(...) - Line#: 63 - INFO - The LinearTowerIcon is pressed
-07/07/2016 08:39:27 PM - game.py - <module>(...) - Line#: 73 - INFO - type of duplicate_tower is: <class 'icon.LinearTowerIcon'>
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 51
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 52
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 52
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 53
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 53
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 54
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 54
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 55
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 55
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 56
-07/07/2016 08:39:27 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 56
-07/07/2016 08:39:27 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 57
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 57
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 58
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 58
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 59
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 59
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 60
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 60
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 61
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 61
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 62
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 62
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 63
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 63
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 64
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 64
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 65
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 65
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 66
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 66
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 67
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 67
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 68
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 68
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 69
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 69
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 70
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 70
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 71
-07/07/2016 08:39:28 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 71
-07/07/2016 08:39:28 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 72
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 72
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 73
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 73
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 74
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 74
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 75
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 75
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 76
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 76
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 77
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 77
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 78
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 78
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 79
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 79
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 80
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 80
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 81
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 81
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 82
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 82
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 83
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 83
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 84
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 84
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 85
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 85
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 86
-07/07/2016 08:39:29 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 86
-07/07/2016 08:39:29 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 87
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 87
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 88
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 88
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 89
-07/07/2016 08:39:30 PM - tower.py - update(...) - Line#: 138 - DEBUG - ATTACK! x is: 100. y is 118
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 89
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 90
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - [<StandardBullet sprite(in 1 groups)>]
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 44 - DEBUG - =================== STANDARD BULLET=======================
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 46 - WARNING - inside the standard bullet
-07/07/2016 08:39:30 PM - balloon.py - handle_pop(...) - Line#: 127 - DEBUG - inside BallonContext handle_pop()
-07/07/2016 08:39:30 PM - balloon.py - peel_layer(...) - Line#: 110 - DEBUG - inside BallonL5s peel_layer() method. The path index is: 90
-07/07/2016 08:39:30 PM - balloon.py - __init__(...) - Line#: 26 - DEBUG - PATH_INDEXER is at90
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 90
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 91
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 91
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 92
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 92
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 93
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 93
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 94
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 94
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 95
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 95
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 96
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 96
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 97
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 97
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 98
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 98
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 99
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 99
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 100
-07/07/2016 08:39:30 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 100
-07/07/2016 08:39:30 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 101
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 101
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 102
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 102
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 103
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 103
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 104
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 104
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 105
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 105
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 106
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 106
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 107
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 107
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 108
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 108
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 109
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 109
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 110
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 110
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 111
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 111
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 112
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 112
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 113
-07/07/2016 08:39:31 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:31 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 113
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 114
-07/07/2016 08:39:31 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:31 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 114
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 115
-07/07/2016 08:39:31 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:31 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:31 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 115
-07/07/2016 08:39:31 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 116
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 116
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 117
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 117
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 118
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 118
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 119
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 119
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 120
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 120
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 121
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 121
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 122
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 122
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 123
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 123
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 124
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 124
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 125
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 125
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 126
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 126
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 127
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 127
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 128
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 128
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 129
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 129
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 130
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:32 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:32 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 130
-07/07/2016 08:39:32 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 131
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 131
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 132
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 132
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 133
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 133
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 134
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 134
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 135
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 135
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 136
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 136
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 137
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 137
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 138
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 138
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 139
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 138 - DEBUG - ATTACK! x is: 100. y is 168
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 139
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 140
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - [<StandardBullet sprite(in 1 groups)>]
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 44 - DEBUG - =================== STANDARD BULLET=======================
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 46 - WARNING - inside the standard bullet
-07/07/2016 08:39:33 PM - balloon.py - handle_pop(...) - Line#: 127 - DEBUG - inside BallonContext handle_pop()
-07/07/2016 08:39:33 PM - balloon.py - peel_layer(...) - Line#: 104 - DEBUG - inside BallonL4s peel_layer() method
-07/07/2016 08:39:33 PM - balloon.py - __init__(...) - Line#: 26 - DEBUG - PATH_INDEXER is at140
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 140
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 141
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 141
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 142
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 142
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 143
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 143
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 144
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:33 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:33 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 144
-07/07/2016 08:39:33 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 145
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 145
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 146
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 146
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 147
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 147
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 148
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 148
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 149
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 96 - INFO - INSIDE math.hypot if statement
-07/07/2016 08:39:34 PM - tower.py - update(...) - Line#: 97 - DEBUG - ATTACK! x is: 100. y is 178
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 149
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 150
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 150
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 151
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 151
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 152
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - [<StandardBullet sprite(in 1 groups)>]
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 44 - DEBUG - =================== STANDARD BULLET=======================
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 46 - WARNING - inside the standard bullet
-07/07/2016 08:39:34 PM - balloon.py - handle_pop(...) - Line#: 127 - DEBUG - inside BallonContext handle_pop()
-07/07/2016 08:39:34 PM - balloon.py - peel_layer(...) - Line#: 98 - DEBUG - inside BallonL3s peel_layer() method
-07/07/2016 08:39:34 PM - balloon.py - __init__(...) - Line#: 26 - DEBUG - PATH_INDEXER is at152
-07/07/2016 08:39:34 PM - balloon.py - peel_layer(...) - Line#: 92 - DEBUG - inside BallonL2s peel_layer() method
-07/07/2016 08:39:34 PM - balloon.py - __init__(...) - Line#: 26 - DEBUG - PATH_INDEXER is at152
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 152
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 153
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 153
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 154
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 154
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 155
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 155
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 156
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 156
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 157
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 157
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 158
-07/07/2016 08:39:34 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 158
-07/07/2016 08:39:34 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 159
-07/07/2016 08:39:35 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:35 PM - tower.py - update(...) - Line#: 92 - INFO - INSIDE ballon_sprites for loop
-07/07/2016 08:39:35 PM - tower.py - update(...) - Line#: 96 - INFO - INSIDE math.hypot if statement
-07/07/2016 08:39:35 PM - tower.py - update(...) - Line#: 97 - DEBUG - ATTACK! x is: 100. y is 188
-07/07/2016 08:39:35 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:35 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 159
-07/07/2016 08:39:35 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 160
-07/07/2016 08:39:35 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:35 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 160
-07/07/2016 08:39:35 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 161
-07/07/2016 08:39:35 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
-07/07/2016 08:39:35 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 161
-07/07/2016 08:39:35 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 162
-07/07/2016 08:39:35 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - [<StandardBullet sprite(in 1 groups)>]
-07/07/2016 08:39:35 PM - balloon.py - update(...) - Line#: 44 - DEBUG - =================== STANDARD BULLET=======================
-07/07/2016 08:39:35 PM - balloon.py - update(...) - Line#: 46 - WARNING - inside the standard bullet
-07/07/2016 08:39:35 PM - balloon.py - handle_pop(...) - Line#: 127 - DEBUG - inside BallonContext handle_pop()
-07/07/2016 08:39:35 PM - balloon.py - peel_layer(...) - Line#: 86 - DEBUG - inside BallonL1s peel_layer() method
-07/07/2016 08:39:35 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:35 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:35 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:35 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:36 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:36 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:36 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:36 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:36 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:36 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:36 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:36 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:36 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
-07/07/2016 08:39:36 PM - tower.py - update(...) - Line#: 89 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:46 PM - balloon.py - __init__(...) - Line#: 26 - DEBUG - PATH_INDEXER is at0
+07/07/2016 09:48:46 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:46 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 0
+07/07/2016 09:48:46 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 1
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 1
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 2
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 2
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 3
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 3
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 4
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 4
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 5
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 5
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 6
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 6
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 7
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 7
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 8
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 8
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 9
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 9
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 10
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 10
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 11
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 11
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 12
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 12
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 13
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 13
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 14
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 14
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 15
+07/07/2016 09:48:47 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 15
+07/07/2016 09:48:47 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 16
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 16
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 17
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 17
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 18
+07/07/2016 09:48:48 PM - icon.py - on_left_mouse_button_up(...) - Line#: 63 - INFO - The LinearTowerIcon is pressed
+07/07/2016 09:48:48 PM - game.py - <module>(...) - Line#: 74 - INFO - type of duplicate_tower is: <class 'icon.LinearTowerIcon'>
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 18
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 19
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 19
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 20
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 20
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 21
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 21
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 22
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 22
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 23
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 23
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 24
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 24
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 25
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 25
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 26
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 26
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 27
+07/07/2016 09:48:48 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:48 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 27
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 28
+07/07/2016 09:48:48 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:48 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 28
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 29
+07/07/2016 09:48:48 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:48 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 29
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 30
+07/07/2016 09:48:48 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:48 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:48 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 30
+07/07/2016 09:48:48 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 31
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 31
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 32
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 32
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 33
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 33
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 34
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 34
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 35
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 35
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 36
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 36
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 37
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 37
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 38
+07/07/2016 09:48:49 PM - tower.py - handle_is_clicked(...) - Line#: 115 - INFO - LinearTower is clicked
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 38
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 39
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 39
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 40
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 40
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 41
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 41
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 42
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 42
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 43
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 43
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 44
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 44
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 45
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:49 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:49 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 45
+07/07/2016 09:48:49 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 46
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 46
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 47
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 47
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 48
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 48
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 49
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 49
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 50
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 50
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 51
+07/07/2016 09:48:50 PM - icon.py - on_left_mouse_button_up(...) - Line#: 139 - INFO - The UpgradeRadiusIcon is pressed
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 51
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 52
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 52
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 53
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 53
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 54
+07/07/2016 09:48:50 PM - icon.py - on_left_mouse_button_up(...) - Line#: 139 - INFO - The UpgradeRadiusIcon is pressed
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 54
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 55
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 55
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 56
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 56
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 57
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 57
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 58
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 58
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 59
+07/07/2016 09:48:50 PM - icon.py - on_left_mouse_button_up(...) - Line#: 139 - INFO - The UpgradeRadiusIcon is pressed
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 59
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 60
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:50 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:50 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 60
+07/07/2016 09:48:50 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 61
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 61
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 62
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 62
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 63
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 63
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 64
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 64
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 65
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 65
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 66
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 66
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 67
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 67
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 68
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 68
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 69
+07/07/2016 09:48:51 PM - icon.py - on_left_mouse_button_up(...) - Line#: 151 - INFO - The UpgradePopPowerIcon is pressed
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 69
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 70
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 70
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 71
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 71
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 72
+07/07/2016 09:48:51 PM - icon.py - on_left_mouse_button_up(...) - Line#: 151 - INFO - The UpgradePopPowerIcon is pressed
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 72
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 73
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 73
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 74
+07/07/2016 09:48:51 PM - icon.py - on_left_mouse_button_up(...) - Line#: 151 - INFO - The UpgradePopPowerIcon is pressed
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 74
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 75
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:51 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:51 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 75
+07/07/2016 09:48:51 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 76
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 76
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 77
+07/07/2016 09:48:52 PM - icon.py - on_left_mouse_button_up(...) - Line#: 151 - INFO - The UpgradePopPowerIcon is pressed
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 77
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 78
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 78
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 79
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 79
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 80
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 80
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 81
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 81
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 82
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 82
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 83
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 83
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 84
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 84
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 85
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 85
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 86
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 86
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 87
+07/07/2016 09:48:52 PM - icon.py - on_left_mouse_button_up(...) - Line#: 127 - INFO - The UpgradSpeedIcon is pressed
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 87
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 88
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 88
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 89
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 89
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 90
+07/07/2016 09:48:52 PM - icon.py - on_left_mouse_button_up(...) - Line#: 127 - INFO - The UpgradSpeedIcon is pressed
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:52 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:52 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 90
+07/07/2016 09:48:52 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 91
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 91
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 92
+07/07/2016 09:48:53 PM - icon.py - on_left_mouse_button_up(...) - Line#: 127 - INFO - The UpgradSpeedIcon is pressed
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 92
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 93
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 93
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 94
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 94
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 95
+07/07/2016 09:48:53 PM - icon.py - on_left_mouse_button_up(...) - Line#: 127 - INFO - The UpgradSpeedIcon is pressed
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 95
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 96
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 96
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 97
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 97
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 98
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 98
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 99
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 99
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 100
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 100
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 101
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 101
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 102
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 102
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 103
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 103
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 104
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 104
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 105
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:53 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:53 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 105
+07/07/2016 09:48:53 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 106
+07/07/2016 09:48:54 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:54 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:54 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:54 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 106
+07/07/2016 09:48:54 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 107
+07/07/2016 09:48:54 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:54 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:54 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:54 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 107
+07/07/2016 09:48:54 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 108
+07/07/2016 09:48:54 PM - tower.py - update(...) - Line#: 90 - INFO - INSIDE self.attack_again_counter_loop
+07/07/2016 09:48:54 PM - tower.py - update(...) - Line#: 93 - INFO - INSIDE ballon_sprites for loop
+07/07/2016 09:48:54 PM - balloon.py - update(...) - Line#: 40 - CRITICAL - []
+07/07/2016 09:48:54 PM - balloon.py - move(...) - Line#: 67 - DEBUG - inside the move() method. The path indexer is: 108
+07/07/2016 09:48:54 PM - balloon.py - move(...) - Line#: 71 - DEBUG - just changed teh move() path_indexer value to 2. It is actually: 109

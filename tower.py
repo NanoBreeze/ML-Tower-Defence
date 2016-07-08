@@ -26,7 +26,7 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     _attk_props = None #contains the attacking properties of this tower: speed, radius, pop power
     _attack_again_counter = None #used as a counter to increment when to attack, compared with AttackUpgrades.speed
 
-    def __init__(self, colour, position, dimension, DISPLAYSURF):
+    def __init__(self, colour, position, dimension, cost, DISPLAYSURF):
         assert isinstance(colour, tuple), 'colour parameter must be a tuple instance'
         assert isinstance(position, tuple), 'position parameter must be a tuple instance'
         assert isinstance(dimension, tuple), 'dimension parameter must be a tuple instance'
@@ -41,6 +41,7 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self.rect = self.image.get_rect()
         self.rect.centerx = position[0]
         self.rect.centery = position[1]
+        self.cost = cost
 
         # pygame.draw.circle(DISPLAYSURF, colours.WHITE, (self.rect.centerx, self.rect.centery), self._attk_props.radius, 1)
 
@@ -72,7 +73,7 @@ class LinearTower(Tower):
         :param position:
         :param DISPLAYSURF:
         """
-        super().__init__(colour=colours.YELLOW, position=position, dimension=(50, 50), DISPLAYSURF=DISPLAYSURF)
+        super().__init__(colour=colours.YELLOW, position=position, dimension=(50, 50), cost=10, DISPLAYSURF=DISPLAYSURF)
         self._attk_props = AttackUpgrades((10, 20, 30), (80, 90, 100), (2, 3, 3)) #set the upgrades appropriately
         self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
 
@@ -121,7 +122,7 @@ class LinearTower(Tower):
 
 class ThreeSixtyTower(Tower):
     def __init__(self, position, DISPLAYSURF):
-        super().__init__(colour=colours.CYAN, position=position, dimension=(40, 40), DISPLAYSURF=DISPLAYSURF)
+        super().__init__(colour=colours.CYAN, position=position, dimension=(40, 40), cost=20, DISPLAYSURF=DISPLAYSURF)
         self._attk_props = AttackUpgrades((50, 20, 30), (180, 90, 100), (1, 2, 3)) #set the upgrades appropriately
         self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
 
@@ -137,28 +138,36 @@ class ThreeSixtyTower(Tower):
                               ballon.get_centerY() - self.rect.centery) <= self._attk_props.radius:
                     logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
-                        bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet.STANDARD_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx, self.rect.centery - 100),
                                              pop_power=self._attk_props.pop_power),
-                        bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet.STANDARD_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx + 100, self.rect.centery - 100),
                                              pop_power=self._attk_props.pop_power),
-                        bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet.STANDARD_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx + 100, self.rect.centery),
                                              pop_power=self._attk_props.pop_power),
-                        bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet.STANDARD_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx + 100, self.rect.centery + 100),
                                              pop_power=self._attk_props.pop_power),
-                        bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet.STANDARD_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx, self.rect.centery + 100),
                                              pop_power=self._attk_props.pop_power),
-                        bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet.STANDARD_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx - 100, self.rect.centery + 100),
                                              pop_power=self._attk_props.pop_power),
-                        bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet.STANDARD_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx - 100, self.rect.centery),
                                              pop_power=self._attk_props.pop_power),
-                        bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet.STANDARD_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx - 100, self.rect.centery - 100),
                                              pop_power=self._attk_props.pop_power)
                     )
@@ -186,7 +195,7 @@ class ExplosionTower(Tower):
     """Shots ExplosionBullets"""
 
     def __init__(self, position, DISPLAYSURF):
-        super().__init__(colour=colours.WHITE, position=position, dimension=(40, 40), DISPLAYSURF=DISPLAYSURF)
+        super().__init__(colour=colours.WHITE, position=position, dimension=(40, 40), cost=30, DISPLAYSURF=DISPLAYSURF)
         self._attk_props = AttackUpgrades((5, 20, 30), (40, 90, 100), (1, 2, 3)) #set the upgrades appropriately
         self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
 
@@ -230,7 +239,7 @@ class TeleportationTower(Tower):
     """Shoots TeleportationBullets"""
 
     def __init__(self, position, DISPLAYSURF):
-        super().__init__(colour=colours.BROWN, position=position, dimension=(40, 40), DISPLAYSURF=DISPLAYSURF)
+        super().__init__(colour=colours.BROWN, position=position, dimension=(40, 40), cost=40, DISPLAYSURF=DISPLAYSURF)
         self._attk_props = AttackUpgrades((10, 20, 30), (80, 90, 100), (1, 2, 3)) #set the upgrades appropriately
         self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
 

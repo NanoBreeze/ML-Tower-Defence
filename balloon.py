@@ -125,8 +125,9 @@ class BalloonContext(Balloon):
     def handle_pop(self, layers_to_peel):
         """Allocate money and peel layer"""
         logger.debug('inside BallonContext handle_pop()')
-        bank.deposit(self.current_ballon.bounty)
         for layer in range(layers_to_peel):
+            #it's import to deposit here so that every deposit is made before the current ballon changes
+            bank.deposit(self.current_ballon.bounty)
             self.current_ballon = self.current_ballon.peel_layer()
             if self.current_ballon is None:
                 self.kill()

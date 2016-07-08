@@ -33,3 +33,4 @@ upgrade_icon_sprites = pygame.sprite.Group()
 
 # the tower icon the user has selected. If this icon is present, it is always positioned at the mouse position
 selected_tower_icon_sprite = pygame.sprite.GroupSingle()
+

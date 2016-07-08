@@ -9,7 +9,8 @@ import sprite_groups
 import colours
 import path
 import icon
-import copy
+import bank
+
 
 import logging
 import logging.config
@@ -30,11 +31,6 @@ pygame.display.set_caption('ML Tower Defence')
 
 main_path = path.Path()
 
-# linear_tower = tower.create_tower(tower.LINEAR_TOWER, (150, 150), DISPLAYSURF)
-# three_sixty_tower = tower.create_tower(tower.THREE_SIXTY_TOWER, (80, 100), DISPLAYSURF)
-# teleportation_tower = tower.create_tower(tower.TELEPORTATION_TOWER, (150, 250), DISPLAYSURF)
-# explosion_tower = tower.create_tower(tower.EXPLOSION_TOWER, (150, 50), DISPLAYSURF)
-# sprite_groups.tower_sprites.add(linear_tower, three_sixty_tower, teleportation_tower, explosion_tower)
 
 b1= balloon.create_balloon_context(balloon.BALLOON_L5, main_path, 0)
 sprite_groups.ballon_sprites.add(b1)
@@ -52,6 +48,10 @@ basic_dashboard = pygame.draw.rect(DISPLAYSURF, colours.GRAY, (0, 300, 400, 100)
 
 fpsClock = pygame.time.Clock()
 
+#select font type
+bank_balance = pygame.font.SysFont("freesansbold", 15)
+
+
 while True:
     for event in pygame.event.get():
 
@@ -62,6 +62,7 @@ while True:
             pos = pygame.mouse.get_pos()
             if sprite_groups.selected_tower_icon_sprite:
                 new_tower = tower.create_tower(sprite_groups.selected_tower_icon_sprite.sprite._tower_type, pos, DISPLAYSURF)
+                bank.withdraw(new_tower.cost)
                 sprite_groups.tower_sprites.add(new_tower)
                 sprite_groups.selected_tower_icon_sprite.empty()
             else:
@@ -75,12 +76,23 @@ while True:
                         is_tower_icon = True
                         break #only one tower at a time, thus after finding it, no need to continue for looping
 
-                if is_tower_icon == False:
+                is_tower = False
+                if is_tower_icon == False: #if a tower icon wasn't pressed, check if a legit tower was pressed
                     for tow in sprite_groups.tower_sprites: #must not be named with tower, will result in name clashes
                         if tow.rect.collidepoint(pos):
                             tow.handle_is_clicked(sprite_groups.upgrade_icon_sprites)
+                            is_tower = True
                             break
-                        sprite_groups.upgrade_icon_sprites.empty() #empties the icons if no tower is selected
+
+                if is_tower == False:
+                    if not basic_dashboard.collidepoint(pos):
+                        sprite_groups.upgrade_icon_sprites.empty() #empties the icons if no tower is selected and the click isn't in the dashboard
+
+                #check if an Upgrade type was pressed
+                for upgrade_icon in sprite_groups.upgrade_icon_sprites:
+                    if upgrade_icon.rect.collidepoint(pos):
+                        upgrade_icon.on_left_mouse_button_up()
+                        break
 
         #right mouse button is clicked. Remove the tower icon currently on the cursor (if it exists)
         elif event.type == pygame.locals.MOUSEBUTTONUP and event.button == 3:
@@ -112,6 +124,10 @@ while True:
 
     sprite_groups.selected_tower_icon_sprite.update(pygame.mouse.get_pos())
     sprite_groups.selected_tower_icon_sprite.draw(DISPLAYSURF)
+
+    # render text
+    label = bank_balance.render("Bank balance: {}".format(bank.balance), True, (255,255,0))
+    DISPLAYSURF.blit(label, (300, 50))
 
     fpsClock.tick(15)
     pygame.display.update()
