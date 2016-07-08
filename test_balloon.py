@@ -50,6 +50,8 @@ class TestBalloon(TestCase):
     @patch.object(pygame.sprite, 'spritecollide')
     def test_update_with_StandardBullet_as_collided_bullets(self, mock_spritecollide):
         collided_bullets = Mock(spec=bullet.StandardBullet)
+        collided_bullets.pop_power = Mock(spec=int)
+
         mock_spritecollide.return_value = [collided_bullets]
 
         p = [(100, y) for y in range(30, 360)]
@@ -57,11 +59,13 @@ class TestBalloon(TestCase):
 
         return_value = b.update('fake_bullet_sprites')
 
-        self.assertTrue(return_value)
+        self.assertIsInstance(return_value, int)
+
 
     @patch.object(pygame.sprite, 'spritecollide')
     def test_update_with_ExplosionBullet_as_collided_bullets(self, mock_spritecollide):
         collided_bullets = Mock(spec=bullet.ExplosionBullet)
+        collided_bullets.pop_power = Mock(spec=int)
         mock_spritecollide.return_value = [collided_bullets]
 
         p = [(100, y) for y in range(30, 360)]
@@ -69,7 +73,7 @@ class TestBalloon(TestCase):
 
         return_value = b.update('fake_bullet_sprites')
 
-        self.assertTrue(return_value)
+        self.assertIsInstance(return_value, int)
 
     @patch.object(pygame.sprite, 'spritecollide')
     def test_update_with_TeleportationBullet_as_collided_bullets(self, mock_spritecollide):
@@ -260,7 +264,7 @@ class TestBalloonContext(TestCase):
         bL5 = balloon.BalloonL5((0, 0, 255), (50, 60), p)
         balloon_context = balloon.BalloonContext(bL5)
         original_bounty = balloon_context.current_ballon.bounty
-        balloon_context.handle_pop()
+        balloon_context.handle_pop(1)
 
         self.assertEqual(mock_kill.call_count, 0)
         self.assertEqual(mock_deposit.call_count, 1)

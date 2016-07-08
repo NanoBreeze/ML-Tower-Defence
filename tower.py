@@ -8,6 +8,7 @@ import colours
 import logging
 import icon
 import logging.config
+import sprite_groups
 
 logging.config.fileConfig('logging.conf')
 
@@ -23,17 +24,25 @@ TELEPORTATION_TOWER = 'TELEPORTATION_TOWER'
 class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     """Base class for all Towers"""
 
-    _attk_props = None #contains the attacking properties of this tower: speed, radius, pop power
-    _attack_again_counter = None #used as a counter to increment when to attack, compared with AttackUpgrades.speed
+    _attk_props = None              #contains the attacking properties of this tower: speed, radius, pop power
+    _attack_again_counter = None    #used as a counter to increment when to attack, compared with AttackUpgrades.speed
 
     def __init__(self, colour, position, dimension, cost, DISPLAYSURF):
-        assert isinstance(colour, tuple), 'colour parameter must be a tuple instance'
-        assert isinstance(position, tuple), 'position parameter must be a tuple instance'
-        assert isinstance(dimension, tuple), 'dimension parameter must be a tuple instance'
+        """
+        :param colour: colour.COLOUR_CONSTANT, the colour of the icon
+        :param position: 2-element tuple, where this icon is to be placed
+        :param dimension: 2-element tuple, the size of this icon
+        :param cost: int, the amount of money to withdraw from balance to create this tower
+        :param DISPLAYSURF: main Surface object, for displaying this tower's circle
+        """
+
+        assert isinstance(colour, tuple) and len(colour) == 4, 'colour must be a 4-element tuple'
+        assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
+        assert isinstance(dimension, tuple) and len(dimension) == 2, 'start must be a 2-element tuple'
+        assert isinstance(cost, int), 'cost must be an integer'
+        assert isinstance(DISPLAYSURF, pygame.Surface), 'DISPLAYSURF must be a pygame Surface object'
 
         super().__init__()
-
-        # self.attack_radius = attack_radius
 
         self.DISPLAYSURF = DISPLAYSURF
         self.image = pygame.Surface([dimension[0], dimension[1]])
@@ -42,8 +51,6 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self.rect.centerx = position[0]
         self.rect.centery = position[1]
         self.cost = cost
-
-        # pygame.draw.circle(DISPLAYSURF, colours.WHITE, (self.rect.centerx, self.rect.centery), self._attk_props.radius, 1)
 
 
     def update_speed(self):
@@ -69,11 +76,20 @@ class LinearTower(Tower):
 
     def __init__(self, position, DISPLAYSURF):
         """
-
-        :param position:
-        :param DISPLAYSURF:
+        :param position: 2-element tuple, where this icon is to be placed
+        :param DISPLAYSURF: main Surface object, for displaying this tower's circle
+        Creates a LinearTower (shoots LinearBullets)
         """
-        super().__init__(colour=colours.YELLOW, position=position, dimension=(50, 50), cost=10, DISPLAYSURF=DISPLAYSURF)
+
+        assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
+        assert isinstance(DISPLAYSURF, pygame.Surface), 'DISPLAYSURF must be a pygame Surface object'
+
+        super().__init__(colour=colours.YELLOW,
+                         position=position,
+                         dimension=(50, 50),
+                         cost=10,
+                         DISPLAYSURF=DISPLAYSURF)
+
         self._attk_props = AttackUpgrades((10, 20, 30), (80, 90, 100), (2, 3, 3)) #set the upgrades appropriately
         self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
 
@@ -81,11 +97,15 @@ class LinearTower(Tower):
         """
         :param ballon_sprites: pygame.group.Group
         :param bullet_sprites: pygame.group.Group
-        Hello there!
+        Checks if there are any balloons in the vicinity and if so, attack a bullet at it
         """
+
+        assert isinstance(ballon_sprites, sprite_groups.BallonGroup), "ballon_sprites must be a pygame.sprite.Group object"
+        assert isinstance(bullet_sprites, pygame.sprite.Group), "bullet_sprites must be a pygame.sprite.Group object"
+
         pygame.draw.circle(self.DISPLAYSURF, colours.WHITE, (self.rect.centerx, self.rect.centery), self._attk_props.radius, 1)
 
-        # possible to attack again
+        # checks if it's possible to attack again
         if self._attack_again_counter == self._attk_props.speed:
             logger.info('INSIDE self.attack_again_counter_loop')
             # check if any ballons are within the range of the circle, which is currently set to 80
@@ -95,23 +115,24 @@ class LinearTower(Tower):
                 if math.hypot(ballon.get_centerX() - self.rect.centerx,
                               ballon.get_centerY() - self.rect.centery) <= self._attk_props.radius:
                     logger.info('INSIDE math.hypot if statement')
-                    logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
-                        bullet.create_bullet(bullet.STANDARD_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(ballon.get_centerX(), ballon.get_centerY()),
                                              pop_power=self._attk_props.pop_power))
-                    self._attack_again_counter= 0
+                    self._attack_again_counter = 0
                     break
         else:
-            self._attack_again_counter+= 1
+            self._attack_again_counter += 1
 
     def handle_is_clicked(self, upgrade_icon_sprites):
         """
-        :param upgrade_icon_sprites: pygame.sprite.Group
-        :return: None, upgrade_icon_sprites is changed here
+        :param upgrade_icon_sprites: pygame.sprite.Group, contains all three upgrade icons in the game
+        :return: None, upgrade_icon_sprites is changed here to include the three upgrade sprite
         Fills the upgrade_icon_sprite group with the upgrade icon sprites associated with this tower
         """
         assert isinstance(upgrade_icon_sprites, pygame.sprite.Group), 'upgrade_icon_sprites must be a pygame.sprite.Group() instance'
+
         logger.info('LinearTower is clicked')
         upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON))
         upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON))
@@ -122,14 +143,39 @@ class LinearTower(Tower):
 
 class ThreeSixtyTower(Tower):
     def __init__(self, position, DISPLAYSURF):
-        super().__init__(colour=colours.CYAN, position=position, dimension=(40, 40), cost=20, DISPLAYSURF=DISPLAYSURF)
+        """
+        :param position: 2-element tuple, where this icon is to be placed
+        :param DISPLAYSURF: main Surface object, for displaying this tower's circle
+        Creates a ThreeSixtyTower (shoots 8 StandardBullets)
+        """
+
+        assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
+        assert isinstance(DISPLAYSURF, pygame.Surface), 'DISPLAYSURF must be a pygame Surface object'
+
+
+        super().__init__(colour=colours.CYAN,
+                         position=position,
+                         dimension=(40, 40),
+                         cost=20,
+                         DISPLAYSURF=DISPLAYSURF)
+
         self._attk_props = AttackUpgrades((50, 20, 30), (180, 90, 100), (1, 2, 3)) #set the upgrades appropriately
         self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
 
     def update(self, ballon_sprites, bullet_sprites):
+        """
+        :param ballon_sprites: pygame.group.Group
+        :param bullet_sprites: pygame.group.Group
+        Checks if there are any balloons in the vicinity and if so, attack a bullet at it
+        """
+
+        assert isinstance(ballon_sprites, sprite_groups.BallonGroup), "ballon_sprites must be a pygame.sprite.Group object"
+        assert isinstance(bullet_sprites, pygame.sprite.Group), "bullet_sprites must be a pygame.sprite.Group object"
+
+
         pygame.draw.circle(self.DISPLAYSURF, colours.WHITE, (self.rect.centerx, self.rect.centery), self._attk_props.radius, 1)
 
-        # possible to attack again
+        # checks if it is possible to attack again
         if self._attack_again_counter== self._attk_props.speed:
             # check if any ballons are within the range of the circle, which is currently set to 80
             for ballon in ballon_sprites:
@@ -138,34 +184,41 @@ class ThreeSixtyTower(Tower):
                               ballon.get_centerY() - self.rect.centery) <= self._attk_props.radius:
                     logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
-                        bullet.create_bullet(bullet.STANDARD_BULLET,
+                        bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx, self.rect.centery - 100),
                                              pop_power=self._attk_props.pop_power),
-                        bullet.create_bullet(bullet.STANDARD_BULLET,
+
+                        bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx + 100, self.rect.centery - 100),
                                              pop_power=self._attk_props.pop_power),
-                        bullet.create_bullet(bullet.STANDARD_BULLET,
+
+                        bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx + 100, self.rect.centery),
                                              pop_power=self._attk_props.pop_power),
-                        bullet.create_bullet(bullet.STANDARD_BULLET,
+
+                        bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx + 100, self.rect.centery + 100),
                                              pop_power=self._attk_props.pop_power),
+
                         bullet.create_bullet(bullet.STANDARD_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx, self.rect.centery + 100),
                                              pop_power=self._attk_props.pop_power),
+
                         bullet.create_bullet(bullet.STANDARD_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx - 100, self.rect.centery + 100),
                                              pop_power=self._attk_props.pop_power),
+
                         bullet.create_bullet(bullet.STANDARD_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx - 100, self.rect.centery),
                                              pop_power=self._attk_props.pop_power),
+
                         bullet.create_bullet(bullet.STANDARD_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
                                              destination=(self.rect.centerx - 100, self.rect.centery - 100),
@@ -174,7 +227,7 @@ class ThreeSixtyTower(Tower):
                     self._attack_again_counter = 0
                     break
         else:
-            self._attack_again_counter+= 1
+            self._attack_again_counter += 1
 
     def handle_is_clicked(self, upgrade_icon_sprites):
         """
@@ -182,7 +235,9 @@ class ThreeSixtyTower(Tower):
         :return: None, upgrade_icon_sprites is changed here
         Fills the upgrade_icon_sprite group with the upgrade icon sprites associated with this tower
         """
+
         assert isinstance(upgrade_icon_sprites, pygame.sprite.Group), 'upgrade_icon_sprites must be a pygame.sprite.Group() instance'
+
         logger.info('ThreeSixtyTower is clicked')
         upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON))
         upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON))
@@ -192,19 +247,42 @@ class ThreeSixtyTower(Tower):
 
 
 class ExplosionTower(Tower):
-    """Shots ExplosionBullets"""
+    """Shoots ExplosionBullets"""
 
     def __init__(self, position, DISPLAYSURF):
-        super().__init__(colour=colours.WHITE, position=position, dimension=(40, 40), cost=30, DISPLAYSURF=DISPLAYSURF)
+        """
+        :param position: 2-element tuple, where this icon is to be placed
+        :param DISPLAYSURF: main Surface object, for displaying this tower's circle
+        Creates an ExplosionTower (shoots ExplosionBullets)
+        """
+
+        assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
+        assert isinstance(DISPLAYSURF, pygame.Surface), 'DISPLAYSURF must be a pygame Surface object'
+
+        super().__init__(colour=colours.WHITE,
+                         position=position,
+                         dimension=(40, 40),
+                         cost=30,
+                         DISPLAYSURF=DISPLAYSURF)
+
+
         self._attk_props = AttackUpgrades((5, 20, 30), (40, 90, 100), (1, 2, 3)) #set the upgrades appropriately
         self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
 
     def update(self, ballon_sprites, bullet_sprites):
-        pygame.draw.circle(self.DISPLAYSURF, colours.WHITE, (self.rect.centerx, self.rect.centery), self._attk_props.radius,
-                           1)
+        """
+        :param ballon_sprites: pygame.group.Group
+        :param bullet_sprites: pygame.group.Group
+        Checks if there are any balloons in the vicinity and if so, attack a bullet at it
+        """
 
-        # possible to attack again
-        if self._attack_again_counter== self._attk_props.speed:
+        assert isinstance(ballon_sprites, sprite_groups.BallonGroup), "ballon_sprites must be a pygame.sprite.Group object"
+        assert isinstance(bullet_sprites, pygame.sprite.Group), "bullet_sprites must be a pygame.sprite.Group object"
+
+        pygame.draw.circle(self.DISPLAYSURF, colours.WHITE, (self.rect.centerx, self.rect.centery), self._attk_props.radius, 1)
+
+        # checks if it is possible to attack again
+        if self._attack_again_counter == self._attk_props.speed:
             # check if any ballons are within the range of the circle, which is currently set to 80
             for ballon in ballon_sprites:
                 # if within range, print and create a bullet
@@ -212,13 +290,14 @@ class ExplosionTower(Tower):
                               ballon.get_centerY() - self.rect.centery) <= self._attk_props.radius:
                     logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
-                        bullet.create_bullet(bullet.EXPLOSION_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet_type=bullet.EXPLOSION_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(ballon.get_centerX(), ballon.get_centerY()),
                                              pop_power=self._attk_props.pop_power))
                     self._attack_again_counter= 0
                     break
         else:
-            self._attack_again_counter+= 1
+            self._attack_again_counter += 1
 
     def handle_is_clicked(self, upgrade_icon_sprites):
         """
@@ -227,6 +306,7 @@ class ExplosionTower(Tower):
         Fills the upgrade_icon_sprite group with the upgrade icon sprites associated with this tower
         """
         assert isinstance(upgrade_icon_sprites, pygame.sprite.Group), 'upgrade_icon_sprites must be a pygame.sprite.Group() instance'
+
         logger.info('ExplosionTower is clicked')
         upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON))
         upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON))
@@ -239,16 +319,35 @@ class TeleportationTower(Tower):
     """Shoots TeleportationBullets"""
 
     def __init__(self, position, DISPLAYSURF):
-        super().__init__(colour=colours.BROWN, position=position, dimension=(40, 40), cost=40, DISPLAYSURF=DISPLAYSURF)
+        """
+        :param position: 2-element tuple, where this icon is to be placed
+        :param DISPLAYSURF: main Surface object, for displaying this tower's circle
+        Creates a TeleportationTower (shoots TeleportationBullets)
+        """
+
+        super().__init__(colour=colours.BROWN,
+                         position=position,
+                         dimension=(40, 40),
+                         cost=40,
+                         DISPLAYSURF=DISPLAYSURF)
+
         self._attk_props = AttackUpgrades((10, 20, 30), (80, 90, 100), (1, 2, 3)) #set the upgrades appropriately
         self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
 
     def update(self, ballon_sprites, bullet_sprites):
+        """
+        :param ballon_sprites: pygame.group.Group
+        :param bullet_sprites: pygame.group.Group
+        Checks if there are any balloons in the vicinity and if so, attack a bullet at it
+        """
+
+        assert isinstance(ballon_sprites, sprite_groups.BallonGroup), "ballon_sprites must be a pygame.sprite.Group object"
+        assert isinstance(bullet_sprites, pygame.sprite.Group), "bullet_sprites must be a pygame.sprite.Group object"
 
         pygame.draw.circle(self.DISPLAYSURF, colours.WHITE, (self.rect.centerx, self.rect.centery), self._attk_props.radius,
                            1)
 
-        # possible to attack again
+        # checks if it possible to attack again
         if self._attack_again_counter== self._attk_props.speed:
             # check if any ballons are within the range of the circle, which is currently set to 80
             for ballon in ballon_sprites:
@@ -257,13 +356,14 @@ class TeleportationTower(Tower):
                               ballon.get_centerY() - self.rect.centery) <= self._attk_props.radius:
                     logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
-                        bullet.create_bullet(bullet.TELEPORTATION_BULLET, start=(self.rect.centerx, self.rect.centery),
+                        bullet.create_bullet(bullet_type=bullet.TELEPORTATION_BULLET,
+                                             start=(self.rect.centerx, self.rect.centery),
                                              destination=(ballon.get_centerX(), ballon.get_centerY()),
                                              pop_power=self._attk_props.pop_power))
-                    self._attack_again_counter= 0
+                    self._attack_again_counter = 0
                     break
         else:
-            self._attack_again_counter+= 1
+            self._attack_again_counter += 1
 
     def handle_is_clicked(self, upgrade_icon_sprites):
         """
@@ -271,7 +371,9 @@ class TeleportationTower(Tower):
         :return: None, upgrade_icon_sprites is changed here
         Fills the upgrade_icon_sprite group with the upgrade icon sprites associated with this tower
         """
+
         assert isinstance(upgrade_icon_sprites, pygame.sprite.Group), 'upgrade_icon_sprites must be a pygame.sprite.Group() instance'
+
         logger.info('TeleportationTower is clicked')
         upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON))
         upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON))
@@ -281,6 +383,18 @@ class TeleportationTower(Tower):
 
 
 def create_tower(tower_type, position, DISPLAYSURF):
+    """
+    :param tower_type: str constant, which tower to create
+    :param position: 2-element tuple, where the tower is to be created
+    :param DISPLAYSURF: pygame.Surface, the main Surface object
+    :return: XTower, eg, LinearTower
+    A simple factory for creating towers
+    """
+
+    assert isinstance(tower_type, str), 'tower_icon_type must be a string type'
+    assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
+    assert isinstance(DISPLAYSURF, pygame.Surface), 'DISPLAYSURF must be a pygame.Surface object'
+
     if tower_type == LINEAR_TOWER:
         return LinearTower(position, DISPLAYSURF)
     elif tower_type == THREE_SIXTY_TOWER:
@@ -294,6 +408,7 @@ def create_tower(tower_type, position, DISPLAYSURF):
 
 
 class AttackUpgrades:
+    """upgrades include speed, radius, and pop_power"""
     def __init__(self, upgrade_speeds, upgrade_radii, upgrade_pop_powers):
         """
         :param upgrade_speeds: a tuple containing the order that speed upgrades happen

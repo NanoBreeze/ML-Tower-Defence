@@ -56,7 +56,7 @@ class TestLinearTowerIcon(unittest.TestCase):
 
         i = icon.LinearTowerIcon(colour, position, dimension)
 
-        self.assertEqual(i.tower_type, tower.LINEAR_TOWER)
+        self.assertEqual(i._tower_type, tower.LINEAR_TOWER)
 
     def test_on_left_mouse_button(self):
         colour = colours.GREEN
@@ -87,7 +87,7 @@ class TestThreeSixtyTowerIcon(unittest.TestCase):
         self.i = icon.ThreeSixtyTowerIcon(self.colour, self.position, self.dimension)
 
     def test_init(self):
-        self.assertEqual(self.i.tower_type, tower.THREE_SIXTY_TOWER)
+        self.assertEqual(self.i._tower_type, tower.THREE_SIXTY_TOWER)
 
     def test_on_left_mouse_button(self):
         self.i.on_left_mouse_button_up()
@@ -129,7 +129,7 @@ class TestTeleportationTowerIcon(unittest.TestCase):
         self.i = icon.TeleportationTowerIcon(self.colour, self.position, self.dimension)
 
     def test_init(self):
-        self.assertEqual(self.i.tower_type, tower.TELEPORTATION_TOWER)
+        self.assertEqual(self.i._tower_type, tower.TELEPORTATION_TOWER)
 
     def test_on_left_mouse_button(self):
         self.i.on_left_mouse_button_up()
@@ -247,27 +247,29 @@ class TestIconModule(unittest.TestCase):
     @patch.object(icon.UpgradeSpeedIcon, '__init__')
     def test_upgrade_icon_type_with_UPGRADE_SPEED_ICON_TYPE(self, mock_upgrade_speed_icon):
         icon_type = icon.UPGRADE_SPEED_ICON
-        return_value = icon.create_upgrade_icon(icon_type)
+        mock_upgrade_speed_icon.return_value = None
+        icon.create_upgrade_icon(icon_type)
 
         mock_upgrade_speed_icon.assert_called_with(colour=colours.WHITE, position=(100, 350), dimension=(50, 50))
-        self.assertIsInstance(return_value, icon.UpgradeSpeedIcon)
 
     @patch.object(icon.UpgradeRadiusIcon, '__init__')
     def test_upgrade_icon_type_with_UPGRADE_RADIUS_ICON_TYPE(self, mock_upgrade_speed_icon):
         icon_type = icon.UPGRADE_RADIUS_ICON
-        return_value = icon.create_upgrade_icon(icon_type)
+        mock_upgrade_speed_icon.return_value = None
 
-        mock_upgrade_speed_icon.assert_called_with(colour=colours.WHITE, position=(100, 350), dimension=(50, 50))
-        self.assertIsInstance(return_value, icon.UpgradeRadiusIcon)
+        icon.create_upgrade_icon(icon_type)
+
+        mock_upgrade_speed_icon.assert_called_with(colour=colours.WHITE, position=(200, 350), dimension=(50, 50))
 
 
     @patch.object(icon.UpgradePopPowerIcon, '__init__')
     def test_upgrade_icon_type_with_UPGRADE_POP_POWER_ICON_TYPE(self, mock_upgrade_speed_icon):
         icon_type = icon.UPGRADE_POP_POWER_ICON
-        return_value = icon.create_upgrade_icon(icon_type)
+        mock_upgrade_speed_icon.return_value = None
 
-        mock_upgrade_speed_icon.assert_called_with(colour=colours.WHITE, position=(100, 350), dimension=(50, 50))
-        self.assertIsInstance(return_value, icon.UpgradePopPowerIcon)
+        icon.create_upgrade_icon(icon_type)
+
+        mock_upgrade_speed_icon.assert_called_with(colour=colours.WHITE, position=(300, 350), dimension=(50, 50))
 
 
     def test_upgrade_icon_type_with_invalid_type(self):

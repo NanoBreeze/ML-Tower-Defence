@@ -56,3 +56,9 @@ logger.info('info message')
 logger.warn('warn message')
 logger.error('error message')
 logger.critical('critical message')
+
+a = 1348963479863478957324985734895739845
+b = 1348963479863478957324985734895739845
+
+print(str(id(a)) + '\n')
+print(str(id(b)) + '\n')

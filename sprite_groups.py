@@ -8,11 +8,13 @@ logger = logging.getLogger('simpleLogger')
 
 
 class BallonGroup(pygame.sprite.AbstractGroup):
+    """Sprite group for storing Balloons (aka, BalloonContext objects"""
+
     def __init__(self):
         super().__init__()
 
     def draw(self, surface):
-        """Modified from Abstract group to draw the BallonContext's currentBallon"""
+        """Modified from Abstract group to draw the BalloonContext's current_balloon instead of its rect values"""
         logging.debug('Inside BallonGroup draw. START. Length: {}'.format(len(self.sprites())))
         sprites = self.sprites()
         surface_blit = surface.blit

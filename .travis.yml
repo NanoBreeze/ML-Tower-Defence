@@ -8,7 +8,7 @@ before_install:
  - "pip install pytest-cov"
  - "pip install pytest-pep8"
  - "pip install python-coveralls"
- - "cd tests"
+# - "cd tests"
 # command to install dependencies
 install:
   - "pip install -r requirements.txt"
