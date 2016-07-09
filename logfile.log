@@ -1,137 +1,77 @@
-07/08/2016 10:23:45 PM - game.py - <module>(...) - Line#: 72 - DEBUG - A tower icon is pressed
-07/08/2016 10:23:46 PM - game.py - <module>(...) - Line#: 84 - DEBUG - A legit tower is pressed on
-07/08/2016 10:23:46 PM - tower.py - handle_is_clicked(...) - Line#: 77 - INFO - inside handle_is_clicked. About to call next speed index
-07/08/2016 10:23:46 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 410 - INFO - speed_index before incrementing0
-07/08/2016 10:23:46 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 412 - INFO - speed_index after incrementing: 1
-07/08/2016 10:23:46 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 414 - INFO - inside if, returning next_speed_index
-07/08/2016 10:23:46 PM - tower.py - handle_is_clicked(...) - Line#: 79 - INFO - after call for next speed index. Its value is 1
-07/08/2016 10:23:46 PM - tower.py - handle_is_clicked(...) - Line#: 80 - INFO - inside handle_is_clicked. About to call next radius index
-07/08/2016 10:23:46 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 431 - INFO - radius_index before incrementing: 0
-07/08/2016 10:23:46 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 433 - INFO - radius index after incrementing: 1
-07/08/2016 10:23:46 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 436 - INFO - inside if, returning next_radius_index
-07/08/2016 10:23:46 PM - tower.py - handle_is_clicked(...) - Line#: 82 - INFO - after call for next radius index. Its value is 1
-07/08/2016 10:23:46 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 454 - INFO - pop_power_index before incrementing: 0
-07/08/2016 10:23:46 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 456 - INFO - pop_power_index after incrementing: 1
-07/08/2016 10:23:46 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 458 - INFO - inside if, returning next_pop_power_index
-07/08/2016 10:23:47 PM - tower.py - upgrade_radius(...) - Line#: 443 - INFO - upgrade_radius before incrementing
-07/08/2016 10:23:47 PM - tower.py - upgrade_radius(...) - Line#: 445 - INFO - upgrade_radius after incrementing: 1
-07/08/2016 10:23:47 PM - icon.py - upgrade_and_replace_with_L2_upgrade_icon(...) - Line#: 226 - INFO - all upgrade-icons in the sprite group are<Group(3 sprites)>
-07/08/2016 10:23:47 PM - tower.py - upgrade_radius(...) - Line#: 443 - INFO - upgrade_radius before incrementing
-07/08/2016 10:23:47 PM - tower.py - upgrade_radius(...) - Line#: 445 - INFO - upgrade_radius after incrementing: 2
-07/08/2016 10:23:49 PM - game.py - <module>(...) - Line#: 84 - DEBUG - A legit tower is pressed on
-07/08/2016 10:23:49 PM - tower.py - handle_is_clicked(...) - Line#: 77 - INFO - inside handle_is_clicked. About to call next speed index
-07/08/2016 10:23:49 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 410 - INFO - speed_index before incrementing0
-07/08/2016 10:23:49 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 412 - INFO - speed_index after incrementing: 1
-07/08/2016 10:23:49 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 414 - INFO - inside if, returning next_speed_index
-07/08/2016 10:23:49 PM - tower.py - handle_is_clicked(...) - Line#: 79 - INFO - after call for next speed index. Its value is 1
-07/08/2016 10:23:49 PM - tower.py - handle_is_clicked(...) - Line#: 80 - INFO - inside handle_is_clicked. About to call next radius index
-07/08/2016 10:23:49 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 431 - INFO - radius_index before incrementing: 2
-07/08/2016 10:23:49 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 433 - INFO - radius index after incrementing: 3
-07/08/2016 10:23:49 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 439 - INFO - inside else, returning None
-07/08/2016 10:23:49 PM - tower.py - handle_is_clicked(...) - Line#: 82 - INFO - after call for next radius index. Its value is None
-07/08/2016 10:23:49 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 454 - INFO - pop_power_index before incrementing: 0
-07/08/2016 10:23:49 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 456 - INFO - pop_power_index after incrementing: 1
-07/08/2016 10:23:49 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 458 - INFO - inside if, returning next_pop_power_index
-07/08/2016 10:23:50 PM - tower.py - upgrade_pop_power(...) - Line#: 465 - INFO - upgrade_pop_power before incrementing
-07/08/2016 10:23:50 PM - tower.py - upgrade_pop_power(...) - Line#: 467 - INFO - upgrade_pop_power after incrementing: 1
-07/08/2016 10:23:50 PM - icon.py - upgrade_and_replace_with_L2_upgrade_icon(...) - Line#: 226 - INFO - all upgrade-icons in the sprite group are<Group(3 sprites)>
-07/08/2016 10:23:50 PM - tower.py - upgrade_pop_power(...) - Line#: 465 - INFO - upgrade_pop_power before incrementing
-07/08/2016 10:23:50 PM - tower.py - upgrade_pop_power(...) - Line#: 467 - INFO - upgrade_pop_power after incrementing: 2
-07/08/2016 10:23:51 PM - game.py - <module>(...) - Line#: 84 - DEBUG - A legit tower is pressed on
-07/08/2016 10:23:51 PM - tower.py - handle_is_clicked(...) - Line#: 77 - INFO - inside handle_is_clicked. About to call next speed index
-07/08/2016 10:23:51 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 410 - INFO - speed_index before incrementing0
-07/08/2016 10:23:51 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 412 - INFO - speed_index after incrementing: 1
-07/08/2016 10:23:51 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 414 - INFO - inside if, returning next_speed_index
-07/08/2016 10:23:51 PM - tower.py - handle_is_clicked(...) - Line#: 79 - INFO - after call for next speed index. Its value is 1
-07/08/2016 10:23:51 PM - tower.py - handle_is_clicked(...) - Line#: 80 - INFO - inside handle_is_clicked. About to call next radius index
-07/08/2016 10:23:51 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 431 - INFO - radius_index before incrementing: 2
-07/08/2016 10:23:51 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 433 - INFO - radius index after incrementing: 3
-07/08/2016 10:23:51 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 439 - INFO - inside else, returning None
-07/08/2016 10:23:51 PM - tower.py - handle_is_clicked(...) - Line#: 82 - INFO - after call for next radius index. Its value is None
-07/08/2016 10:23:51 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 454 - INFO - pop_power_index before incrementing: 2
-07/08/2016 10:23:51 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 456 - INFO - pop_power_index after incrementing: 3
-07/08/2016 10:23:51 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 461 - INFO - inside else, returning None
-07/08/2016 10:23:53 PM - tower.py - upgrade_speed(...) - Line#: 421 - INFO - upgrade_speed before incrementing
-07/08/2016 10:23:53 PM - tower.py - upgrade_speed(...) - Line#: 423 - INFO - upgrade_speed after incrementing: 1
-07/08/2016 10:23:53 PM - icon.py - upgrade_and_replace_with_L2_upgrade_icon(...) - Line#: 226 - INFO - all upgrade-icons in the sprite group are<Group(3 sprites)>
-07/08/2016 10:23:54 PM - game.py - <module>(...) - Line#: 72 - DEBUG - A tower icon is pressed
-07/08/2016 10:23:55 PM - game.py - <module>(...) - Line#: 84 - DEBUG - A legit tower is pressed on
-07/08/2016 10:23:55 PM - tower.py - handle_is_clicked(...) - Line#: 77 - INFO - inside handle_is_clicked. About to call next speed index
-07/08/2016 10:23:55 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 410 - INFO - speed_index before incrementing0
-07/08/2016 10:23:55 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 412 - INFO - speed_index after incrementing: 1
-07/08/2016 10:23:55 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 414 - INFO - inside if, returning next_speed_index
-07/08/2016 10:23:55 PM - tower.py - handle_is_clicked(...) - Line#: 79 - INFO - after call for next speed index. Its value is 1
-07/08/2016 10:23:55 PM - tower.py - handle_is_clicked(...) - Line#: 80 - INFO - inside handle_is_clicked. About to call next radius index
-07/08/2016 10:23:55 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 431 - INFO - radius_index before incrementing: 0
-07/08/2016 10:23:55 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 433 - INFO - radius index after incrementing: 1
-07/08/2016 10:23:55 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 436 - INFO - inside if, returning next_radius_index
-07/08/2016 10:23:55 PM - tower.py - handle_is_clicked(...) - Line#: 82 - INFO - after call for next radius index. Its value is 1
-07/08/2016 10:23:55 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 454 - INFO - pop_power_index before incrementing: 0
-07/08/2016 10:23:55 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 456 - INFO - pop_power_index after incrementing: 1
-07/08/2016 10:23:55 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 458 - INFO - inside if, returning next_pop_power_index
-07/08/2016 10:23:56 PM - tower.py - upgrade_speed(...) - Line#: 421 - INFO - upgrade_speed before incrementing
-07/08/2016 10:23:56 PM - tower.py - upgrade_speed(...) - Line#: 423 - INFO - upgrade_speed after incrementing: 1
-07/08/2016 10:23:56 PM - icon.py - upgrade_and_replace_with_L2_upgrade_icon(...) - Line#: 226 - INFO - all upgrade-icons in the sprite group are<Group(3 sprites)>
-07/08/2016 10:23:57 PM - tower.py - upgrade_pop_power(...) - Line#: 465 - INFO - upgrade_pop_power before incrementing
-07/08/2016 10:23:57 PM - tower.py - upgrade_pop_power(...) - Line#: 467 - INFO - upgrade_pop_power after incrementing: 1
-07/08/2016 10:23:57 PM - icon.py - upgrade_and_replace_with_L2_upgrade_icon(...) - Line#: 226 - INFO - all upgrade-icons in the sprite group are<Group(3 sprites)>
-07/08/2016 10:23:58 PM - game.py - <module>(...) - Line#: 84 - DEBUG - A legit tower is pressed on
-07/08/2016 10:23:58 PM - tower.py - handle_is_clicked(...) - Line#: 77 - INFO - inside handle_is_clicked. About to call next speed index
-07/08/2016 10:23:58 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 410 - INFO - speed_index before incrementing1
-07/08/2016 10:23:58 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 412 - INFO - speed_index after incrementing: 2
-07/08/2016 10:23:58 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 414 - INFO - inside if, returning next_speed_index
-07/08/2016 10:23:58 PM - tower.py - handle_is_clicked(...) - Line#: 79 - INFO - after call for next speed index. Its value is 2
-07/08/2016 10:23:58 PM - tower.py - handle_is_clicked(...) - Line#: 80 - INFO - inside handle_is_clicked. About to call next radius index
-07/08/2016 10:23:58 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 431 - INFO - radius_index before incrementing: 2
-07/08/2016 10:23:58 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 433 - INFO - radius index after incrementing: 3
-07/08/2016 10:23:58 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 439 - INFO - inside else, returning None
-07/08/2016 10:23:58 PM - tower.py - handle_is_clicked(...) - Line#: 82 - INFO - after call for next radius index. Its value is None
-07/08/2016 10:23:58 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 454 - INFO - pop_power_index before incrementing: 2
-07/08/2016 10:23:58 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 456 - INFO - pop_power_index after incrementing: 3
-07/08/2016 10:23:58 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 461 - INFO - inside else, returning None
-07/08/2016 10:23:59 PM - game.py - <module>(...) - Line#: 84 - DEBUG - A legit tower is pressed on
-07/08/2016 10:23:59 PM - tower.py - handle_is_clicked(...) - Line#: 77 - INFO - inside handle_is_clicked. About to call next speed index
-07/08/2016 10:23:59 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 410 - INFO - speed_index before incrementing1
-07/08/2016 10:23:59 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 412 - INFO - speed_index after incrementing: 2
-07/08/2016 10:23:59 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 414 - INFO - inside if, returning next_speed_index
-07/08/2016 10:23:59 PM - tower.py - handle_is_clicked(...) - Line#: 79 - INFO - after call for next speed index. Its value is 2
-07/08/2016 10:23:59 PM - tower.py - handle_is_clicked(...) - Line#: 80 - INFO - inside handle_is_clicked. About to call next radius index
-07/08/2016 10:23:59 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 431 - INFO - radius_index before incrementing: 0
-07/08/2016 10:23:59 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 433 - INFO - radius index after incrementing: 1
-07/08/2016 10:23:59 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 436 - INFO - inside if, returning next_radius_index
-07/08/2016 10:23:59 PM - tower.py - handle_is_clicked(...) - Line#: 82 - INFO - after call for next radius index. Its value is 1
-07/08/2016 10:23:59 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 454 - INFO - pop_power_index before incrementing: 1
-07/08/2016 10:23:59 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 456 - INFO - pop_power_index after incrementing: 2
-07/08/2016 10:23:59 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 458 - INFO - inside if, returning next_pop_power_index
-07/08/2016 10:24:00 PM - tower.py - upgrade_speed(...) - Line#: 421 - INFO - upgrade_speed before incrementing
-07/08/2016 10:24:00 PM - tower.py - upgrade_speed(...) - Line#: 423 - INFO - upgrade_speed after incrementing: 2
-07/08/2016 10:24:02 PM - game.py - <module>(...) - Line#: 84 - DEBUG - A legit tower is pressed on
-07/08/2016 10:24:02 PM - tower.py - handle_is_clicked(...) - Line#: 77 - INFO - inside handle_is_clicked. About to call next speed index
-07/08/2016 10:24:02 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 410 - INFO - speed_index before incrementing1
-07/08/2016 10:24:02 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 412 - INFO - speed_index after incrementing: 2
-07/08/2016 10:24:02 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 414 - INFO - inside if, returning next_speed_index
-07/08/2016 10:24:02 PM - tower.py - handle_is_clicked(...) - Line#: 79 - INFO - after call for next speed index. Its value is 2
-07/08/2016 10:24:02 PM - tower.py - handle_is_clicked(...) - Line#: 80 - INFO - inside handle_is_clicked. About to call next radius index
-07/08/2016 10:24:02 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 431 - INFO - radius_index before incrementing: 2
-07/08/2016 10:24:02 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 433 - INFO - radius index after incrementing: 3
-07/08/2016 10:24:02 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 439 - INFO - inside else, returning None
-07/08/2016 10:24:02 PM - tower.py - handle_is_clicked(...) - Line#: 82 - INFO - after call for next radius index. Its value is None
-07/08/2016 10:24:02 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 454 - INFO - pop_power_index before incrementing: 2
-07/08/2016 10:24:02 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 456 - INFO - pop_power_index after incrementing: 3
-07/08/2016 10:24:02 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 461 - INFO - inside else, returning None
-07/08/2016 10:24:04 PM - tower.py - upgrade_speed(...) - Line#: 421 - INFO - upgrade_speed before incrementing
-07/08/2016 10:24:04 PM - tower.py - upgrade_speed(...) - Line#: 423 - INFO - upgrade_speed after incrementing: 2
-07/08/2016 10:24:06 PM - game.py - <module>(...) - Line#: 84 - DEBUG - A legit tower is pressed on
-07/08/2016 10:24:06 PM - tower.py - handle_is_clicked(...) - Line#: 77 - INFO - inside handle_is_clicked. About to call next speed index
-07/08/2016 10:24:06 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 410 - INFO - speed_index before incrementing2
-07/08/2016 10:24:06 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 412 - INFO - speed_index after incrementing: 3
-07/08/2016 10:24:06 PM - tower.py - get_next_speed_index_for_upgrade(...) - Line#: 417 - INFO - inside else, returning None
-07/08/2016 10:24:06 PM - tower.py - handle_is_clicked(...) - Line#: 79 - INFO - after call for next speed index. Its value is None
-07/08/2016 10:24:06 PM - tower.py - handle_is_clicked(...) - Line#: 80 - INFO - inside handle_is_clicked. About to call next radius index
-07/08/2016 10:24:06 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 431 - INFO - radius_index before incrementing: 0
-07/08/2016 10:24:06 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 433 - INFO - radius index after incrementing: 1
-07/08/2016 10:24:06 PM - tower.py - get_next_radius_index_for_upgrade(...) - Line#: 436 - INFO - inside if, returning next_radius_index
-07/08/2016 10:24:06 PM - tower.py - handle_is_clicked(...) - Line#: 82 - INFO - after call for next radius index. Its value is 1
-07/08/2016 10:24:06 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 454 - INFO - pop_power_index before incrementing: 1
-07/08/2016 10:24:06 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 456 - INFO - pop_power_index after incrementing: 2
-07/08/2016 10:24:06 PM - tower.py - get_next_pop_power_index_for_upgrade(...) - Line#: 458 - INFO - inside if, returning next_pop_power_index
+07/09/2016 11:50:17 AM - game.py - <module>(...) - Line#: 72 - DEBUG - A tower icon is pressed
+07/09/2016 11:50:19 AM - game.py - <module>(...) - Line#: 85 - DEBUG - A legit tower is pressed on
+07/09/2016 11:50:19 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 468 - INFO - speed_index before incrementing0
+07/09/2016 11:50:19 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 470 - INFO - speed_index after incrementing: 1
+07/09/2016 11:50:19 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 472 - INFO - inside if, returning next_speed_index
+07/09/2016 11:50:19 AM - tower.py - handle_is_clicked(...) - Line#: 105 - INFO - after call for next speed index. The speed index is 1 and cost is 20
+07/09/2016 11:50:19 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 496 - INFO - radius_index before incrementing: 0
+07/09/2016 11:50:19 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 498 - INFO - radius index after incrementing: 1
+07/09/2016 11:50:19 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 501 - INFO - inside if, returning next_radius_index
+07/09/2016 11:50:19 AM - tower.py - handle_is_clicked(...) - Line#: 108 - INFO - after call for next radius index. The speed index is 1 and cost is 90
+07/09/2016 11:50:19 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 524 - INFO - pop_power_index before incrementing: 0
+07/09/2016 11:50:19 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 526 - INFO - pop_power_index after incrementing: 1
+07/09/2016 11:50:19 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 528 - INFO - inside if, returning next_pop_power_index
+07/09/2016 11:50:19 AM - tower.py - handle_is_clicked(...) - Line#: 111 - INFO - after call for next radius index. The pop_power index is 1 and cost is 2
+07/09/2016 11:50:22 AM - tower.py - upgrade_pop_power(...) - Line#: 535 - INFO - upgrade_pop_power before incrementing
+07/09/2016 11:50:22 AM - tower.py - upgrade_pop_power(...) - Line#: 537 - INFO - upgrade_pop_power after incrementing: 1
+07/09/2016 11:50:22 AM - tower.py - upgrade_pop_power(...) - Line#: 79 - CRITICAL - the current sell_price, after upgrading pop_power is: 101
+07/09/2016 11:50:22 AM - icon.py - upgrade_and_replace_with_L2_upgrade_icon(...) - Line#: 231 - INFO - all upgrade-icons in the sprite group are<Group(3 sprites)>
+07/09/2016 11:50:23 AM - tower.py - upgrade_pop_power(...) - Line#: 535 - INFO - upgrade_pop_power before incrementing
+07/09/2016 11:50:23 AM - tower.py - upgrade_pop_power(...) - Line#: 537 - INFO - upgrade_pop_power after incrementing: 2
+07/09/2016 11:50:23 AM - tower.py - upgrade_pop_power(...) - Line#: 79 - CRITICAL - the current sell_price, after upgrading pop_power is: 102
+07/09/2016 11:50:36 AM - game.py - <module>(...) - Line#: 72 - DEBUG - A tower icon is pressed
+07/09/2016 11:50:39 AM - game.py - <module>(...) - Line#: 85 - DEBUG - A legit tower is pressed on
+07/09/2016 11:50:39 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 468 - INFO - speed_index before incrementing0
+07/09/2016 11:50:39 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 470 - INFO - speed_index after incrementing: 1
+07/09/2016 11:50:39 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 472 - INFO - inside if, returning next_speed_index
+07/09/2016 11:50:39 AM - tower.py - handle_is_clicked(...) - Line#: 105 - INFO - after call for next speed index. The speed index is 1 and cost is 20
+07/09/2016 11:50:39 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 496 - INFO - radius_index before incrementing: 0
+07/09/2016 11:50:39 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 498 - INFO - radius index after incrementing: 1
+07/09/2016 11:50:39 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 501 - INFO - inside if, returning next_radius_index
+07/09/2016 11:50:39 AM - tower.py - handle_is_clicked(...) - Line#: 108 - INFO - after call for next radius index. The speed index is 1 and cost is 90
+07/09/2016 11:50:39 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 524 - INFO - pop_power_index before incrementing: 0
+07/09/2016 11:50:39 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 526 - INFO - pop_power_index after incrementing: 1
+07/09/2016 11:50:39 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 528 - INFO - inside if, returning next_pop_power_index
+07/09/2016 11:50:39 AM - tower.py - handle_is_clicked(...) - Line#: 111 - INFO - after call for next radius index. The pop_power index is 1 and cost is 2
+07/09/2016 11:50:40 AM - tower.py - upgrade_radius(...) - Line#: 508 - INFO - upgrade_radius before incrementing
+07/09/2016 11:50:40 AM - tower.py - upgrade_radius(...) - Line#: 510 - INFO - upgrade_radius after incrementing: 1
+07/09/2016 11:50:40 AM - icon.py - upgrade_and_replace_with_L2_upgrade_icon(...) - Line#: 231 - INFO - all upgrade-icons in the sprite group are<Group(3 sprites)>
+07/09/2016 11:50:42 AM - tower.py - upgrade_radius(...) - Line#: 508 - INFO - upgrade_radius before incrementing
+07/09/2016 11:50:42 AM - tower.py - upgrade_radius(...) - Line#: 510 - INFO - upgrade_radius after incrementing: 2
+07/09/2016 11:50:45 AM - tower.py - upgrade_pop_power(...) - Line#: 535 - INFO - upgrade_pop_power before incrementing
+07/09/2016 11:50:45 AM - tower.py - upgrade_pop_power(...) - Line#: 537 - INFO - upgrade_pop_power after incrementing: 1
+07/09/2016 11:50:45 AM - tower.py - upgrade_pop_power(...) - Line#: 79 - CRITICAL - the current sell_price, after upgrading pop_power is: 197
+07/09/2016 11:50:45 AM - icon.py - upgrade_and_replace_with_L2_upgrade_icon(...) - Line#: 231 - INFO - all upgrade-icons in the sprite group are<Group(3 sprites)>
+07/09/2016 11:50:50 AM - game.py - <module>(...) - Line#: 72 - DEBUG - A tower icon is pressed
+07/09/2016 11:50:52 AM - game.py - <module>(...) - Line#: 85 - DEBUG - A legit tower is pressed on
+07/09/2016 11:50:52 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 468 - INFO - speed_index before incrementing0
+07/09/2016 11:50:52 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 470 - INFO - speed_index after incrementing: 1
+07/09/2016 11:50:52 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 472 - INFO - inside if, returning next_speed_index
+07/09/2016 11:50:52 AM - tower.py - handle_is_clicked(...) - Line#: 105 - INFO - after call for next speed index. The speed index is 1 and cost is 20
+07/09/2016 11:50:52 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 496 - INFO - radius_index before incrementing: 0
+07/09/2016 11:50:52 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 498 - INFO - radius index after incrementing: 1
+07/09/2016 11:50:52 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 501 - INFO - inside if, returning next_radius_index
+07/09/2016 11:50:52 AM - tower.py - handle_is_clicked(...) - Line#: 108 - INFO - after call for next radius index. The speed index is 1 and cost is 90
+07/09/2016 11:50:52 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 524 - INFO - pop_power_index before incrementing: 0
+07/09/2016 11:50:52 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 526 - INFO - pop_power_index after incrementing: 1
+07/09/2016 11:50:52 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 528 - INFO - inside if, returning next_pop_power_index
+07/09/2016 11:50:52 AM - tower.py - handle_is_clicked(...) - Line#: 111 - INFO - after call for next radius index. The pop_power index is 1 and cost is 2
+07/09/2016 11:50:56 AM - game.py - <module>(...) - Line#: 72 - DEBUG - A tower icon is pressed
+07/09/2016 11:50:57 AM - game.py - <module>(...) - Line#: 85 - DEBUG - A legit tower is pressed on
+07/09/2016 11:50:57 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 468 - INFO - speed_index before incrementing0
+07/09/2016 11:50:57 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 470 - INFO - speed_index after incrementing: 1
+07/09/2016 11:50:57 AM - tower.py - get_next_speed_index_and_cost_for_upgrade(...) - Line#: 472 - INFO - inside if, returning next_speed_index
+07/09/2016 11:50:57 AM - tower.py - handle_is_clicked(...) - Line#: 105 - INFO - after call for next speed index. The speed index is 1 and cost is 20
+07/09/2016 11:50:57 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 496 - INFO - radius_index before incrementing: 0
+07/09/2016 11:50:57 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 498 - INFO - radius index after incrementing: 1
+07/09/2016 11:50:57 AM - tower.py - get_next_radius_index_and_cost_for_upgrade(...) - Line#: 501 - INFO - inside if, returning next_radius_index
+07/09/2016 11:50:57 AM - tower.py - handle_is_clicked(...) - Line#: 108 - INFO - after call for next radius index. The speed index is 1 and cost is 90
+07/09/2016 11:50:57 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 524 - INFO - pop_power_index before incrementing: 0
+07/09/2016 11:50:57 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 526 - INFO - pop_power_index after incrementing: 1
+07/09/2016 11:50:57 AM - tower.py - get_next_pop_power_index_and_costs_for_upgrade(...) - Line#: 528 - INFO - inside if, returning next_pop_power_index
+07/09/2016 11:50:57 AM - tower.py - handle_is_clicked(...) - Line#: 111 - INFO - after call for next radius index. The pop_power index is 1 and cost is 2
+07/09/2016 11:50:58 AM - tower.py - upgrade_speed(...) - Line#: 480 - INFO - upgrade_speed before incrementing
+07/09/2016 11:50:58 AM - tower.py - upgrade_speed(...) - Line#: 482 - INFO - upgrade_speed after incrementing: 1
+07/09/2016 11:50:58 AM - icon.py - upgrade_and_replace_with_L2_upgrade_icon(...) - Line#: 231 - INFO - all upgrade-icons in the sprite group are<Group(3 sprites)>
+07/09/2016 11:50:59 AM - tower.py - upgrade_speed(...) - Line#: 480 - INFO - upgrade_speed before incrementing
+07/09/2016 11:50:59 AM - tower.py - upgrade_speed(...) - Line#: 482 - INFO - upgrade_speed after incrementing: 2

@@ -74,6 +74,7 @@ while True:
                         duplicate_tower_icon = tower_icon.duplicate()
                         sprite_groups.selected_tower_icon_sprite.add(duplicate_tower_icon)
                         sprite_groups.upgrade_icon_sprites.empty()
+                        sprite_groups.sell_tower_icon_sprite.empty()
                         is_tower_icon = True
                         break #only one tower at a time, thus after finding it, no need to continue for looping
 
@@ -83,19 +84,28 @@ while True:
                         if tow.rect.collidepoint(pos):
                             logger.debug('A legit tower is pressed on')
                             sprite_groups.upgrade_icon_sprites.empty()
-                            tow.handle_is_clicked(sprite_groups.upgrade_icon_sprites)
+                            sprite_groups.sell_tower_icon_sprite.empty()
+                            tow.handle_is_clicked(sprite_groups.upgrade_icon_sprites, sprite_groups.sell_tower_icon_sprite)
                             is_tower = True
                             break
 
                 if is_tower == False: #if a legit tower wasn't pressed, check if press was elsewhere
                     if not basic_dashboard.collidepoint(pos):
                         sprite_groups.upgrade_icon_sprites.empty() #empties the icons if no tower is selected and the click isn't in the dashboard
+                        sprite_groups.sell_tower_icon_sprite.empty()
 
                 #check if an Upgrade type was pressed
                 for upgrade_icon in sprite_groups.upgrade_icon_sprites:
                     if upgrade_icon.rect.collidepoint(pos):
                         upgrade_icon.on_left_mouse_button_up(sprite_groups.upgrade_icon_sprites)
                         break
+
+
+                #check if the "sell" button was pressed
+                if sprite_groups.sell_tower_icon_sprite:
+                    if sprite_groups.sell_tower_icon_sprite.sprite.rect.collidepoint(pos):
+                        sprite_groups.sell_tower_icon_sprite.sprite.on_left_mouse_button_up()
+
 
         #right mouse button is clicked. Remove the tower icon currently on the cursor (if it exists)
         elif event.type == pygame.locals.MOUSEBUTTONUP and event.button == 3:
@@ -113,6 +123,7 @@ while True:
     #draw dashboard and upgrade sprites
     basic_dashboard = pygame.draw.rect(DISPLAYSURF, colours.GRAY, (0, 300, 400, 100))
     sprite_groups.upgrade_icon_sprites.draw(DISPLAYSURF)
+    sprite_groups.sell_tower_icon_sprite.draw(DISPLAYSURF)
 
     sprite_groups.tower_sprites.update(sprite_groups.ballon_sprites, sprite_groups.bullet_sprites)
     sprite_groups.tower_sprites.draw(DISPLAYSURF)
@@ -127,6 +138,7 @@ while True:
 
     sprite_groups.selected_tower_icon_sprite.update(pygame.mouse.get_pos())
     sprite_groups.selected_tower_icon_sprite.draw(DISPLAYSURF)
+
 
     # render text
     label = bank_balance.render("Bank balance: {}".format(bank.balance), True, (255,255,0))
