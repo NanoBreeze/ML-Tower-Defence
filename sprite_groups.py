@@ -15,7 +15,6 @@ class BallonGroup(pygame.sprite.AbstractGroup):
 
     def draw(self, surface):
         """Modified from Abstract group to draw the BalloonContext's current_balloon instead of its rect values"""
-        logging.debug('Inside BallonGroup draw. START. Length: {}'.format(len(self.sprites())))
         sprites = self.sprites()
         surface_blit = surface.blit
         for spr in sprites:

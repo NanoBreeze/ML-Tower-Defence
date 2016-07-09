@@ -24,8 +24,8 @@ TELEPORTATION_TOWER = 'TELEPORTATION_TOWER'
 class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     """Base class for all Towers"""
 
-    _attk_props = None              #contains the attacking properties of this tower: speed, radius, pop power
-    _attack_again_counter = None    #used as a counter to increment when to attack, compared with AttackUpgrades.speed
+    _attk_props = None  # contains the attacking properties of this tower: speed, radius, pop power
+    _attack_again_counter = None  # used as a counter to increment when to attack, compared with AttackUpgrades.speed
 
     def __init__(self, colour, position, dimension, cost, DISPLAYSURF):
         """
@@ -52,7 +52,6 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self.rect.centery = position[1]
         self.cost = cost
 
-
     def upgrade_speed(self):
         self._attk_props.upgrade_speed()
 
@@ -66,7 +65,6 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     def update(self, ballon_sprites):
         pass
 
-
     def handle_is_clicked(self, upgrade_icon_sprites):
         """
         :param upgrade_icon_sprites: pygame.sprite.Group, contains all three upgrade icons in the game
@@ -75,25 +73,35 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         """
         assert isinstance(upgrade_icon_sprites, pygame.sprite.Group), 'upgrade_icon_sprites must be a pygame.sprite.Group() instance'
 
+
+        logger.info('inside handle_is_clicked. About to call next speed index')
         next_speed_upgrade_index = self._attk_props.get_next_speed_index_for_upgrade()
-        logger.info('next_speed_upgrade_index is ' + str(next_speed_upgrade_index))
+        logger.info('after call for next speed index. Its value is ' + str(next_speed_upgrade_index))
+        logger.info('inside handle_is_clicked. About to call next radius index')
         next_radius_upgrade_index = self._attk_props.get_next_radius_index_for_upgrade()
+        logger.info('after call for next radius index. Its value is ' + str(next_radius_upgrade_index))
         next_pop_power_upgrade_index = self._attk_props.get_next_pop_power_index_for_upgrade()
 
         if next_speed_upgrade_index == 1:
-            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON_1, self))
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON_1, self.upgrade_speed))
         elif next_speed_upgrade_index == 2:
-            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON_2, self))
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_SPEED_ICON_2, self.upgrade_speed))
+        elif next_speed_upgrade_index is None:  # make a placeholder (equivalent to null object)
+            upgrade_icon_sprites.add(icon.create_placeholder_upgrade_icon(position=(100, 350), dimension=(50, 50)))
 
         if next_radius_upgrade_index == 1:
-            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON_1, self))
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON_1, self.upgrade_radius))
         elif next_radius_upgrade_index == 2:
-            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON_2, self))
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_RADIUS_ICON_2, self.upgrade_radius))
+        elif next_radius_upgrade_index is None:  # make a placeholder (equivalent to null object)
+            upgrade_icon_sprites.add(icon.create_placeholder_upgrade_icon(position=(200, 350), dimension=(50, 50)))
 
         if next_pop_power_upgrade_index == 1:
-            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_POP_POWER_ICON_1, self))
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_POP_POWER_ICON_1, self.upgrade_pop_power))
         elif next_pop_power_upgrade_index == 2:
-            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_POP_POWER_ICON_2, self))
+            upgrade_icon_sprites.add(icon.create_upgrade_icon(icon.UPGRADE_POP_POWER_ICON_2, self.upgrade_pop_power))
+        elif next_pop_power_upgrade_index is None:  # make a placeholder (equivalent to null object)
+            upgrade_icon_sprites.add(icon.create_placeholder_upgrade_icon(position=(300, 350), dimension=(50, 50)))
 
         return None
 
@@ -117,8 +125,8 @@ class LinearTower(Tower):
                          cost=10,
                          DISPLAYSURF=DISPLAYSURF)
 
-        self._attk_props = AttackUpgrades((10, 20, 30), (80, 90, 100), (1, 2, 3)) #set the upgrades appropriately
-        self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
+        self._attk_props = AttackUpgrades((10, 20, 30), (80, 90, 100), (1, 2, 3))  # set the upgrades appropriately
+        self._attack_again_counter = self._attk_props.speed  # set the counter to the 'shoot' position
 
     def update(self, ballon_sprites, bullet_sprites):
         """
@@ -134,14 +142,14 @@ class LinearTower(Tower):
 
         # checks if it's possible to attack again
         if self._attack_again_counter == self._attk_props.speed:
-            logger.info('INSIDE self.attack_again_counter_loop')
+            # logger.info('INSIDE self.attack_again_counter_loop')
             # check if any ballons are within the range of the circle, which is currently set to 80
             for ballon in ballon_sprites:
-                logger.info('INSIDE ballon_sprites for loop')
+                # logger.info('INSIDE ballon_sprites for loop')
                 # if within range, print and create a bullet
                 if math.hypot(ballon.get_centerX() - self.rect.centerx,
                               ballon.get_centerY() - self.rect.centery) <= self._attk_props.radius:
-                    logger.info('INSIDE math.hypot if statement')
+                    # logger.info('INSIDE math.hypot if statement')
                     bullet_sprites.add(
                         bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
@@ -151,8 +159,6 @@ class LinearTower(Tower):
                     break
         else:
             self._attack_again_counter += 1
-
-
 
 
 class ThreeSixtyTower(Tower):
@@ -166,15 +172,14 @@ class ThreeSixtyTower(Tower):
         assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
         assert isinstance(DISPLAYSURF, pygame.Surface), 'DISPLAYSURF must be a pygame Surface object'
 
-
         super().__init__(colour=colours.CYAN,
                          position=position,
                          dimension=(40, 40),
                          cost=20,
                          DISPLAYSURF=DISPLAYSURF)
 
-        self._attk_props = AttackUpgrades((50, 20, 30), (180, 90, 100), (1, 2, 3)) #set the upgrades appropriately
-        self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
+        self._attk_props = AttackUpgrades((50, 20, 30), (180, 90, 100), (1, 2, 3))  # set the upgrades appropriately
+        self._attack_again_counter = self._attk_props.speed  # set the counter to the 'shoot' position
 
     def update(self, ballon_sprites, bullet_sprites):
         """
@@ -186,17 +191,16 @@ class ThreeSixtyTower(Tower):
         assert isinstance(ballon_sprites, sprite_groups.BallonGroup), "ballon_sprites must be a pygame.sprite.Group object"
         assert isinstance(bullet_sprites, pygame.sprite.Group), "bullet_sprites must be a pygame.sprite.Group object"
 
-
         pygame.draw.circle(self.DISPLAYSURF, colours.WHITE, (self.rect.centerx, self.rect.centery), self._attk_props.radius, 1)
 
         # checks if it is possible to attack again
-        if self._attack_again_counter== self._attk_props.speed:
+        if self._attack_again_counter == self._attk_props.speed:
             # check if any ballons are within the range of the circle, which is currently set to 80
             for ballon in ballon_sprites:
                 # if within range, print and create a bullet
                 if math.hypot(ballon.get_centerX() - self.rect.centerx,
                               ballon.get_centerY() - self.rect.centery) <= self._attk_props.radius:
-                    logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
+                    # logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
                         bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
@@ -244,7 +248,6 @@ class ThreeSixtyTower(Tower):
             self._attack_again_counter += 1
 
 
-
 class ExplosionTower(Tower):
     """Shoots ExplosionBullets"""
 
@@ -264,9 +267,8 @@ class ExplosionTower(Tower):
                          cost=30,
                          DISPLAYSURF=DISPLAYSURF)
 
-
-        self._attk_props = AttackUpgrades((5, 20, 30), (40, 90, 100), (1, 2, 3)) #set the upgrades appropriately
-        self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
+        self._attk_props = AttackUpgrades((5, 20, 30), (40, 90, 100), (1, 2, 3))  # set the upgrades appropriately
+        self._attack_again_counter = self._attk_props.speed  # set the counter to the 'shoot' position
 
     def update(self, ballon_sprites, bullet_sprites):
         """
@@ -287,17 +289,16 @@ class ExplosionTower(Tower):
                 # if within range, print and create a bullet
                 if math.hypot(ballon.get_centerX() - self.rect.centerx,
                               ballon.get_centerY() - self.rect.centery) <= self._attk_props.radius:
-                    logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
+                    #logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
                         bullet.create_bullet(bullet_type=bullet.EXPLOSION_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
                                              destination=(ballon.get_centerX(), ballon.get_centerY()),
                                              pop_power=self._attk_props.pop_power))
-                    self._attack_again_counter= 0
+                    self._attack_again_counter = 0
                     break
         else:
             self._attack_again_counter += 1
-
 
 
 class TeleportationTower(Tower):
@@ -316,8 +317,8 @@ class TeleportationTower(Tower):
                          cost=40,
                          DISPLAYSURF=DISPLAYSURF)
 
-        self._attk_props = AttackUpgrades((10, 20, 30), (80, 90, 100), (1, 2, 3)) #set the upgrades appropriately
-        self._attack_again_counter = self._attk_props.speed #set the counter to the 'shoot' position
+        self._attk_props = AttackUpgrades((10, 20, 30), (80, 90, 100), (1, 2, 3))  # set the upgrades appropriately
+        self._attack_again_counter = self._attk_props.speed  # set the counter to the 'shoot' position
 
     def update(self, ballon_sprites, bullet_sprites):
         """
@@ -333,13 +334,13 @@ class TeleportationTower(Tower):
                            1)
 
         # checks if it possible to attack again
-        if self._attack_again_counter== self._attk_props.speed:
+        if self._attack_again_counter == self._attk_props.speed:
             # check if any ballons are within the range of the circle, which is currently set to 80
             for ballon in ballon_sprites:
                 # if within range, print and create a bullet
                 if math.hypot(ballon.get_centerX() - self.rect.centerx,
                               ballon.get_centerY() - self.rect.centery) <= self._attk_props.radius:
-                    logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
+                    #logger.debug('ATTACK! x is: {}. y is {}'.format(ballon.get_centerX(), ballon.get_centerY()))
                     bullet_sprites.add(
                         bullet.create_bullet(bullet_type=bullet.TELEPORTATION_BULLET,
                                              start=(self.rect.centerx, self.rect.centery),
@@ -349,7 +350,6 @@ class TeleportationTower(Tower):
                     break
         else:
             self._attack_again_counter += 1
-
 
 
 def create_tower(tower_type, position, DISPLAYSURF):
@@ -379,6 +379,7 @@ def create_tower(tower_type, position, DISPLAYSURF):
 
 class AttackUpgrades:
     """upgrades include speed, radius, and pop_power"""
+
     def __init__(self, upgrade_speeds, upgrade_radii, upgrade_pop_powers):
         """
         :param upgrade_speeds: a tuple containing the order that speed upgrades happen
@@ -406,49 +407,63 @@ class AttackUpgrades:
         """
         :return: int or None, self.speed_index + 1, get the index of the next speed (to upgrade to) from the speeds tuple
         """
+        logger.info('speed_index before incrementing' + str(self.speed_index))
         next_speed_index = self.speed_index + 1
-
-        if next_speed_index <= len(self.speeds): #make sure that the next speed index isn't out of bounds
+        logger.info('speed_index after incrementing: ' + str(next_speed_index))
+        if next_speed_index < len(self.speeds):  # make sure that the next speed index isn't out of bounds
+            logger.info('inside if, returning next_speed_index')
             return next_speed_index
         else:
+            logger.info('inside else, returning None')
             return None
 
-
     def upgrade_speed(self):
+        logger.info('upgrade_speed before incrementing')
         self.speed_index += 1
-        assert self.speed_index <= len(self.speeds) -1, 'speed_index must be within the range of speeds list'
+        logger.info('upgrade_speed after incrementing: ' + str(self.speed_index))
+        assert self.speed_index < len(self.speeds), 'speed_index must be within the range of speeds list'
         self.speed = self.speeds[self.speed_index]
 
     def get_next_radius_index_for_upgrade(self):
         """
         :return: int or None, self.speed_index + 1, get the index of the next speed (to upgrade to) from the speeds tuple
         """
+        logger.info('radius_index before incrementing: ' + str(self.radius_index))
         next_radius_index = self.radius_index + 1
+        logger.info('radius index after incrementing: ' + str(next_radius_index))
 
-        if next_radius_index <= len(self.radii): #make sure that the next radius index isn't out of bounds
+        if next_radius_index < len(self.radii):  # make sure that the next radius index isn't out of bounds
+            logger.info('inside if, returning next_radius_index')
             return next_radius_index
         else:
+            logger.info('inside else, returning None')
             return None
 
     def upgrade_radius(self):
+        logger.info('upgrade_radius before incrementing')
         self.radius_index += 1
-        assert self.radius_index <= len(self.radii) - 1, 'radius_index must be within the range of radii list'
-        self.radius = self.radii[self.radius_index]
+        logger.info('upgrade_radius after incrementing: ' + str(self.radius_index))
 
+        assert self.radius_index < len(self.radii), 'radius_index must be within the range of radii list'
+        self.radius = self.radii[self.radius_index]
 
     def get_next_pop_power_index_for_upgrade(self):
         """
         :return: int or None, get the index of the next speed (to upgrade to) from the speeds tuple
         """
+        logger.info('pop_power_index before incrementing: ' + str(self.pop_power_index))
         next_pop_power_index = self.pop_power_index + 1
-
-        if next_pop_power_index <= len(self.pop_powers): #make sure that the next pop power index isn't out of bounds
+        logger.info('pop_power_index after incrementing: ' + str(next_pop_power_index))
+        if next_pop_power_index < len(self.pop_powers):  # make sure that the next pop power index isn't out of bounds
+            logger.info('inside if, returning next_pop_power_index')
             return next_pop_power_index
         else:
+            logger.info('inside else, returning None')
             return None
 
     def upgrade_pop_power(self):
+        logger.info('upgrade_pop_power before incrementing')
         self.pop_power_index += 1
-        assert self.pop_power_index <= len(self.pop_powers) - 1, 'pop_power_index must be within the range of pop_powers list'
+        logger.info('upgrade_pop_power after incrementing: ' + str(self.pop_power_index))
+        assert self.pop_power_index < len(self.pop_powers), 'pop_power_index must be within the range of pop_powers list'
         self.pop_power = self.pop_powers[self.pop_power_index]
-

@@ -58,22 +58,19 @@ class Balloon(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         assert isinstance(bullet_sprites, pygame.sprite.Group), 'bullet_sprites must be a pygame.sprite.Group type'
 
         collided_bullets = pygame.sprite.spritecollide(self, bullet_sprites, False)
-        logger.critical(str(collided_bullets))
         if collided_bullets:
             for collided_bullet in collided_bullets:
                 if isinstance(collided_bullet, bullet.StandardBullet):
-                    logger.debug('=================== STANDARD BULLET=======================')
+                    #logger.debug('=================== STANDARD BULLET=======================')
                     collided_bullet.handle_ballon_collision()
-                    logger.warn('inside the standard bullet')
                     return collided_bullet.pop_power  # represents should handle pop
                 elif isinstance(collided_bullet, bullet.ExplosionBullet):
-                    logger.debug('=================== EXPLOSION BULLET=======================')
+                    #logger.debug('=================== EXPLOSION BULLET=======================')
                     # explosion bullet will create more bullets
                     collided_bullet.handle_ballon_collision(bullet_sprites)
-                    logger.warn('inside the explosion bullet')
                     return collided_bullet.pop_power  # represents should handle pop
                 elif isinstance(collided_bullet, bullet.TeleportationBullet):
-                    logger.debug('=================== TELEPORTATION BULLET=======================')
+                    #logger.debug('=================== TELEPORTATION BULLET=======================')
                     collided_bullet.handle_ballon_collision()
                     self.teleport()
                     return False  # represents don't hanlde pop. This ballon is being teleported
@@ -189,7 +186,7 @@ class BalloonContext(Balloon):
 
         assert isinstance(layers_to_peel, int)
 
-        logger.debug('inside BallonContext handle_pop()')
+        #logger.debug('inside BallonContext handle_pop()')
         for layer in range(layers_to_peel):
             # it's import to deposit here so that every deposit is made before the current ballon changes
             bank.deposit(self.current_ballon.bounty)

@@ -27,7 +27,7 @@ UPGRADE_POP_POWER_ICON_1 = 'UPGRADE_POP_POWER_ICON_1'
 UPGRADE_POP_POWER_ICON_2 = 'UPGRADE_POP_POWER_ICON_2'
 
 
-class Icon(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
+class Icon(pygame.sprite.Sprite):
     """The base class for all icons"""
 
     def __init__(self, colour, position, dimension):
@@ -56,11 +56,6 @@ class Icon(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self.rect.centerx = mouse_position[0]
         self.rect.centery = mouse_position[1]
 
-    @abc.abstractmethod
-    def on_left_mouse_button_up(self):
-        """Handles event where the user clicked on this icon"""
-        pass
-
 
 class TowerIcon(Icon, metaclass=abc.ABCMeta):
     """Base class for all Tower-related icons"""
@@ -79,6 +74,10 @@ class TowerIcon(Icon, metaclass=abc.ABCMeta):
         assert isinstance(dimension, tuple) and len(dimension) == 2, 'start must be a 2-element tuple'
 
         super().__init__(colour, position, dimension)
+
+    @abc.abstractmethod
+    def on_left_mouse_button_up(self):
+        pass
 
     @abc.abstractmethod
     #  reason for this copy method is because Python throws an error after deep copying aomething that contains a Surface object
@@ -195,38 +194,49 @@ class TeleportationTowerIcon(TowerIcon):
         return create_tower_icon(TELEPORTATION_TOWER_ICON, (self.rect.centerx, self.rect.centery))
 
 
-
-
 class UpgradeIcon(Icon, metaclass=abc.ABCMeta):
     """
     Base class for all Upgrade-relatedIcons
     """
 
-    def __init__(self, colour, position, dimension, associated_tower):
+    def __init__(self, colour, position, dimension, tower_upgrade_method):
         """
         :param colour: colour.COLOUR_CONSTANT, the colour of the icon
         :param position: 2-element tuple, where this icon is to be placed
         :param dimension: 2-element tuple, the size of this icon
-        :param associated_tower: the tower that will be affected by clicking on this icon
+        :param tower_upgrade_method: method of the related upgrade method from the associated tower
         """
 
         assert isinstance(colour, tuple) and len(colour) == 4, 'colour must be a 4-element tuple'
         assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
         assert isinstance(dimension, tuple) and len(dimension) == 2, 'start must be a 2-element tuple'
-        assert isinstance(associated_tower, tower.Tower), '_associated_tower must be a tower type'
+        assert hasattr(tower_upgrade_method, '__call__'), '_tower_upgrade_method must be a callable (eg, method)'
 
-        self._associated_tower = associated_tower
+        self._tower_upgrade_method = tower_upgrade_method
         super().__init__(colour, position, dimension)
 
     @abc.abstractmethod
     def on_left_mouse_button_up(self, upgrade_icon_sprites):
         pass
 
+    def upgrade_and_replace_with_L2_upgrade_icon(self, upgrade_icon, upgrade_icon_sprites):
+        self._tower_upgrade_method()
+        upgrade_icon_sprites.add(create_upgrade_icon(upgrade_icon, self._tower_upgrade_method))
+        self.kill()
+        logger.info('all upgrade-icons in the sprite group are' + str(sprite_groups.upgrade_icon_sprites))
+
+    def upgrade_and_replace_with_placeholder_upgrade_icon(self, upgrade_icon_sprites):
+        self._tower_upgrade_method()
+        upgrade_icon_sprites.add(create_placeholder_upgrade_icon(position=(self.rect.centerx, self.rect.centery),
+                                                                 dimension=(self.image.get_width(), self.image.get_height())))
+
+        self.kill()
+
 
 class UpgradeSpeedBaseIcon(UpgradeIcon):
-    def __init__(self, colour, position, dimension, associated_tower):
+    def __init__(self, colour, position, dimension, tower_upgrade_method):
         """
-        :param associated_tower: the tower that will be affected by clicking on this icon
+        :param tower_upgrade_method: method of the related upgrade method from the associated tower
         :param colour: colour.COLOUR_CONSTANT, the colour of the icon
         :param position: 2-element tuple, where this icon is to be placed
         :param dimension: 2-element tuple, the size of this icon
@@ -235,88 +245,93 @@ class UpgradeSpeedBaseIcon(UpgradeIcon):
         assert isinstance(colour, tuple) and len(colour) == 4, 'colour must be a 4-element tuple'
         assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
         assert isinstance(dimension, tuple) and len(dimension) == 2, 'start must be a 2-element tuple'
-        assert isinstance(associated_tower, tower.Tower), '_associated_tower must be a tower type'
+        assert hasattr(tower_upgrade_method, '__call__'), '_tower_upgrade_method must be a callable (eg, method)'
 
-        super().__init__(colour, position, dimension, associated_tower)
-
-
+        super().__init__(colour, position, dimension, tower_upgrade_method)
 
 
 class UpgradeSpeedIcon1(UpgradeSpeedBaseIcon):
     def on_left_mouse_button_up(self, upgrade_icon_sprites):
-        self._associated_tower.upgrade_speed()
-        upgrade_icon_sprites.add(create_upgrade_icon(UPGRADE_SPEED_ICON_2, self._associated_tower))
-        self.kill()
-        logger.info('all upgrade-icons in the sprite group are' + str(sprite_groups.upgrade_icon_sprites))
+        self.upgrade_and_replace_with_L2_upgrade_icon(UPGRADE_SPEED_ICON_2, upgrade_icon_sprites)
+
 
 class UpgradeSpeedIcon2(UpgradeSpeedBaseIcon):
     def on_left_mouse_button_up(self, upgrade_icon_sprites):
-        self._associated_tower.upgrade_speed()
-        self.kill() #here, upgrade_icon_sprites is unnecessary
+        self.upgrade_and_replace_with_placeholder_upgrade_icon(upgrade_icon_sprites)
+
 
 class UpgradeRadiusBaseIcon(UpgradeIcon):
-    def __init__(self, colour, position, dimension, associated_tower):
+    def __init__(self, colour, position, dimension, tower_upgrade_method):
         """
         :param colour: colour.COLOUR_CONSTANT, the colour of the icon
         :param position: 2-element tuple, where this icon is to be placed
-        :param associated_tower: the tower that will be affected by clicking on this icon
+        :param tower_upgrade_method: method of the related upgrade method from the associated tower
         :param dimension: 2-element tuple, the size of this icon
         """
 
         assert isinstance(colour, tuple) and len(colour) == 4, 'colour must be a 4-element tuple'
         assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
         assert isinstance(dimension, tuple) and len(dimension) == 2, 'start must be a 2-element tuple'
-        assert isinstance(associated_tower, tower.Tower), '_associated_tower must be a tower type'
+        assert hasattr(tower_upgrade_method, '__call__'), '_tower_upgrade_method must be a callable (eg, method)'
 
-        super().__init__(colour, position, dimension, associated_tower)
-
+        super().__init__(colour, position, dimension, tower_upgrade_method)
 
 
 class UpgradeRadiusIcon1(UpgradeRadiusBaseIcon):
     def on_left_mouse_button_up(self, upgrade_icon_sprites):
-        self._associated_tower.upgrade_radius()
-        upgrade_icon_sprites.add(create_upgrade_icon(UPGRADE_RADIUS_ICON_2, self._associated_tower))
-        self.kill()
-        logger.info('all upgrade-icons in the sprite group are' + str(sprite_groups.upgrade_icon_sprites))
+        self.upgrade_and_replace_with_L2_upgrade_icon(UPGRADE_RADIUS_ICON_2, upgrade_icon_sprites)
 
 
 class UpgradeRadiusIcon2(UpgradeRadiusBaseIcon):
     def on_left_mouse_button_up(self, upgrade_icon_sprites):
-        self._associated_tower.upgrade_radius()
-        self.kill()
+        self.upgrade_and_replace_with_placeholder_upgrade_icon(upgrade_icon_sprites)
 
 
 class UpgradePopPowerBaseIcon(UpgradeIcon):
-    def __init__(self, colour, position, dimension, associated_tower):
+    def __init__(self, colour, position, dimension, tower_upgrade_method):
         """
         :param colour: colour.COLOUR_CONSTANT, the colour of the icon
         :param position: 2-element tuple, where this icon is to be placed
         :param dimension: 2-element tuple, the size of this icon
-        :param associated_tower: the tower that will be affected by clicking on this icon
+        :param tower_upgrade_method: method of the related upgrade method from the associated tower
         """
 
         assert isinstance(colour, tuple) and len(colour) == 4, 'colour must be a 4-element tuple'
         assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
         assert isinstance(dimension, tuple) and len(dimension) == 2, 'start must be a 2-element tuple'
-        assert isinstance(associated_tower, tower.Tower), '_associated_tower must be a tower type'
+        assert hasattr(tower_upgrade_method, '__call__'), '_tower_upgrade_method must be a callable (eg, method)'
 
-        super().__init__(colour, position, dimension, associated_tower)
-
+        super().__init__(colour, position, dimension, tower_upgrade_method)
 
 
 class UpgradePopPowerIcon1(UpgradePopPowerBaseIcon):
     def on_left_mouse_button_up(self, upgrade_icon_sprites):
-        self._associated_tower.upgrade_pop_power()
-        logger.info('upgradepoppowericon1 is pressed')
-        upgrade_icon_sprites.add(create_upgrade_icon(UPGRADE_POP_POWER_ICON_2, self._associated_tower))
-        self.kill()
-        logger.info('all upgrade-icons in the sprite group are' + str(sprite_groups.upgrade_icon_sprites))
+        self.upgrade_and_replace_with_L2_upgrade_icon(UPGRADE_POP_POWER_ICON_2, upgrade_icon_sprites)
 
 
 class UpgradePopPowerIcon2(UpgradePopPowerBaseIcon):
     def on_left_mouse_button_up(self, upgrade_icon_sprites):
-        self._associated_tower.upgrade_pop_power()
-        self.kill()
+        self.upgrade_and_replace_with_placeholder_upgrade_icon(upgrade_icon_sprites)
+
+
+class UpgradeIconPlaceholder(UpgradeIcon):
+    """Indicates that the specified is upgrade is already at max. This is the equivalent of a None object"""
+
+    def __init__(self, colour, position, dimension):
+        """
+        :param colour: colour.COLOUR_CONSTANT, the colour of the icon
+        :param position: 2-element tuple, where this icon is to be placed
+        :param dimension: 2-element tuple, the size of this icon
+        """
+
+        assert isinstance(colour, tuple) and len(colour) == 4, 'colour must be a 4-element tuple'
+        assert isinstance(position, tuple) and len(position) == 2, 'destination must be a 2-element tuple'
+        assert isinstance(dimension, tuple) and len(dimension) == 2, 'start must be a 2-element tuple'
+
+        super().__init__(colour, position, dimension, lambda: print('dummy function from placeholder icon. This function should never be called beause placeholder icon is the equivalent of a Null object'))
+
+    def on_left_mouse_button_up(self, upgrade_icon_sprites):
+        pass
 
 
 def create_tower_icon(tower_icon_type, position):
@@ -353,51 +368,59 @@ def create_tower_icon(tower_icon_type, position):
     raise NotImplementedError('the specified tower tower_icon_type is not implemented')
 
 
-def create_upgrade_icon(upgrade_icon_type, associated_tower):
+def create_upgrade_icon(upgrade_icon_type, tower_upgrade_method):
     """
     :param upgrade_icon_type: str constant, specifies which upgrade icon to make
-    :param associated_tower: tower.Tower, the tower this upgrade icon is associated. Click on this upgrade icon will cause the specified tower to be upgraded
+    :param tower_upgrade_method: function, the tower this upgrade icon is associated. Click on this upgrade icon will cause the specified tower to be upgraded
     :return: Upgrade...Icon, eg, UpgradeSpeedBaseIcon
     A simple factory that returns a specified upgrade icon associated with a given tower
     """
 
     assert isinstance(upgrade_icon_type, str), 'tower_icon_type must be a string type'
-    assert isinstance(associated_tower, tower.Tower), '_associated_tower must be a Tower type'
+    assert hasattr(tower_upgrade_method, '__call__'), '_tower_upgrade_method must be a callable (eg, method)'
 
     if upgrade_icon_type == UPGRADE_SPEED_ICON_1:
         return UpgradeSpeedIcon1(colour=colours.WHITE,
                                  position=(100, 350),
                                  dimension=(50, 50),
-                                 associated_tower=associated_tower)
+                                 tower_upgrade_method=tower_upgrade_method)
 
     elif upgrade_icon_type == UPGRADE_SPEED_ICON_2:
         return UpgradeSpeedIcon2(colour=colours.BLACK,
                                  position=(100, 350),
                                  dimension=(50, 50),
-                                 associated_tower=associated_tower)
+                                 tower_upgrade_method=tower_upgrade_method)
 
     elif upgrade_icon_type == UPGRADE_RADIUS_ICON_1:
         return UpgradeRadiusIcon1(colour=colours.WHITE,
                                   position=(200, 350),
                                   dimension=(50, 50),
-                                  associated_tower=associated_tower)
+                                  tower_upgrade_method=tower_upgrade_method)
 
     elif upgrade_icon_type == UPGRADE_RADIUS_ICON_2:
         return UpgradeRadiusIcon2(colour=colours.BLACK,
                                   position=(200, 350),
                                   dimension=(50, 50),
-                                  associated_tower=associated_tower)
+                                  tower_upgrade_method=tower_upgrade_method)
 
     elif upgrade_icon_type == UPGRADE_POP_POWER_ICON_1:
         return UpgradePopPowerIcon1(colour=colours.WHITE,
                                     position=(300, 350),
                                     dimension=(50, 50),
-                                    associated_tower=associated_tower)
+                                    tower_upgrade_method=tower_upgrade_method)
 
     elif upgrade_icon_type == UPGRADE_POP_POWER_ICON_2:
         return UpgradePopPowerIcon2(colour=colours.BLACK,
                                     position=(300, 350),
                                     dimension=(50, 50),
-                                    associated_tower=associated_tower)
+                                    tower_upgrade_method=tower_upgrade_method)
 
     raise NotImplementedError('the specified upgrade icon is not implemented')
+
+
+def create_placeholder_upgrade_icon(position, dimension):
+    """Create a placeholder icon. Equivalent to a null object"""
+    return UpgradeIconPlaceholder(colour=colours.BROWN,
+                                  position=position,
+                                  dimension=dimension)
+
