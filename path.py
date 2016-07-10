@@ -1,6 +1,7 @@
-import logging
+import logging.config
 
-logging.basicConfig(level=logging.DEBUG)
+logging.config.fileConfig('logging.conf')
+logger = logging.getLogger('simpleLogger')
 
 
 class Path:

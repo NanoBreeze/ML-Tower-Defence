@@ -64,7 +64,7 @@ class TestLinearTowerIcon(unittest.TestCase):
         dimension = (50, 60)
 
         i = icon.LinearTowerIcon(colour, position, dimension)
-        i.on_left_mouse_button_up()
+        i.on_click()
         self.assertEqual(i.image.get_at((15, 25)), (255, 165, 0, 255))
 
     def test_duplicate(self):
@@ -90,7 +90,7 @@ class TestThreeSixtyTowerIcon(unittest.TestCase):
         self.assertEqual(self.i._tower_type, tower.THREE_SIXTY_TOWER)
 
     def test_on_left_mouse_button(self):
-        self.i.on_left_mouse_button_up()
+        self.i.on_click()
         self.assertEqual(self.i.image.get_at((10, 25)), (255, 165, 0, 255))
 
     def test_duplicate(self):
@@ -111,7 +111,7 @@ class TestExplosionTowerIcon(unittest.TestCase):
         self.assertEqual(self.i._tower_type, tower.EXPLOSION_TOWER)
 
     def test_on_left_mouse_button(self):
-        self.i.on_left_mouse_button_up()
+        self.i.on_click()
         self.assertEqual(self.i.image.get_at((15, 25)), (255, 165, 0, 255))
 
     def test_duplicate(self):
@@ -132,7 +132,7 @@ class TestTeleportationTowerIcon(unittest.TestCase):
         self.assertEqual(self.i._tower_type, tower.TELEPORTATION_TOWER)
 
     def test_on_left_mouse_button(self):
-        self.i.on_left_mouse_button_up()
+        self.i.on_click()
         self.assertEqual(self.i.image.get_at((5, 5)), (255, 165, 0, 255))
 
     def test_duplicate(self):
@@ -167,7 +167,7 @@ class TestUpgradeSpeedIcon(unittest.TestCase):
 
     @patch.object(logging.Logger, 'info')
     def test_on_left_mouse_button(self, mock_logger_info):
-        self.u.on_left_mouse_button_up()
+        self.u.on_click()
         self.assertEqual(mock_logger_info.call_count, 1)
 
 
@@ -186,7 +186,7 @@ class TestUpgradeRadiusIcon(unittest.TestCase):
 
     @patch.object(logging.Logger, 'info')
     def test_on_left_mouse_button(self, mock_logger_info):
-        self.u.on_left_mouse_button_up()
+        self.u.on_click()
         self.assertEqual(mock_logger_info.call_count, 1)
 
 
@@ -205,7 +205,7 @@ class TestUpgradePopPowerIcon(unittest.TestCase):
 
     @patch.object(logging.Logger, 'info')
     def test_on_left_mouse_button(self, mock_logger_info):
-        self.u.on_left_mouse_button_up()
+        self.u.on_click()
         self.assertEqual(mock_logger_info.call_count, 1)
 
 

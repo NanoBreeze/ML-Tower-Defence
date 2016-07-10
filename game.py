@@ -2,19 +2,17 @@ import pygame
 import pygame.locals
 import sys
 import pygame.sprite
+import logging.config
+import abc
 
-import balloon
 import tower
 import sprite_groups
 import colours
-import path
 import icon
 import bank
 import life_point
 import level
-
-import logging
-import logging.config
+import game_utility
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleLogger')
@@ -22,6 +20,7 @@ logger = logging.getLogger('simpleLogger')
 pygame.init()
 DISPLAYSURF = pygame.display.set_mode((400, 400))
 pygame.display.set_caption('ML Tower Defence')
+fpsClock = pygame.time.Clock()
 
 
 def show_start_screen():
@@ -37,173 +36,248 @@ def show_start_screen():
         pygame.display.update()
 
 
-def player_has_completed_level():
+def show_win_screen():
+    win_message_setup = pygame.font.SysFont("freesansbold", 15)
+    win_message_label = win_message_setup.render("Congratulations! You won!", True, colours.GREEN)
+
+    while True:
+        DISPLAYSURF.fill(colours.WHITE)
+
+        for event in pygame.event.get():
+            if event.type == pygame.locals.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        DISPLAYSURF.blit(win_message_label, (200, 200))
+        pygame.display.update()
+
+
+def player_has_completed_level(current_level):
     """returns whether the player has successfully completed the level"""
-    # logger.info('the value of check if more ballons is: ' + str(current_level.there_are_more_balloons_to_display()))
-    # logger.info('the sprite group is: ' + str(sprite_groups.ballon_sprites))
-    if (current_level.there_are_more_balloons_to_display() == False) and len(sprite_groups.ballon_sprites) == 0:
+    # logger.info('the value of check if more ballons is: ' + str(current_level.next_balloon_exists()))
+    # logger.info('the sprite group is: ' + str(sprite_groups.balloon_sprites))
+    if (current_level.next_balloon_exists() == False) and len(sprite_groups.balloon_sprites) == 0:
         return True
     return False
 
 
-show_start_screen()
+class LeftMouseClickHandler(metaclass=abc.ABCMeta):
+    def __init__(self, next_handler):
+        """If this handler is unable to handle the mouse click, call the next handler to do it"""
+        assert isinstance(next_handler,
+                          LeftMouseClickHandler) or next_handler is None, 'next_handler must be a LeftMouseClickHandler type or None'
+
+        self.next_handler = next_handler
+
+    def handle_click(self, mouse_position):
+        """Wrapper for handling click, contains conditional for letting next handler try"""
+        is_click_handled = self.try_handle_click(mouse_position)
+
+        assert is_click_handled is True or is_click_handled is False, 'is_handled must be either true or false'
+
+        if is_click_handled is False:
+            self.next_handler.handle_click(mouse_position)
+
+    @abc.abstractmethod
+    def try_handle_click(self, mouse_position):
+        """Each class tries to handle the click"""
 
 
-linear_tower_icon = icon.create_tower_icon(icon.LINEAR_TOWER_ICON, (300, 100))
-three_sixty_tower_icon = icon.create_tower_icon(icon.THREE_SIXTY_TOWER_ICON, (300, 150))
-explosion_tower_icon = icon.create_tower_icon(icon.EXPLOSION_TOWER_ICON, (300, 200))
-teleportation_tower_icon = icon.create_tower_icon(icon.TELEPORTATION_TOWER_ICON, (300, 250))
-sprite_groups.tower_icon_sprites.add(linear_tower_icon,
-                                     three_sixty_tower_icon,
-                                     explosion_tower_icon,
-                                     teleportation_tower_icon)
-
-basic_dashboard = pygame.draw.rect(DISPLAYSURF, colours.GRAY, (0, 300, 400, 100))
-
-fpsClock = pygame.time.Clock()
-
-# select font type
-bank_balance = pygame.font.SysFont("freesansbold", 15)
-life_balance = pygame.font.SysFont("freesansbold", 15)
-
-create_balloon_counter = 0
-
-levels = [level.Level1(),
-          level.Level2(),
-          level.Level3()]
-
-current_level = levels.pop(0)
-
-while True:
-
-    if player_has_completed_level():
-        logger.info('player has completed level!')
-        # if there are levels remaining, start the next level. If there are no more levels, show "WIN" screen
-        if levels:
-            current_level = levels.pop(0)
-        else:
-            break
-
-    if create_balloon_counter == 10:
-        global current_level
-        # b represents the next balloon, if it is None, then all balloons have been displayed and don't add this None object to the balloon group
-        b = current_level.get_next_balloon_context()
-        if b:
-            sprite_groups.ballon_sprites.add(b)
-            create_balloon_counter = 0
-    else:
-        create_balloon_counter += 1
-
-    for event in pygame.event.get():
-
-        # left mouse button clicked, if a tower_icon had already been selected, make a tower there
-        # otherwise, if the click is on a tower, show stats of tower.
-        # if it was on an icon, create a tower icon at the cursor position
-        if event.type == pygame.locals.MOUSEBUTTONUP and event.button == 1:
-            pos = pygame.mouse.get_pos()
-            if sprite_groups.selected_tower_icon_sprite:
-                new_tower = tower.create_tower(sprite_groups.selected_tower_icon_sprite.sprite._tower_type, pos, DISPLAYSURF)
-                bank.withdraw(new_tower.cost)
-                sprite_groups.tower_sprites.add(new_tower)
+class TowerIconClickHandler(LeftMouseClickHandler):
+    def try_handle_click(self, mouse_position):
+        # logger.debug('towerIconCLickHandler')
+        for tower_icon in sprite_groups.tower_icon_sprites:
+            if tower_icon.rect.collidepoint(mouse_position):
+                # logger.debug('towerIconClickHandler collided')
+                duplicate_tower_icon = tower_icon.on_click()
                 sprite_groups.selected_tower_icon_sprite.empty()
-            else:
-                is_tower_icon = False  # this is bad design will change later, maybe use returns
-                for tower_icon in sprite_groups.tower_icon_sprites:
-                    if tower_icon.rect.collidepoint(pos):
-                        logger.debug('A tower icon is pressed')
-                        tower_icon.on_left_mouse_button_up()
-                        duplicate_tower_icon = tower_icon.duplicate()
-                        sprite_groups.selected_tower_icon_sprite.add(duplicate_tower_icon)
-                        sprite_groups.upgrade_icon_sprites.empty()
-                        sprite_groups.sell_tower_icon_sprite.empty()
-                        is_tower_icon = True
-                        break  # only one tower at a time, thus after finding it, no need to continue for looping
-
-                is_tower = False
-                if is_tower_icon == False:  # if a tower icon wasn't pressed, check if a legit tower was pressed
-                    for tow in sprite_groups.tower_sprites:  # must not be named with tower, will result in name clashes
-                        if tow.rect.collidepoint(pos):
-                            logger.debug('A legit tower is pressed on')
-                            sprite_groups.upgrade_icon_sprites.empty()
-                            sprite_groups.sell_tower_icon_sprite.empty()
-                            tow.handle_is_clicked(sprite_groups.upgrade_icon_sprites, sprite_groups.sell_tower_icon_sprite)
-                            is_tower = True
-                            break
-
-                if is_tower == False:  # if a legit tower wasn't pressed, check if press was elsewhere
-                    if not basic_dashboard.collidepoint(pos):
-                        sprite_groups.upgrade_icon_sprites.empty()  # empties the icons if no tower is selected and the click isn't in the dashboard
-                        sprite_groups.sell_tower_icon_sprite.empty()
-
-                # check if an Upgrade type was pressed
-                for upgrade_icon in sprite_groups.upgrade_icon_sprites:
-                    if upgrade_icon.rect.collidepoint(pos):
-                        upgrade_icon.on_left_mouse_button_up(sprite_groups.upgrade_icon_sprites)
-                        break
-
-                # check if the "sell" button was pressed
-                if sprite_groups.sell_tower_icon_sprite:
-                    if sprite_groups.sell_tower_icon_sprite.sprite.rect.collidepoint(pos):
-                        sprite_groups.sell_tower_icon_sprite.sprite.on_left_mouse_button_up()
+                sprite_groups.selected_tower_icon_sprite.add(duplicate_tower_icon)
+                return True
+        return False
 
 
-        # right mouse button is clicked. Remove the tower icon currently on the cursor (if it exists)
-        elif event.type == pygame.locals.MOUSEBUTTONUP and event.button == 3:
+class TowerClickHandler(LeftMouseClickHandler):
+    def try_handle_click(self, mouse_position):
+        # logger.debug('towerCLickHandler')
+        for tow in sprite_groups.tower_sprites:  # must not be named with tower, will result in name clashes
+            if tow.rect.collidepoint(mouse_position):
+                tow.on_click(sprite_groups.upgrade_icon_sprites,
+                             sprite_groups.sell_tower_icon_sprite)  # will clear the sprite groups before adding icons
+                return True
+        return False
+
+
+class UpgradeIconClickHandler(LeftMouseClickHandler):
+    def try_handle_click(self, mouse_position):
+        # logger.debug('UpgradeIconClickHandler')
+        for upgrade_icon in sprite_groups.upgrade_icon_sprites:
+            if upgrade_icon.rect.collidepoint(mouse_position):
+                upgrade_icon.on_click(sprite_groups.upgrade_icon_sprites)
+                return True
+        return False
+
+
+class SellTowerIconClickHandler(LeftMouseClickHandler):
+    def try_handle_click(self, mouse_position):
+        # logger.debug('SellTowerIconClickHndler')
+        if sprite_groups.sell_tower_icon_sprite:
+            if sprite_groups.sell_tower_icon_sprite.sprite.rect.collidepoint(mouse_position):
+                sprite_groups.sell_tower_icon_sprite.sprite.on_click()
+                sprite_groups.sell_tower_icon_sprite.empty()
+                sprite_groups.upgrade_icon_sprites.empty()
+                return True
+        return False
+
+
+class CreateNewTowerClickHandler(LeftMouseClickHandler):
+    def try_handle_click(self, mouse_position):
+        # logger.debug('CreateNewTowerClickHandler')
+        if sprite_groups.selected_tower_icon_sprite:
+            new_tower = tower.create_tower(sprite_groups.selected_tower_icon_sprite.sprite._tower_type, mouse_position,
+                                           DISPLAYSURF)
+            bank.withdraw(new_tower.buy_price)
+            sprite_groups.tower_sprites.add(new_tower)
             sprite_groups.selected_tower_icon_sprite.empty()
-
-        elif event.type == pygame.locals.QUIT:
-            pygame.quit()
-            sys.exit()
-
-    # tower_sprites.update()
+            return True
+        return False
 
 
-    DISPLAYSURF.fill(colours.BLACK)
+class NullClickHandler(LeftMouseClickHandler):
+    def try_handle_click(self, mouse_position):
+        # logger.debug('NullClickHandler')
+        # do nothing
+        return True
 
-    # draw dashboard and upgrade sprites
+
+def handle_left_mouse_click(tower_icon_click_handler, mouse_position):
+    tower_icon_click_handler.handle_click(mouse_position)
+
+
+def check_player_clicked_on_tower_icon(mouse_position):
+    """
+    :param mouse_position: 2-element tuple storing the position of the mouse when it clicked
+    :return: True/False
+    """
+
+    for tower_icon in sprite_groups.tower_icon_sprites:
+        if tower_icon.rect.collidepoint(mouse_position):
+            duplicate_tower_icon = tower_icon.on_click()
+            sprite_groups.selected_tower_icon_sprite.add(duplicate_tower_icon)
+            return True
+    return False
+
+
+def begin_game():
+    # setup
+    sprite_groups.tower_icon_sprites.add(icon.create_tower_icon(icon.LINEAR_TOWER_ICON, (300, 100)),
+                                         icon.create_tower_icon(icon.THREE_SIXTY_TOWER_ICON, (300, 150)),
+                                         icon.create_tower_icon(icon.EXPLOSION_TOWER_ICON, (300, 200)),
+                                         icon.create_tower_icon(icon.TELEPORTATION_TOWER_ICON, (300, 250)))
+
     basic_dashboard = pygame.draw.rect(DISPLAYSURF, colours.GRAY, (0, 300, 400, 100))
-    sprite_groups.upgrade_icon_sprites.draw(DISPLAYSURF)
-    sprite_groups.sell_tower_icon_sprite.draw(DISPLAYSURF)
 
-    sprite_groups.tower_sprites.update(sprite_groups.ballon_sprites, sprite_groups.bullet_sprites)
-    sprite_groups.tower_sprites.draw(DISPLAYSURF)
+    # select font type
+    bank_balance_font = game_utility.set_bank_balance_font()
+    life_point_font = game_utility.set_life_point_font()
 
-    sprite_groups.ballon_sprites.update(sprite_groups.bullet_sprites)
-    sprite_groups.ballon_sprites.draw(DISPLAYSURF)
+    levels = [level.Level1(),
+              level.Level2(),
+              level.Level3()]  # game_utility.create_game_levels()
+    current_level = levels.pop(0)
 
-    sprite_groups.bullet_sprites.update()
-    sprite_groups.bullet_sprites.draw(DISPLAYSURF)
+    make_new_balloon_countdown = 10  # called every frame and dictates when to make new balloon
 
-    sprite_groups.tower_icon_sprites.draw(DISPLAYSURF)
+    # create left button click event handlers
+    null_click_handler = NullClickHandler(None)
+    create_new_tower_click_handler = CreateNewTowerClickHandler(null_click_handler)
+    sell_tower_icon_click_handler = SellTowerIconClickHandler(create_new_tower_click_handler)
+    upgrade_icon_click_handler = UpgradeIconClickHandler(sell_tower_icon_click_handler)
+    tower_click_handler = TowerClickHandler(upgrade_icon_click_handler)
+    tower_icon_click_handler = TowerIconClickHandler(tower_click_handler)
 
-    sprite_groups.selected_tower_icon_sprite.update(pygame.mouse.get_pos())
-    sprite_groups.selected_tower_icon_sprite.draw(DISPLAYSURF)
+    while True:
 
-    # render text
-    bank_balance_label = bank_balance.render("Bank balance: {}".format(bank.balance), True, (255, 255, 0))
-    DISPLAYSURF.blit(bank_balance_label, (300, 50))
+        # if player finished this level and there are other levels remaining, start them, otherwise, proceed to "Win screen"
+        if player_has_completed_level(current_level):
+            if levels:
+                logger.info('level complete. ')
+                current_level = levels.pop(0)
+                logger.info('changed current_level, level length is ' + str(len(levels)))
+            else:
+                logger.info('show win screen')
+                show_win_screen()
 
-    life_balance_label = life_balance.render("Life balance: {}".format(life_point.life_balance), True, (255, 255, 0))
-    DISPLAYSURF.blit(life_balance_label, (300, 30))
+        # if it's time to make a new balloon and the next balloon exists, then add that balloon to the balloon_sprites and restart countdown. If it doesn't exist, don't add it
+        # if it isn't time to make a new balloon, decrement countdown
+        if make_new_balloon_countdown == 0:
+            if current_level.next_balloon_exists():
+                logger.info('making new balloon')
+                sprite_groups.balloon_sprites.add(current_level.get_next_balloon())
+            make_new_balloon_countdown = 10
+        else:
+            logger.info('no new balloon making')
+            make_new_balloon_countdown -= 1
 
-    fpsClock.tick(15)
-    pygame.display.update()
+        # handle events
+        for event in pygame.event.get():
+
+            '''Left mouse button clicked
+            1. If clicked on tower icon: the mouse cursor will contain an identical tower icon, set a flag to indicate that a tower
+            icon had been selected so that the next mouse click would make that tower
+            2. If clicked on tower icon, show sell icon and upgrade icon
+            3. If clicked on upgrade icon, notify the upgrade icon
+            4. If clicked on sell tower icon, notify the sell tower icon
+            5. Anywhere else
+                a) if the flag to indicate to create a new tower had been set (user had clicked on a tower icon), create new tower there, and withdraw from bank
+                b) nothing happens
+            '''
+
+            if event.type == pygame.locals.MOUSEBUTTONUP and event.button == 1:
+                mouse_position = pygame.mouse.get_pos()
+                handle_left_mouse_click(tower_icon_click_handler, mouse_position)  # start of chain of responsibility.
+
+            # right mouse button is clicked. Remove the tower icon currently on the cursor (if it exists)
+            elif event.type == pygame.locals.MOUSEBUTTONUP and event.button == 3:
+                sprite_groups.selected_tower_icon_sprite.empty()
+                sprite_groups.sell_tower_icon_sprite.empty()
+                sprite_groups.upgrade_icon_sprites.empty()
+
+            elif event.type == pygame.locals.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        DISPLAYSURF.fill(colours.BLACK)
+
+        # draw dashboard and upgrade sprites
+        pygame.draw.rect(DISPLAYSURF, colours.GRAY, (0, 300, 400, 100))  # draw dashboard
+        sprite_groups.upgrade_icon_sprites.draw(DISPLAYSURF)
+        sprite_groups.sell_tower_icon_sprite.draw(DISPLAYSURF)
+
+        sprite_groups.tower_sprites.update(sprite_groups.balloon_sprites, sprite_groups.bullet_sprites)
+        sprite_groups.tower_sprites.draw(DISPLAYSURF)
+
+        sprite_groups.balloon_sprites.update(sprite_groups.bullet_sprites)
+        sprite_groups.balloon_sprites.draw(DISPLAYSURF)
+
+        sprite_groups.bullet_sprites.update()
+        sprite_groups.bullet_sprites.draw(DISPLAYSURF)
+
+        sprite_groups.tower_icon_sprites.draw(DISPLAYSURF)
+
+        sprite_groups.selected_tower_icon_sprite.update(pygame.mouse.get_pos())
+        sprite_groups.selected_tower_icon_sprite.draw(DISPLAYSURF)
+
+        # render text
+        bank_balance_label = bank_balance_font.render("Bank balance: {}".format(bank.balance), True, (255, 255, 0))
+        DISPLAYSURF.blit(bank_balance_label, (300, 50))
+
+        life_balance_label = life_point_font.render("Life points: {}".format(life_point.life_balance), True, (255, 255, 0))
+        DISPLAYSURF.blit(life_balance_label, (300, 30))
+
+        fpsClock.tick(15)
+        pygame.display.update()
 
 
-
-
-win_message_setup = pygame.font.SysFont("freesansbold", 15)
-win_message_label = win_message_setup.render("Congratulations! You won!", True, colours.GREEN)
-
-while True:
-
-    DISPLAYSURF.fill(colours.WHITE)
-
-
-    for event in pygame.event.get():
-        if event.type == pygame.locals.QUIT:
-            pygame.quit()
-            sys.exit()
-
-    DISPLAYSURF.blit(win_message_label, (200, 200))
-    pygame.display.update()
+if __name__ == '__main__':
+    show_start_screen()
+    begin_game()

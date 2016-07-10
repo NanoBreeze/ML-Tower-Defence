@@ -28,19 +28,19 @@ class Level:
         assert isinstance(number, int) and 1 <= number <= 5, 'number must be an integer from 1 to 5'
 
         if number == 1:
-            return balloon.create_balloon_context(balloon.BALLOON_L1, balloon_path)
+            return balloon.create_balloon(balloon.BALLOON_L1, balloon_path)
         elif number == 2:
-            return balloon.create_balloon_context(balloon.BALLOON_L2, balloon_path)
+            return balloon.create_balloon(balloon.BALLOON_L2, balloon_path)
         elif number == 3:
-            return balloon.create_balloon_context(balloon.BALLOON_L3, balloon_path)
+            return balloon.create_balloon(balloon.BALLOON_L3, balloon_path)
         elif number == 4:
-            return balloon.create_balloon_context(balloon.BALLOON_L4, balloon_path)
+            return balloon.create_balloon(balloon.BALLOON_L4, balloon_path)
         elif number == 5:
-            return balloon.create_balloon_context(balloon.BALLOON_L5, balloon_path)
+            return balloon.create_balloon(balloon.BALLOON_L5, balloon_path)
 
         raise NotImplementedError('the specified number mapping to balloon doesnt exist. How did it pass the assertion?')
 
-    def get_next_balloon_context(self):
+    def get_next_balloon(self):
         """
         :return: balloon_context or None.
          Returns the next balloon to display on to the path on the game. The balloon list uses numbers so we convert it to a balloon context
@@ -50,12 +50,11 @@ class Level:
             return self.map_number_to_balloon(current_number_representing_balloon, self.balloon_path)
         return None
 
-    def there_are_more_balloons_to_display(self):
+    def next_balloon_exists(self):
         """Determines if all the balloons on this level have been displayed on screen"""
         if self.numbers_representing_balloons:
             return True
         return False
-
 
 
 class Level1(Level):
@@ -63,8 +62,9 @@ class Level1(Level):
         logger.debug('Level1 started')
         balloon_path = path.Path()
         # the balloons to output on this level
-        numbers_representing_balloons = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+        numbers_representing_balloons = [4]
         super().__init__(numbers_representing_balloons, balloon_path)
+
 
 class Level2(Level):
     def __init__(self):
@@ -73,6 +73,7 @@ class Level2(Level):
         numbers_representing_balloons = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
         super().__init__(numbers_representing_balloons, balloon_path)
 
+
 class Level3(Level):
     def __init__(self):
         logger.debug('Level3 started')
@@ -80,4 +81,5 @@ class Level3(Level):
         # the balloons to output on this level
         numbers_representing_balloons = [1, 1, 1, 1, 1, 1, 1, 1, 1]
         super().__init__(numbers_representing_balloons, balloon_path)
+
 

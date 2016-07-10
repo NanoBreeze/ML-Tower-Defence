@@ -13,7 +13,7 @@ import bank
 class TestBalloon(TestCase):
     def test_init_with_all_params(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p, 30, 40)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p, 30, 40)
 
         self.assertEqual(b.image.get_width(), 50)
         self.assertEqual(b.image.get_height(), 60)
@@ -26,7 +26,7 @@ class TestBalloon(TestCase):
 
     def test_init_with_defaults(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
 
         self.assertEqual(b.image.get_width(), 50)
         self.assertEqual(b.image.get_height(), 60)
@@ -41,7 +41,7 @@ class TestBalloon(TestCase):
     def test_update_with_no_collided_bullets(self, mock_spritecollide):
         mock_spritecollide.return_value = None
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
 
         return_value = b.update('fake_bullet_sprites')
 
@@ -55,7 +55,7 @@ class TestBalloon(TestCase):
         mock_spritecollide.return_value = [collided_bullets]
 
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
 
         return_value = b.update('fake_bullet_sprites')
 
@@ -69,7 +69,7 @@ class TestBalloon(TestCase):
         mock_spritecollide.return_value = [collided_bullets]
 
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
 
         return_value = b.update('fake_bullet_sprites')
 
@@ -81,7 +81,7 @@ class TestBalloon(TestCase):
         mock_spritecollide.return_value = [collided_bullets]
 
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
 
         return_value = b.update('fake_bullet_sprites')
 
@@ -93,13 +93,13 @@ class TestBalloon(TestCase):
         mock_spritecollide.return_value = [collided_bullets]
 
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
 
         self.assertRaises(NotImplementedError, b.update, 'fake_bullet_sprites')
 
     def test_move_with_valid_path_index(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
         b.path_index = 10
 
         b.move()
@@ -109,7 +109,7 @@ class TestBalloon(TestCase):
 
     def test_move_with_out_of_range_path_index(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
 
         b.path_index = 329
         self.assertRaises(NotImplementedError, b.move)
@@ -119,7 +119,7 @@ class TestBalloon(TestCase):
 
     def test_teleport_with_larger_default_back_track(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
         b.path_index = 10
         b.teleport()
 
@@ -127,7 +127,7 @@ class TestBalloon(TestCase):
 
     def test_teleport_with_smaller_default_back_track(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
         b.path_index = 50
         b.teleport()
 
@@ -135,7 +135,7 @@ class TestBalloon(TestCase):
 
     def test_teleport_with_larger_custom_back_track(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
         b.path_index = 50
         b.teleport(70)
 
@@ -143,7 +143,7 @@ class TestBalloon(TestCase):
 
     def test_teleport_with_smaller_custom_back_track(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
         b.path_index = 50
         b.teleport(40)
 
@@ -153,7 +153,7 @@ class TestBalloon(TestCase):
 class TestBalloonL1(TestCase):
     def test_peel_layer(self):
         p = [(100, y) for y in range(30, 360)]
-        b1 = balloon.BalloonL1((0, 0, 255), (50, 60), p)
+        b1 = balloon.BalloonStateL1((0, 0, 255), (50, 60), p)
 
         return_value = b1.peel_layer()
         self.assertIsNone(return_value)
@@ -162,92 +162,92 @@ class TestBalloonL1(TestCase):
 class TestBalloonL2(TestCase):
     def test_peel_layer(self):
         p = [(100, y) for y in range(30, 360)]
-        b2 = balloon.BalloonL2((0, 0, 255), (50, 60), p)
+        b2 = balloon.BalloonStateL2((0, 0, 255), (50, 60), p)
 
         return_value = b2.peel_layer()
-        self.assertIsInstance(return_value, balloon.BalloonL1)
+        self.assertIsInstance(return_value, balloon.BalloonStateL1)
 
 
 class TestBalloonL3(TestCase):
     def test_peel_layer(self):
         p = [(100, y) for y in range(30, 360)]
-        b3 = balloon.BalloonL3((0, 0, 255), (50, 60), p)
+        b3 = balloon.BalloonStateL3((0, 0, 255), (50, 60), p)
 
         return_value = b3.peel_layer()
-        self.assertIsInstance(return_value, balloon.BalloonL2)
+        self.assertIsInstance(return_value, balloon.BalloonStateL2)
 
 
 class TestBalloonL4(TestCase):
     def test_peel_layer(self):
         p = [(100, y) for y in range(30, 360)]
-        b4 = balloon.BalloonL4((0, 0, 255), (50, 60), p)
+        b4 = balloon.BalloonStateL4((0, 0, 255), (50, 60), p)
 
         return_value = b4.peel_layer()
-        self.assertIsInstance(return_value, balloon.BalloonL3)
+        self.assertIsInstance(return_value, balloon.BalloonStateL3)
 
 
 class TestBalloonL5(TestCase):
     def test_peel_layer(self):
         p = [(100, y) for y in range(30, 360)]
-        b5 = balloon.BalloonL5((0, 0, 255), (50, 60), p)
+        b5 = balloon.BalloonStateL5((0, 0, 255), (50, 60), p)
 
         return_value = b5.peel_layer()
-        self.assertIsInstance(return_value, balloon.BalloonL4)
+        self.assertIsInstance(return_value, balloon.BalloonStateL4)
 
 
 class TestBalloonContext(TestCase):
     def test_init(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
-        balloon_context = balloon.BalloonContext(b)
-        self.assertEqual(balloon_context.current_ballon, b)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
+        balloon_context = balloon.Balloon(b)
+        self.assertEqual(balloon_context.current_balloon_state, b)
 
-    @patch.object(balloon.Balloon, 'update')
-    @patch.object(balloon.BalloonContext, 'handle_pop')
+    @patch.object(balloon.BalloonState, 'update')
+    @patch.object(balloon.Balloon, 'handle_pop')
     def test_update_with_true_is_handle_pop(self, mock_handle_pop, mock_update):
         mock_update.return_value = True
 
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
-        balloon_context = balloon.BalloonContext(b)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
+        balloon_context = balloon.Balloon(b)
 
         balloon_context.update('fake_bullet_sprites')
         self.assertEqual(mock_handle_pop.call_count, 1)
 
-    @patch.object(balloon.Balloon, 'update')
-    @patch.object(balloon.BalloonContext, 'handle_pop')
+    @patch.object(balloon.BalloonState, 'update')
+    @patch.object(balloon.Balloon, 'handle_pop')
     def test_update_with_false_is_handle_pop(self, mock_handle_pop, mock_update):
         mock_update.return_value = False
 
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
-        balloon_context = balloon.BalloonContext(b)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
+        balloon_context = balloon.Balloon(b)
 
         balloon_context.update('fake_bullet_sprites')
         self.assertEqual(mock_handle_pop.call_count, 0)
 
-    @patch.object(balloon.Balloon, 'update')
-    @patch.object(balloon.BalloonContext, 'handle_pop')
+    @patch.object(balloon.BalloonState, 'update')
+    @patch.object(balloon.Balloon, 'handle_pop')
     def test_update_with_none_is_handle_pop(self, mock_handle_pop, mock_update):
         mock_update.return_value = None
 
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
-        balloon_context = balloon.BalloonContext(b)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
+        balloon_context = balloon.Balloon(b)
 
         balloon_context.update('fake_bullet_sprites')
         self.assertEqual(mock_handle_pop.call_count, 0)
 
     @patch.object(bank, 'deposit')
-    @patch.object(balloon.BalloonL5, 'peel_layer')
+    @patch.object(balloon.BalloonStateL5, 'peel_layer')
     @patch.object(pygame.sprite.Sprite, 'kill')
     def test_handle_pop_with_None_current_ballon(self, mock_kill, mock_peel_layer, mock_deposit):
         mock_peel_layer.return_value = None
 
         p = [(100, y) for y in range(30, 360)]
-        bL5 = balloon.BalloonL5((0, 0, 255), (50, 60), p)
-        balloon_context = balloon.BalloonContext(bL5)
-        original_bounty = balloon_context.current_ballon.bounty
+        bL5 = balloon.BalloonStateL5((0, 0, 255), (50, 60), p)
+        balloon_context = balloon.Balloon(bL5)
+        original_bounty = balloon_context.current_balloon_state.bounty
         balloon_context.handle_pop()
 
         self.assertEqual(mock_kill.call_count, 0)
@@ -255,15 +255,15 @@ class TestBalloonContext(TestCase):
         mock_deposit.assert_called_with(original_bounty)
 
     @patch.object(bank, 'deposit')
-    @patch.object(balloon.BalloonL5, 'peel_layer')
+    @patch.object(balloon.BalloonStateL5, 'peel_layer')
     @patch.object(pygame.sprite.Sprite, 'kill')
     def test_handle_pop_with_None_current_ballon(self, mock_kill, mock_peel_layer, mock_deposit):
-        mock_peel_layer.return_value = balloon.create_balloon(balloon.BALLOON_L4, path.Path())
+        mock_peel_layer.return_value = balloon.create_balloon_state(balloon.BALLOON_L4, path.Path())
 
         p = [(100, y) for y in range(30, 360)]
-        bL5 = balloon.BalloonL5((0, 0, 255), (50, 60), p)
-        balloon_context = balloon.BalloonContext(bL5)
-        original_bounty = balloon_context.current_ballon.bounty
+        bL5 = balloon.BalloonStateL5((0, 0, 255), (50, 60), p)
+        balloon_context = balloon.Balloon(bL5)
+        original_bounty = balloon_context.current_balloon_state.bounty
         balloon_context.handle_pop(1)
 
         self.assertEqual(mock_kill.call_count, 0)
@@ -273,9 +273,9 @@ class TestBalloonContext(TestCase):
 
     def test_get_centerX(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
         b.rect.centerx = 120
-        balloon_context = balloon.BalloonContext(b)
+        balloon_context = balloon.Balloon(b)
 
         return_value = balloon_context.get_centerX()
 
@@ -283,9 +283,9 @@ class TestBalloonContext(TestCase):
 
     def test_get_centerX(self):
         p = [(100, y) for y in range(30, 360)]
-        b = balloon.Balloon((0, 0, 255), (50, 60), p)
+        b = balloon.BalloonState((0, 0, 255), (50, 60), p)
         b.rect.centery = 120
-        balloon_context = balloon.BalloonContext(b)
+        balloon_context = balloon.Balloon(b)
 
         return_value = balloon_context.get_centerY()
 
@@ -294,30 +294,30 @@ class TestBalloonContext(TestCase):
 
 class TestBalloonModule(TestCase):
     def test_create_balloon_BALLOON_L1(self):
-        return_value = balloon.create_balloon(balloon.BALLOON_L1, path.Path())
-        self.assertIsInstance(return_value, balloon.BalloonL1)
+        return_value = balloon.create_balloon_state(balloon.BALLOON_L1, path.Path())
+        self.assertIsInstance(return_value, balloon.BalloonStateL1)
 
     def test_create_balloon_BALLOON_L2(self):
-        return_value = balloon.create_balloon(balloon.BALLOON_L2, path.Path())
-        self.assertIsInstance(return_value, balloon.BalloonL2)
+        return_value = balloon.create_balloon_state(balloon.BALLOON_L2, path.Path())
+        self.assertIsInstance(return_value, balloon.BalloonStateL2)
 
     def test_create_balloon_BALLOON_L3(self):
-        return_value = balloon.create_balloon(balloon.BALLOON_L3, path.Path())
-        self.assertIsInstance(return_value, balloon.BalloonL3)
+        return_value = balloon.create_balloon_state(balloon.BALLOON_L3, path.Path())
+        self.assertIsInstance(return_value, balloon.BalloonStateL3)
 
     def test_create_balloon_BALLOON_L4(self):
-        return_value = balloon.create_balloon(balloon.BALLOON_L4, path.Path())
-        self.assertIsInstance(return_value, balloon.BalloonL4)
+        return_value = balloon.create_balloon_state(balloon.BALLOON_L4, path.Path())
+        self.assertIsInstance(return_value, balloon.BalloonStateL4)
 
     def test_create_balloon_BALLOON_L5(self):
-        return_value = balloon.create_balloon(balloon.BALLOON_L5, path.Path())
-        self.assertIsInstance(return_value, balloon.BalloonL5)
+        return_value = balloon.create_balloon_state(balloon.BALLOON_L5, path.Path())
+        self.assertIsInstance(return_value, balloon.BalloonStateL5)
 
     def test_create_balloon_exception(self):
-        self.assertRaises(NotImplementedError, balloon.create_balloon, 'Invalid type', path.Path())
+        self.assertRaises(NotImplementedError, balloon.create_balloon_state, 'Invalid type', path.Path())
 
     def test_create_balloon_context(self):
-        return_value = balloon.create_balloon_context(balloon.BALLOON_L3, path.Path())
-        self.assertIsInstance(return_value, balloon.BalloonContext)
+        return_value = balloon.create_balloon(balloon.BALLOON_L3, path.Path())
+        self.assertIsInstance(return_value, balloon.Balloon)
 
 

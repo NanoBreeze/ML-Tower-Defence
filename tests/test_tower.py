@@ -51,23 +51,23 @@ class TestLinearTower(unittest.TestCase):
     def test_init(self, mock_tower_init):
 
         self.t = tower.LinearTower(self.position, self.DISPLAYSURF)
-        self.t._attk_props.speed = 15
+        self.t._attack_values.speed = 15
 
         mock_tower_init.assert_called_with(colour=colours.YELLOW, position=self.position, dimension=(50, 50),
                                            cost=10, DISPLAYSURF=self.DISPLAYSURF)
-        self.assertEqual(self.t._attack_again_counter, 10)
+        self.assertEqual(self.t.frames_until_attack_again, 10)
 
 
 
     @patch.object(pygame.draw, 'circle')
     def test_update_with_not_time_to_attack(self, mock_pygame_draw_circle):
-        self.t._attk_props.speed = 5
-        self.t._attack_again_counter = 7
+        self.t._attack_values.speed = 5
+        self.t.frames_until_attack_again = 7
         self.t.update('fake_ballon_sprites', 'fake_bullet_sprites')
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
                                                    self.attack_radius, 1)
-        self.assertEqual(self.t._attack_again_counter, 8)
+        self.assertEqual(self.t.frames_until_attack_again, 8)
 
     @patch.object(bullet, 'create_bullet')
     @patch.object(pygame.sprite.Group, 'add')
@@ -75,9 +75,9 @@ class TestLinearTower(unittest.TestCase):
     @patch.object(pygame.draw, 'circle')
     def test_update_with_time_to_attack_with_ballon_and_within_range(self, mock_pygame_draw_circle, mock_math_hypot,
                                                                      mock_sprite_group_add, mock_bullet_create_bullet):
-        self.t._attack_again_counter = 10
-        self.t._attk_props.radius = 70
-        self.t._attk_props.pop_power = 3
+        self.t.frames_until_attack_again = 10
+        self.t._attack_values.radius = 70
+        self.t._attack_values.pop_power = 3
 
         mock_balloon = Mock()
         mock_balloon.get_centerX.return_value = 20
@@ -90,12 +90,12 @@ class TestLinearTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 1)
         self.assertEqual(mock_bullet_create_bullet.call_count, 1)
-        mock_bullet_create_bullet.assert_called_with(bullet.STANDARD_BULLET, start=self.position, destination=(20, 30), pop_power=self.t._attk_props.pop_power)
-        self.assertEqual(self.t._attack_again_counter, 0)
+        mock_bullet_create_bullet.assert_called_with(bullet.STANDARD_BULLET, start=self.position, destination=(20, 30), pop_power=self.t._attack_values.pop_power)
+        self.assertEqual(self.t.frames_until_attack_again, 0)
 
     @patch.object(bullet, 'create_bullet')
     @patch.object(pygame.sprite.Group, 'add')
@@ -103,8 +103,8 @@ class TestLinearTower(unittest.TestCase):
     @patch.object(pygame.draw, 'circle')
     def test_update_with_time_to_attack_with_ballon_and_outside_range(self, mock_pygame_draw_circle, mock_math_hypot,
                                                                       mock_sprite_group_add, mock_bullet_create_bullet):
-        self.t._attack_again_counter = 10
-        self.t._attk_props.radius  = 70
+        self.t.frames_until_attack_again = 10
+        self.t._attack_values.radius  = 70
 
         mock_balloon = Mock()
         mock_balloon.get_centerX.return_value = 20
@@ -117,11 +117,11 @@ class TestLinearTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 0)
         self.assertEqual(mock_bullet_create_bullet.call_count, 0)
-        self.assertEqual(self.t._attack_again_counter, 10)
+        self.assertEqual(self.t.frames_until_attack_again, 10)
 
     @patch.object(bullet, 'create_bullet')
     @patch.object(pygame.sprite.Group, 'add')
@@ -129,8 +129,8 @@ class TestLinearTower(unittest.TestCase):
     @patch.object(pygame.draw, 'circle')
     def test_update_with_time_to_attack_without_ballon(self, mock_pygame_draw_circle, mock_math_hypot,
                                                        mock_sprite_group_add, mock_bullet_create_bullet):
-        self.t._attack_again_counter = 10
-        self.t._attk_props.radius = 70
+        self.t.frames_until_attack_again = 10
+        self.t._attack_values.radius = 70
 
         balloon_sprites = []
         bullet_sprites = sprite_groups.bullet_sprites
@@ -139,15 +139,15 @@ class TestLinearTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 0)
         self.assertEqual(mock_bullet_create_bullet.call_count, 0)
-        self.assertEqual(self.t._attack_again_counter, 10)
+        self.assertEqual(self.t.frames_until_attack_again, 10)
 
     def test_handle_is_clicked(self):
         upgrade_icon_sprites = Mock(spec=pygame.sprite.Group)
-        self.t.handle_is_clicked(upgrade_icon_sprites)
+        self.t.on_click(upgrade_icon_sprites)
 
         self.assertEqual(upgrade_icon_sprites.add.call_count, 3)
 
@@ -168,12 +168,12 @@ class TestThreeSixtyTower(unittest.TestCase):
 
     @patch.object(pygame.draw, 'circle')
     def test_update_with_not_time_to_attack(self, mock_pygame_draw_circle):
-        self.t._attack_again_counter = 5
+        self.t.frames_until_attack_again = 5
         self.t.update('fake_ballon_sprites', 'fake_bullet_sprites')
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
-        self.assertEqual(self.t._attack_again_counter, 6)
+                                                   self.t._attack_values.radius, 1)
+        self.assertEqual(self.t.frames_until_attack_again, 6)
 
 
 
@@ -184,8 +184,8 @@ class TestThreeSixtyTower(unittest.TestCase):
     def test_update_with_time_to_attack_with_ballon_and_within_range(self, mock_pygame_draw_circle, mock_math_hypot,
                                                                      mock_sprite_group_add, mock_bullet_create_bullet):
         self.t.attack_again_counter = 10
-        self.t._attk_props.radius = 70
-        self.t._attk_props.pop_power = 3
+        self.t._attack_values.radius = 70
+        self.t._attack_values.pop_power = 3
 
         mock_balloon = Mock()
         mock_balloon.get_centerX.return_value = 20
@@ -198,7 +198,7 @@ class TestThreeSixtyTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 1)
         self.assertEqual(mock_bullet_create_bullet.call_count, 8)
@@ -218,9 +218,9 @@ class TestThreeSixtyTower(unittest.TestCase):
     @patch.object(pygame.draw, 'circle')
     def test_update_with_time_to_attack_with_ballon_and_outside_range(self, mock_pygame_draw_circle, mock_math_hypot,
                                                                       mock_sprite_group_add, mock_bullet_create_bullet):
-        self.t._attack_again_counter = 10
-        self.t._attk_props.radius = 70
-        self.t._attk_props.speed = 10
+        self.t.frames_until_attack_again = 10
+        self.t._attack_values.radius = 70
+        self.t._attack_values.speed = 10
 
         mock_balloon = Mock()
         mock_balloon.get_centerX.return_value = 20
@@ -233,11 +233,11 @@ class TestThreeSixtyTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 0)
         self.assertEqual(mock_bullet_create_bullet.call_count, 0)
-        self.assertEqual(self.t._attack_again_counter, 10)
+        self.assertEqual(self.t.frames_until_attack_again, 10)
 
     @patch.object(bullet, 'create_bullet')
     @patch.object(pygame.sprite.Group, 'add')
@@ -246,7 +246,7 @@ class TestThreeSixtyTower(unittest.TestCase):
     def test_update_with_time_to_attack_without_ballon(self, mock_pygame_draw_circle, mock_math_hypot,
                                                        mock_sprite_group_add, mock_bullet_create_bullet):
         self.t.attack_again_counter = 10
-        self.t._attk_props.radius = 70
+        self.t._attack_values.radius = 70
 
         balloon_sprites = []
         bullet_sprites = sprite_groups.bullet_sprites
@@ -263,7 +263,7 @@ class TestThreeSixtyTower(unittest.TestCase):
 
     def test_handle_is_clicked(self):
         upgrade_icon_sprites = Mock(spec=pygame.sprite.Group)
-        self.t.handle_is_clicked(upgrade_icon_sprites)
+        self.t.on_click(upgrade_icon_sprites)
 
         self.assertEqual(upgrade_icon_sprites.add.call_count, 3)
 
@@ -286,12 +286,12 @@ class TestExplosionTower(unittest.TestCase):
     @patch.object(pygame.draw, 'circle')
     def test_update_with_not_time_to_attack(self, mock_pygame_draw_circle):
         self.t.attack_again_counter = 5
-        self.t._attk_props.speed = 10
+        self.t._attack_values.speed = 10
         self.t.update('fake_ballon_sprites', 'fake_bullet_sprites')
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
-        self.assertEqual(self.t._attack_again_counter, 6)
+                                                   self.t._attack_values.radius, 1)
+        self.assertEqual(self.t.frames_until_attack_again, 6)
 
     @patch.object(bullet, 'create_bullet')
     @patch.object(pygame.sprite.Group, 'add')
@@ -299,9 +299,9 @@ class TestExplosionTower(unittest.TestCase):
     @patch.object(pygame.draw, 'circle')
     def test_update_with_time_to_attack_with_ballon_and_within_range(self, mock_pygame_draw_circle, mock_math_hypot,
                                                                      mock_sprite_group_add, mock_bullet_create_bullet):
-        self.t._attack_again_counter = 10
-        self.t._attk_props.radius = 70
-        self.t._attk_props.pop_power = 1
+        self.t.frames_until_attack_again = 10
+        self.t._attack_values.radius = 70
+        self.t._attack_values.pop_power = 1
 
         mock_balloon = Mock()
         mock_balloon.get_centerX.return_value = 20
@@ -314,12 +314,12 @@ class TestExplosionTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 1)
         self.assertEqual(mock_bullet_create_bullet.call_count, 1)
         mock_bullet_create_bullet.assert_called_with(bullet.EXPLOSION_BULLET, start=self.position, destination=(20, 30), pop_power=1)
-        self.assertEqual(self.t._attack_again_counter, 0)
+        self.assertEqual(self.t.frames_until_attack_again, 0)
 
     @patch.object(bullet, 'create_bullet')
     @patch.object(pygame.sprite.Group, 'add')
@@ -328,7 +328,7 @@ class TestExplosionTower(unittest.TestCase):
     def test_update_with_time_to_attack_with_ballon_and_outside_range(self, mock_pygame_draw_circle, mock_math_hypot,
                                                                       mock_sprite_group_add, mock_bullet_create_bullet):
         self.t.attack_again_counter = 10
-        self.t._attk_props.radius = 70
+        self.t._attack_values.radius = 70
 
         mock_balloon = Mock()
         mock_balloon.get_centerX.return_value = 20
@@ -341,7 +341,7 @@ class TestExplosionTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 0)
         self.assertEqual(mock_bullet_create_bullet.call_count, 0)
@@ -354,7 +354,7 @@ class TestExplosionTower(unittest.TestCase):
     def test_update_with_time_to_attack_without_ballon(self, mock_pygame_draw_circle, mock_math_hypot,
                                                        mock_sprite_group_add, mock_bullet_create_bullet):
         self.t.attack_again_counter = 10
-        self.t._attk_props.radius = 70
+        self.t._attack_values.radius = 70
 
         balloon_sprites = []
         bullet_sprites = sprite_groups.bullet_sprites
@@ -363,7 +363,7 @@ class TestExplosionTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 0)
         self.assertEqual(mock_bullet_create_bullet.call_count, 0)
@@ -371,7 +371,7 @@ class TestExplosionTower(unittest.TestCase):
 
     def test_handle_is_clicked(self):
         upgrade_icon_sprites = Mock(spec=pygame.sprite.Group)
-        self.t.handle_is_clicked(upgrade_icon_sprites)
+        self.t.on_click(upgrade_icon_sprites)
 
         self.assertEqual(upgrade_icon_sprites.add.call_count, 3)
 
@@ -387,20 +387,20 @@ class TestTeleportationTower(unittest.TestCase):
     @patch.object(tower.Tower, '__init__')
     def test_init(self, mock_tower_init):
         self.t = tower.TeleportationTower(self.position, self.DISPLAYSURF)
-        self.t._attk_props.radius = 15
+        self.t._attack_values.radius = 15
 
         mock_tower_init.assert_called_with(colour=colours.BROWN, position=self.position, dimension=(40, 40),
                                            DISPLAYSURF=self.DISPLAYSURF, cost=40)
 
     @patch.object(pygame.draw, 'circle')
     def test_update_with_not_time_to_attack(self, mock_pygame_draw_circle):
-        self.t._attack_again_counter = 5
+        self.t.frames_until_attack_again = 5
         self.t.update('fake_ballon_sprites', 'fake_bullet_sprites')
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255),
-                                                   self.position, self.t._attk_props.radius, 1)
+                                                   self.position, self.t._attack_values.radius, 1)
 
-        self.assertEqual(self.t._attack_again_counter, 6)
+        self.assertEqual(self.t.frames_until_attack_again, 6)
 
     @patch.object(bullet, 'create_bullet')
     @patch.object(pygame.sprite.Group, 'add')
@@ -410,7 +410,7 @@ class TestTeleportationTower(unittest.TestCase):
                                                                      mock_sprite_group_add, mock_bullet_create_bullet):
         self.t.attack_again_counter = 10
         self.t.attack_radius = 70
-        self.t._attk_props.radius = 30
+        self.t._attack_values.radius = 30
 
         mock_balloon = Mock()
         mock_balloon.get_centerX.return_value = 20
@@ -423,7 +423,7 @@ class TestTeleportationTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 1)
         self.assertEqual(mock_bullet_create_bullet.call_count, 1)
@@ -438,7 +438,7 @@ class TestTeleportationTower(unittest.TestCase):
                                                                       mock_sprite_group_add, mock_bullet_create_bullet):
         self.t.attack_again_counter = 10
         self.t.attack_radius = 70
-        self.t._attk_props.radius = 30
+        self.t._attack_values.radius = 30
 
         mock_balloon = Mock()
         mock_balloon.get_centerX.return_value = 20
@@ -451,7 +451,7 @@ class TestTeleportationTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 0)
         self.assertEqual(mock_bullet_create_bullet.call_count, 0)
@@ -465,7 +465,7 @@ class TestTeleportationTower(unittest.TestCase):
                                                        mock_sprite_group_add, mock_bullet_create_bullet):
         self.t.attack_again_counter = 10
         self.t.attack_radius = 70
-        self.t._attk_props.radius = 30
+        self.t._attack_values.radius = 30
 
         balloon_sprites = []
         bullet_sprites = sprite_groups.bullet_sprites
@@ -474,7 +474,7 @@ class TestTeleportationTower(unittest.TestCase):
         self.t.update(balloon_sprites, bullet_sprites)
 
         mock_pygame_draw_circle.assert_called_with(self.DISPLAYSURF, (255, 255, 255, 255), self.position,
-                                                   self.t._attk_props.radius, 1)
+                                                   self.t._attack_values.radius, 1)
 
         self.assertEqual(mock_sprite_group_add.call_count, 0)
         self.assertEqual(mock_bullet_create_bullet.call_count, 0)
@@ -482,7 +482,7 @@ class TestTeleportationTower(unittest.TestCase):
 
     def test_handle_is_clicked(self):
         upgrade_icon_sprites = Mock(spec=pygame.sprite.Group)
-        self.t.handle_is_clicked(upgrade_icon_sprites)
+        self.t.on_click(upgrade_icon_sprites)
 
         self.assertEqual(upgrade_icon_sprites.add.call_count, 3)
 

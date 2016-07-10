@@ -1,36 +1,32 @@
 import pygame
-import logging
 import logging.config
-
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleLogger')
 
 
-class BallonGroup(pygame.sprite.AbstractGroup):
-    """Sprite group for storing Balloons (aka, BalloonContext objects"""
+class BalloonGroup(pygame.sprite.AbstractGroup):
+    """Sprite group for storing Balloons (aka, Balloon objects"""
 
     def __init__(self):
         super().__init__()
 
     def draw(self, surface):
-        """Modified from Abstract group to draw the BalloonContext's current_balloon instead of its rect values"""
+        """Modified from Abstract group to draw the Balloon's current_balloon instead of its rect values"""
         sprites = self.sprites()
         surface_blit = surface.blit
         for spr in sprites:
-            self.spritedict[spr] = surface_blit(spr.current_ballon.image, spr.current_ballon.rect)
+            self.spritedict[spr] = surface_blit(spr.current_balloon_state.image, spr.current_balloon_state.rect)
         self.lostsprites = []
 
 
 bullet_sprites = pygame.sprite.Group()
 tower_sprites = pygame.sprite.Group()
-ballon_sprites = BallonGroup()
+balloon_sprites = BalloonGroup()
 
-# contains all the tower icons
-tower_icon_sprites = pygame.sprite.Group()
+tower_icon_sprites = pygame.sprite.Group() # contains all the tower icons
 
-#contains the current three upgrade icons to show in the dashboard
-upgrade_icon_sprites = pygame.sprite.Group()
+upgrade_icon_sprites = pygame.sprite.Group() #contains the current three upgrade icons to show in the dashboard
 
 sell_tower_icon_sprite = pygame.sprite.GroupSingle()
 

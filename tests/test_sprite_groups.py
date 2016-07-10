@@ -17,7 +17,7 @@ class TestSpriteGroupsModule(unittest.TestCase):
         self.assertIsInstance(sprite_groups.tower_sprites, pygame.sprite.Group)
 
     def test_instance_of_balloon_sprites(self):
-        self.assertIsInstance(sprite_groups.ballon_sprites, sprite_groups.BallonGroup)
+        self.assertIsInstance(sprite_groups.balloon_sprites, sprite_groups.BalloonGroup)
 
     def test_instance_of_tower_icon_sprites(self):
         self.assertIsInstance(sprite_groups.tower_icon_sprites, pygame.sprite.Group)

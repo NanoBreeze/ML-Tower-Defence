@@ -1,8 +1,11 @@
 import abc
 import pygame
 import colours
-import sprite_groups
 import math
+import logging.config
+
+logging.config.fileConfig('logging.conf')
+logger = logging.getLogger('simpleLogger')
 
 STANDARD_BULLET = 'STANDARD_BULLET'
 EXPLOSION_BULLET = 'EXPLOSION_BULLET'
@@ -13,21 +16,17 @@ class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     """
     Base class for all bullets
     """
-
-    def __init__(self, start, destination, pop_power, frame_destroy_after=5, dimension=(10, 10), colour=colours.GREEN):
+    def __init__(self, start_position, end_position, pop_power, dimension=(10, 10), colour=colours.GREEN):
         """
-        :param start: 2-element tuple, the starting position of this bullet
-        :param destination: 2-element tuple, the intended final position of this bullet
-        :param pop_power: int, the number of layers to peel from the balloon this bullet makes contact with
-        :param frame_destroy_after: int, destroys this bullet after the specified number of frames
+        :param start_position: 2-element tuple, the starting position of this bullet
+        :param end_position: 2-element tuple, the intended final position of this bullet
+        :param pop_power: int, the number of layers to peel from the balloon if this bullet collides with it
         :param dimension: 2-element tuple, the size of this bullet
         :param colour: colours...., the colour of this bullet
         """
-
-        assert isinstance(start, tuple) and len(start) == 2, 'start must be a 2-element tuple'
-        assert isinstance(destination, tuple) and len(destination) == 2, 'destination must be a 2-element tuple'
+        assert isinstance(start_position, tuple) and len(start_position) == 2, 'start_position must be a 2-element tuple'
+        assert isinstance(end_position, tuple) and len(end_position) == 2, 'end_position must be a 2-element tuple'
         assert isinstance(pop_power, int), 'pop_power must be an integer'
-        assert isinstance(frame_destroy_after, int), 'frame_destroy_after must be an integer'
         assert isinstance(dimension, tuple) and len(dimension) == 2, 'dimension must be a 2-element tuple'
         assert isinstance(colour, tuple) and len(colour) == 4, 'colour must be a 4-element tuple'
 
@@ -36,75 +35,71 @@ class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self.image = pygame.Surface([dimension[0], dimension[1]])
         self.image.fill(colour)
         self.rect = self.image.get_rect()
-        self.rect.centerx = start[0]
-        self.rect.centery = start[1]
-        self.destination_x = destination[0]
-        self.destination_y = destination[1]
+        self.rect.centerx = start_position[0]
+        self.rect.centery = start_position[1]
 
-        self.frame_destroy_after = frame_destroy_after
+        self.destination_x = end_position[0]
+        self.destination_y = end_position[1]
+
         self.pop_power = pop_power
-
-        # step_x and step_y represents how far the bullet goes each frame
-        self.frame_to_hit_Ballon = math.hypot(self.destination_x - self.rect.centerx,
-                                              self.destination_y - self.rect.centery) / 20
-        self.step_x = (self.destination_x - self.rect.centerx) / self.frame_to_hit_Ballon
-        self.step_y = (self.destination_y - self.rect.centery) / self.frame_to_hit_Ballon
-
-        sprite_groups.bullet_sprites.add(self)
+        self.frames_remaining_until_self_destroy = math.hypot(self.destination_x - self.rect.centerx,
+                                                              self.destination_y - self.rect.centery) / 20
+        # logger.debug('self.destination_x: {}, self.rect.centerx: {}, self.destination_y: {}, self.rect.centery: {}, frames_remaining...: {}'.format(self.destination_x, self.rect.centerx, self.destination_y, self.rect.centery, self.frames_remaining_until_self_destroy))
+        # step_x and step_y represents how many pixels the bullet moves in the x and y direction each frame
+        self.step_x = (self.destination_x - self.rect.centerx) / self.frames_remaining_until_self_destroy
+        self.step_y = (self.destination_y - self.rect.centery) / self.frames_remaining_until_self_destroy
 
     def update(self):
         """
-        Called every frame. If the bullet is to continue moving, continue moving. If it has reached the end of its time (frame_destroy_after), kill self
+        Called every frame. If the bullet is to continue moving, continue moving. If it has reached the end of its time (frames_remaining_until_self_destroy), kill self
         """
-        if self.frame_destroy_after:
+        if self.frames_remaining_until_self_destroy:
             # moves towards the destination by step size
             self.rect.centerx += self.step_x
             self.rect.centery += self.step_y
-            self.frame_destroy_after -= 1
+            self.frames_remaining_until_self_destroy -= 1
         else:
+            logger.info('the value of frames_remaining_until_... is: ' + str(self.frames_remaining_until_self_destroy))
             self.kill()
 
     @abc.abstractmethod
-    def handle_ballon_collision(self):
+    def handle_collision_with_balloon(self):
         """What happens when this bullet hits a balloon"""
         pass
 
 
 class StandardBullet(Bullet):
-
-    def __init__(self, start, destination, pop_power):
+    def __init__(self, start_position, end_position, pop_power):
         """
-        :param start: 2-element tuple, the starting position of this bullet
-        :param destination: 2-element tuple, the intended final position of this bullet
+        :param start_position: 2-element tuple, the starting position of this bullet
+        :param end_position: 2-element tuple, the intended final position of this bullet
         :param pop_power: int, the number of layers to peel from the balloon this bullet makes contact with
         """
-
-        assert isinstance(start, tuple) and len(start) == 2, 'start must be a 2-element tuple'
-        assert isinstance(destination, tuple) and len(destination) == 2, 'destination must be a 2-element tuple'
+        assert isinstance(start_position, tuple) and len(start_position) == 2, 'start_position must be a 2-element tuple'
+        assert isinstance(end_position, tuple) and len(end_position) == 2, 'end_position must be a 2-element tuple'
         assert isinstance(pop_power, int), 'pop_power must be an integer'
 
-        super().__init__(start, destination, pop_power)
+        super().__init__(start_position, end_position, pop_power)
 
-    def handle_ballon_collision(self):
+    def handle_collision_with_balloon(self):
         """If this bullet hits a balloon, destroy this bullet"""
         self.kill()
 
 
 class ExplosionBullet(Bullet):
-    def __init__(self, start, destination, pop_power):
+    def __init__(self, start_position, end_position, pop_power):
         """
-        :param start: 2-element tuple, the starting position of this bullet
-        :param destination: 2-element tuple, the intended final position of this bullet
+        :param start_position: 2-element tuple, the starting position of this bullet
+        :param end_position: 2-element tuple, the intended final position of this bullet
         :param pop_power: int, the number of layers to peel from the balloon this bullet makes contact with
         """
-
-        assert isinstance(start, tuple) and len(start) == 2, 'start must be a 2-element tuple'
-        assert isinstance(destination, tuple) and len(destination) == 2, 'destination must be a 2-element tuple'
+        assert isinstance(start_position, tuple) and len(start_position) == 2, 'start_position must be a 2-element tuple'
+        assert isinstance(end_position, tuple) and len(end_position) == 2, 'end_position must be a 2-element tuple'
         assert isinstance(pop_power, int), 'pop_power must be an integer'
 
-        super().__init__(start, destination, pop_power)
+        super().__init__(start_position, end_position, pop_power)
 
-    def handle_ballon_collision(self, bullet_sprites):
+    def handle_collision_with_balloon(self, bullet_sprites):
         """
         :param bullet_sprites: pygame.sprite.Group, contains all the bulleti sprites in the game
         Upon hitting a balloon, 4 Standard bullets are created from the position of this one. Then this one is destroyed
@@ -131,20 +126,20 @@ class ExplosionBullet(Bullet):
 
 
 class TeleportationBullet(Bullet):
-    def __init__(self, start, destination, pop_power):
+    def __init__(self, start_position, end_position, pop_power):
         """
-        :param start: 2-element tuple, the starting position of this bullet
-        :param destination: 2-element tuple, the intended final position of this bullet
+        :param start_position: 2-element tuple, the starting position of this bullet
+        :param end_position: 2-element tuple, the intended final position of this bullet
         :param pop_power: int, the number of layers to peel from the balloon this bullet makes contact with
         """
 
-        assert isinstance(start, tuple) and len(start) == 2, 'start must be a 2-element tuple'
-        assert isinstance(destination, tuple) and len(destination) == 2, 'destination must be a 2-element tuple'
+        assert isinstance(start_position, tuple) and len(start_position) == 2, 'start_position must be a 2-element tuple'
+        assert isinstance(end_position, tuple) and len(end_position) == 2, 'end_position must be a 2-element tuple'
         assert isinstance(pop_power, int), 'pop_power must be an integer'
 
-        super().__init__(start, destination, pop_power)
+        super().__init__(start_position, end_position, pop_power)
 
-    def handle_ballon_collision(self):
+    def handle_collision_with_balloon(self):
         """Destroy this bullet upon collision with a balloon"""
         self.kill()
 
@@ -158,7 +153,6 @@ def create_bullet(bullet_type, start, destination, pop_power):
     :return: the bullet type, eg StandardBullet
     This simple factory creates a StandardBullet, ExplosionBullet, or TeleportationBullet
     """
-
     assert isinstance(bullet_type, str), 'bullet_type must be a string'
     assert isinstance(start, tuple) and len(start) == 2, 'start must be a 2-element tuple'
     assert isinstance(destination, tuple) and len(destination) == 2, 'destination must be a 2-element tuple'

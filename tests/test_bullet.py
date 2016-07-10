@@ -26,7 +26,7 @@ class TestBullet(TestCase):
         self.assertEqual(b.rect.centery, 20)
         self.assertEqual(b.destination_x, 40)
         self.assertEqual(b.destination_y, 60)
-        self.assertEqual(b.frame_destroy_after, 5)
+        self.assertEqual(b.frames_remaining_until_self_destroy, 5)
         self.assertEqual(b.frame_to_hit_Ballon, 2.5)
         self.assertEqual(b.step_x, 12)
         self.assertEqual(b.step_y, 16)
@@ -51,7 +51,7 @@ class TestBullet(TestCase):
         self.assertEqual(b.rect.centery, 20)
         self.assertEqual(b.destination_x, 40)
         self.assertEqual(b.destination_y, 60)
-        self.assertEqual(b.frame_destroy_after, 10)
+        self.assertEqual(b.frames_remaining_until_self_destroy, 10)
         self.assertEqual(b.frame_to_hit_Ballon, 2.5)
         self.assertEqual(b.step_x, 12)
         self.assertEqual(b.step_y, 16)
@@ -69,12 +69,12 @@ class TestBullet(TestCase):
         b.rect.centery = 60
         b.step_x = 5
         b.step_y = 6
-        b.frame_destroy_after = 10
+        b.frames_remaining_until_self_destroy = 10
 
         b.update()
         self.assertEqual(b.rect.centerx, 55)
         self.assertEqual(b.rect.centery, 66)
-        self.assertEqual(b.frame_destroy_after, 9)
+        self.assertEqual(b.frames_remaining_until_self_destroy, 9)
         self.assertEqual(mock_sprite_kill.call_count, 0)
 
     @patch.object(pygame.sprite.Sprite, 'kill')
@@ -89,12 +89,12 @@ class TestBullet(TestCase):
         b.rect.centery = 60
         b.step_x = 5
         b.step_y = 6
-        b.frame_destroy_after = 0
+        b.frames_remaining_until_self_destroy = 0
 
         b.update()
         self.assertEqual(b.rect.centerx, 50)
         self.assertEqual(b.rect.centery, 60)
-        self.assertEqual(b.frame_destroy_after, 0)
+        self.assertEqual(b.frames_remaining_until_self_destroy, 0)
         self.assertEqual(mock_sprite_kill.call_count, 1)
 
 
@@ -108,7 +108,7 @@ class TestStandardBullet(TestCase):
         pop_power = 1
 
         s = bullet.StandardBullet(start, destination, pop_power)
-        s.handle_ballon_collision()
+        s.handle_collision_with_balloon()
 
         self.assertEqual(mock_sprite_kill.call_count, 1)
 
@@ -123,7 +123,7 @@ class TestExplosionBullet(TestCase):
         pop_power = 1
 
         s = bullet.ExplosionBullet(start, destination, pop_power)
-        s.handle_ballon_collision(Mock(spec=pygame.sprite.Group))
+        s.handle_collision_with_balloon(Mock(spec=pygame.sprite.Group))
 
         self.assertEqual(mock_sprite_group_add.call_count, 1)
         self.assertEqual(mock_create_bullet.call_count, 4)
@@ -138,7 +138,7 @@ class TestTeleportationBullet(TestCase):
         pop_power = 1
 
         s = bullet.TeleportationBullet(start, destination, pop_power)
-        s.handle_ballon_collision()
+        s.handle_collision_with_balloon()
 
         self.assertEqual(mock_sprite_kill.call_count, 1)
 
