@@ -36,6 +36,18 @@ def show_start_screen():
         pygame.display.update()
 
 
+def show_lose_screen():
+    """Display the start screen, if user presses any key, proceed to the game"""
+    while True:
+        if pygame.event.get(pygame.locals.KEYUP):
+            return
+        DISPLAYSURF.fill(colours.BLACK)
+        start_message = pygame.font.SysFont("freesansbold", 50)
+        start_label = start_message.render("Good try", True, (255, 255, 0))
+
+        DISPLAYSURF.blit(start_label, (200, 200))
+        pygame.display.update()
+
 def show_win_screen():
     win_message_setup = pygame.font.SysFont("freesansbold", 15)
     win_message_label = win_message_setup.render("Congratulations! You won!", True, colours.GREEN)
@@ -135,8 +147,10 @@ class CreateNewTowerClickHandler(LeftMouseClickHandler):
         if sprite_groups.selected_tower_icon_sprite:
             new_tower = tower.create_tower(sprite_groups.selected_tower_icon_sprite.sprite._tower_type, mouse_position,
                                            DISPLAYSURF)
-            bank.withdraw(new_tower.buy_price)
-            sprite_groups.tower_sprites.add(new_tower)
+            #make sure player has enough money to make this tower
+            if bank.balance >= new_tower.buy_price:
+                bank.withdraw(new_tower.buy_price)
+                sprite_groups.tower_sprites.add(new_tower)
             sprite_groups.selected_tower_icon_sprite.empty()
             return True
         return False
@@ -152,19 +166,6 @@ class NullClickHandler(LeftMouseClickHandler):
 def handle_left_mouse_click(tower_icon_click_handler, mouse_position):
     tower_icon_click_handler.handle_click(mouse_position)
 
-
-def check_player_clicked_on_tower_icon(mouse_position):
-    """
-    :param mouse_position: 2-element tuple storing the position of the mouse when it clicked
-    :return: True/False
-    """
-
-    for tower_icon in sprite_groups.tower_icon_sprites:
-        if tower_icon.rect.collidepoint(mouse_position):
-            duplicate_tower_icon = tower_icon.on_click()
-            sprite_groups.selected_tower_icon_sprite.add(duplicate_tower_icon)
-            return True
-    return False
 
 
 def begin_game():
@@ -200,22 +201,21 @@ def begin_game():
         # if player finished this level and there are other levels remaining, start them, otherwise, proceed to "Win screen"
         if player_has_completed_level(current_level):
             if levels:
-                logger.info('level complete. ')
                 current_level = levels.pop(0)
-                logger.info('changed current_level, level length is ' + str(len(levels)))
             else:
-                logger.info('show win screen')
-                show_win_screen()
+                return show_win_screen
+
+        #check if the player still has life points. If not, player lost
+        if life_point.life_balance <= 0:
+            return show_lose_screen
 
         # if it's time to make a new balloon and the next balloon exists, then add that balloon to the balloon_sprites and restart countdown. If it doesn't exist, don't add it
         # if it isn't time to make a new balloon, decrement countdown
         if make_new_balloon_countdown == 0:
             if current_level.next_balloon_exists():
-                logger.info('making new balloon')
                 sprite_groups.balloon_sprites.add(current_level.get_next_balloon())
             make_new_balloon_countdown = 10
         else:
-            logger.info('no new balloon making')
             make_new_balloon_countdown -= 1
 
         # handle events
@@ -250,22 +250,15 @@ def begin_game():
 
         # draw dashboard and upgrade sprites
         pygame.draw.rect(DISPLAYSURF, colours.GRAY, (0, 300, 400, 100))  # draw dashboard
-        sprite_groups.upgrade_icon_sprites.draw(DISPLAYSURF)
-        sprite_groups.sell_tower_icon_sprite.draw(DISPLAYSURF)
-
         sprite_groups.tower_sprites.update(sprite_groups.balloon_sprites, sprite_groups.bullet_sprites)
-        sprite_groups.tower_sprites.draw(DISPLAYSURF)
-
         sprite_groups.balloon_sprites.update(sprite_groups.bullet_sprites)
-        sprite_groups.balloon_sprites.draw(DISPLAYSURF)
-
         sprite_groups.bullet_sprites.update()
-        sprite_groups.bullet_sprites.draw(DISPLAYSURF)
-
-        sprite_groups.tower_icon_sprites.draw(DISPLAYSURF)
-
         sprite_groups.selected_tower_icon_sprite.update(pygame.mouse.get_pos())
-        sprite_groups.selected_tower_icon_sprite.draw(DISPLAYSURF)
+
+        for sprite_group in sprite_groups.all_sprites:
+            sprite_group.draw(DISPLAYSURF)
+
+
 
         # render text
         bank_balance_label = bank_balance_font.render("Bank balance: {}".format(bank.balance), True, (255, 255, 0))
@@ -280,4 +273,5 @@ def begin_game():
 
 if __name__ == '__main__':
     show_start_screen()
-    begin_game()
+    show_win_or_lose_screen = begin_game()
+    show_win_or_lose_screen()

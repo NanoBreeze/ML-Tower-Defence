@@ -3,7 +3,7 @@ import logging.config
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleLogger')
 
-balance = 500  # amount of money user currently has
+balance = 100  # amount of money user currently has
 
 
 def deposit(amount):

@@ -33,3 +33,5 @@ sell_tower_icon_sprite = pygame.sprite.GroupSingle()
 # the tower icon the user has selected. If this icon is present, it is always positioned at the mouse position
 selected_tower_icon_sprite = pygame.sprite.GroupSingle()
 
+#contains all sprites, used to draw them to board
+all_sprites = [bullet_sprites, tower_sprites, balloon_sprites, tower_icon_sprites, upgrade_icon_sprites, sell_tower_icon_sprite, selected_tower_icon_sprite]
