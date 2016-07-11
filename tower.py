@@ -65,7 +65,7 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         """
         logger.debug('upgrade_speed called')
         if upgrade_object.is_next_upgrade_exists():
-            logger.debug('inside if for is_next_upgrade_exists')
+            # logger.debug('inside if for is_next_upgrade_exists')
             upgrade_value, upgrade_price = upgrade_object.get_next_upgrade_value_and_price()
             if bank.balance >= upgrade_price:  # if enough money in bank, change the appropriate attack value, withdraw the price from bank, increase sell price, remove existing icon and add new one
                 # attack_value_to_upgrade = upgrade_value #Python function parameters are references, passed by value, thus, changing this here doesn't change self._....

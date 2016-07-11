@@ -59,7 +59,7 @@ class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
             self.rect.centery += self.step_y
             self.frames_remaining_until_self_destroy -= 1
         else:
-            logger.info('the value of frames_remaining_until_... is: ' + str(self.frames_remaining_until_self_destroy))
+            # logger.info('the value of frames_remaining_until_... is: ' + str(self.frames_remaining_until_self_destroy))
             self.kill()
 
     @abc.abstractmethod

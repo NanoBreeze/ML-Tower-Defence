@@ -1,9 +1,13 @@
+"""
+This file contains the game from the client's (defender) perspective if the user chose multiplayer
+"""
 import pygame
 import pygame.locals
 import sys
 import pygame.sprite
 import logging.config
 import abc
+import socket
 
 import tower
 import sprite_groups
@@ -13,8 +17,6 @@ import bank
 import life_point
 import level
 import game_utility
-import server #represents the player who's defending (building towers)
-import client  #represents the player who's attacking (creating levels, and trying to make balloons pass the end)
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleLogger')
@@ -23,55 +25,6 @@ pygame.init()
 DISPLAYSURF = pygame.display.set_mode((400, 400))
 pygame.display.set_caption('ML Tower Defence')
 fpsClock = pygame.time.Clock()
-
-
-def show_start_screen():
-    """Display the start screen, if user presses any key, proceed to the game"""
-    while True:
-        for event in pygame.event.get():
-            #pressing 's' makes the player the server; 'c' the client; any other key starts in solo mode
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_s:
-                    server.begin_game()
-                elif event.key == pygame.K_c:
-                    client.begin_game()
-                else:
-                    return
-
-        DISPLAYSURF.fill(colours.BLACK)
-        start_message = pygame.font.SysFont("freesansbold", 50)
-        start_label = start_message.render("Start game", True, (255, 255, 0))
-
-        DISPLAYSURF.blit(start_label, (200, 200))
-        pygame.display.update()
-
-
-def show_lose_screen():
-    """Display the start screen, if user presses any key, proceed to the game"""
-    while True:
-        if pygame.event.get(pygame.locals.KEYUP):
-            return
-        DISPLAYSURF.fill(colours.BLACK)
-        start_message = pygame.font.SysFont("freesansbold", 50)
-        start_label = start_message.render("Good try", True, (255, 255, 0))
-
-        DISPLAYSURF.blit(start_label, (200, 200))
-        pygame.display.update()
-
-def show_win_screen():
-    win_message_setup = pygame.font.SysFont("freesansbold", 15)
-    win_message_label = win_message_setup.render("Congratulations! You won!", True, colours.GREEN)
-
-    while True:
-        DISPLAYSURF.fill(colours.WHITE)
-
-        for event in pygame.event.get():
-            if event.type == pygame.locals.QUIT:
-                pygame.quit()
-                sys.exit()
-
-        DISPLAYSURF.blit(win_message_label, (200, 200))
-        pygame.display.update()
 
 
 def player_has_completed_level(current_level):
@@ -157,7 +110,7 @@ class CreateNewTowerClickHandler(LeftMouseClickHandler):
         if sprite_groups.selected_tower_icon_sprite:
             new_tower = tower.create_tower(sprite_groups.selected_tower_icon_sprite.sprite._tower_type, mouse_position,
                                            DISPLAYSURF)
-            #make sure player has enough money to make this tower
+            # make sure player has enough money to make this tower
             if bank.balance >= new_tower.buy_price:
                 bank.withdraw(new_tower.buy_price)
                 sprite_groups.tower_sprites.add(new_tower)
@@ -178,7 +131,39 @@ def handle_left_mouse_click(tower_icon_click_handler, mouse_position):
 
 
 
+"""========================================================================"""
+"""============================= GAME ====================================="""
+"""========================================================================"""
+
+listening_socket = None #represents the listening socket
+connected_socket = None #represents the connected socket, comes from listening_socket
+
+ip_address = '127.0.0.1'
+port = 1060
+
+def create_listening_socket():
+    global listening_socket
+    listening_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    listening_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    listening_socket.bind((ip_address, port))
+    listening_socket.listen(1)
+
+def wait_for_client_to_connect():
+    global connected_socket
+
+    logger.info('Server waiting to accept a new connection')
+    connected_socket, client_address = listening_socket.accept()
+    logger.info('Server connected to client, whose address is {}'.format(client_address))
+    # message = recvall(sc, 16)
+    # print('Incoming sixteen-octet message:', repr(message))
+
 def begin_game():
+
+    logger.info('SERVER begin_game() is called')
+
+    create_listening_socket()
+    wait_for_client_to_connect()
+
     # setup
     sprite_groups.tower_icon_sprites.add(icon.create_tower_icon(icon.LINEAR_TOWER_ICON, (300, 100)),
                                          icon.create_tower_icon(icon.THREE_SIXTY_TOWER_ICON, (300, 150)),
@@ -213,11 +198,13 @@ def begin_game():
             if levels:
                 current_level = levels.pop(0)
             else:
-                return show_win_screen
+                # return show_win_screen
+                pass
 
-        #check if the player still has life points. If not, player lost
+        # check if the player still has life points. If not, player lost
         if life_point.life_balance <= 0:
-            return show_lose_screen
+            # return show_lose_screen
+            pass
 
         # if it's time to make a new balloon and the next balloon exists, then add that balloon to the balloon_sprites and restart countdown. If it doesn't exist, don't add it
         # if it isn't time to make a new balloon, decrement countdown
@@ -268,8 +255,6 @@ def begin_game():
         for sprite_group in sprite_groups.all_sprites:
             sprite_group.draw(DISPLAYSURF)
 
-
-
         # render text
         bank_balance_label = bank_balance_font.render("Bank balance: {}".format(bank.balance), True, (255, 255, 0))
         DISPLAYSURF.blit(bank_balance_label, (300, 50))
@@ -281,7 +266,4 @@ def begin_game():
         pygame.display.update()
 
 
-if __name__ == '__main__':
-    show_start_screen()
-    show_win_or_lose_screen = begin_game()
-    show_win_or_lose_screen()
+

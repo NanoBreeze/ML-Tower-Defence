@@ -59,7 +59,7 @@ class Level:
 
 class Level1(Level):
     def __init__(self):
-        logger.debug('Level1 started')
+        # logger.debug('Level1 started')
         balloon_path = path.Path()
         # the balloons to output on this level
         numbers_representing_balloons = [4]
@@ -76,7 +76,7 @@ class Level2(Level):
 
 class Level3(Level):
     def __init__(self):
-        logger.debug('Level3 started')
+        # logger.debug('Level3 started')
         balloon_path = path.Path()
         # the balloons to output on this level
         numbers_representing_balloons = [1, 1, 1, 1, 1, 1, 1, 1, 1]
