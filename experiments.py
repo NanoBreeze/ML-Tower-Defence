@@ -1,64 +1,46 @@
-# """
-# This example shows how to use a path patch to draw a bunch of
-# rectangles for an animated histogram
-# """
 # import numpy as np
-#
 # import matplotlib.pyplot as plt
-# import matplotlib.patches as patches
-# import matplotlib.path as path
-# import matplotlib.animation as animation
+# from matplotlib.colors import ListedColormap
+# from sklearn import neighbors, datasets
 #
-# fig, ax = plt.subplots()
+# def try_machine_learning():
+#     n_neighbors = 15
 #
-# # histogram our data with numpy
-# data = np.random.randn(1000)
-# n, bins = np.histogram(data, 100)
+#     # import some data to play with
+#     iris = datasets.load_iris()
+#     X = iris.data[:, :2]  # we only take the first two features. We could
+#                           # avoid this ugly slicing by using a two-dim dataset
+#     y = iris.target
 #
-# # get the corners of the rectangles for the histogram
-# left = np.array(bins[:-1])
-# right = np.array(bins[1:])
-# bottom = np.zeros(len(left))
-# top = bottom + n
-# nrects = len(left)
+#     h = .02  # step size in the mesh
 #
-# # here comes the tricky part -- we have to set up the vertex and path
-# # codes arrays using moveto, lineto and closepoly
+#     # Create color maps
+#     cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA', '#AAAAFF'])
+#     cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])
 #
-# # for each rect: 1 for the MOVETO, 3 for the LINETO, 1 for the
-# # CLOSEPOLY; the vert for the closepoly is ignored but we still need
-# # it to keep the codes aligned with the vertices
-# nverts = nrects*(1 + 3 + 1)
-# verts = np.zeros((nverts, 2))
-# codes = np.ones(nverts, int) * path.Path.LINETO
-# codes[0::5] = path.Path.MOVETO
-# codes[4::5] = path.Path.CLOSEPOLY
-# verts[0::5, 0] = left
-# verts[0::5, 1] = bottom
-# verts[1::5, 0] = left
-# verts[1::5, 1] = top
-# verts[2::5, 0] = right
-# verts[2::5, 1] = top
-# verts[3::5, 0] = right
-# verts[3::5, 1] = bottom
+#     for weights in ['uniform', 'distance']:
+#         # we create an instance of Neighbours Classifier and fit the data.
+#         clf = neighbors.KNeighborsClassifier(n_neighbors, weights=weights)
+#         clf.fit(X, y)
 #
-# barpath = path.Path(verts, codes)
-# patch = patches.PathPatch(
-#     barpath, facecolor='green', edgecolor='yellow', alpha=0.5)
-# ax.add_patch(patch)
+#         # Plot the decision boundary. For that, we will assign a color to each
+#         # point in the mesh [x_min, m_max]x[y_min, y_max].
+#         x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+#         y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+#         xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+#                              np.arange(y_min, y_max, h))
+#         Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
 #
-# ax.set_xlim(left[0], right[-1])
-# ax.set_ylim(bottom.min(), top.max())
+#         # Put the result into a color plot
+#         Z = Z.reshape(xx.shape)
+#         plt.figure()
+#         plt.pcolormesh(xx, yy, Z, cmap=cmap_light)
 #
+#         # Plot also the training points
+#         plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold)
+#         plt.xlim(xx.min(), xx.max())
+#         plt.ylim(yy.min(), yy.max())
+#         plt.title("3-Class classification (k = %i, weights = '%s')"
+#                   % (n_neighbors, weights))
 #
-# def animate(i):
-#     # simulate new data coming in
-#     data = np.random.randn(1000)
-#     n, bins = np.histogram(data, 100)
-#     top = bottom + n
-#     verts[1::5, 1] = 0
-#     verts[2::5, 1] = top
-#     return [patch, ]
-#
-# ani = animation.FuncAnimation(fig, animate, 100, repeat=False, blit=True)
-# plt.show()
+#     plt.show()

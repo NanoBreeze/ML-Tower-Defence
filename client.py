@@ -265,6 +265,8 @@ def begin_game():
                     dedicated_sending_messages(client, '4')  # numbers represent balloons
                 elif event.key == pygame.K_5:
                     dedicated_sending_messages(client, '5')  # numbers represent balloons
+                elif event.key == pygame.K_p:
+                    plotting_and_ML.try_machine_learning(server_stats.tower_stats)
 
             if event.type == pygame.locals.QUIT:
                 pygame.quit()

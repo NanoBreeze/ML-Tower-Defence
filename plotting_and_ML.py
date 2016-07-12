@@ -8,7 +8,10 @@ import threading
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as p3
 import matplotlib.animation as animation
-import random
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+from sklearn import neighbors, datasets
+from sklearn.neighbors import KNeighborsClassifier
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleLogger')
@@ -106,3 +109,23 @@ def show_plot():
     plt.draw()
     plt.pause(0.001)
 
+
+
+def try_machine_learning(tower_stats_dict):
+
+    X = []  #this is the x,y position of all towers
+    y = []  #this is their pop counts
+    for tower_stat in tower_stats_dict.values():
+        try:
+            X.append([int(tower_stat.x_pos), int(tower_stat.y_pos)])
+            y.append(int(tower_stat.pop_count))
+        except:
+            logger.critical('a tower_stat was passed')
+
+    knn = KNeighborsClassifier(n_neighbors=3)
+    knn.fit(X, y)
+
+    predicted_value = knn.predict([50, 100])
+    logger.info('predicting with [50, 100] :' + str(predicted_value[0]))
+
+   
