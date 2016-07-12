@@ -9,9 +9,10 @@ import logging.config
 import abc
 import socket
 import threading
-import time
 
 import tower
+import balloon
+import path
 import sprite_groups
 import colours
 import icon
@@ -151,7 +152,24 @@ def dedicated_wait_for_client_connection_and_receive_message(server):
     # time.sleep(5)
     while True:
         client_message = server.wait_for_message()
-        # do something with the message
+        # the client message is some form of balloon encoded as a number,
+
+        # create balloon and place it in the sprite_groups
+        if client_message == '1':
+            b = balloon.create_balloon(balloon.BALLOON_L1, path.Path())
+            sprite_groups.balloon_sprites.add(b)
+        elif client_message == '2':
+            b = balloon.create_balloon(balloon.BALLOON_L2, path.Path())
+            sprite_groups.balloon_sprites.add(b)
+        elif client_message == '3':
+            b = balloon.create_balloon(balloon.BALLOON_L3, path.Path())
+            sprite_groups.balloon_sprites.add(b)
+        elif client_message == '4':
+            b = balloon.create_balloon(balloon.BALLOON_L4, path.Path())
+            sprite_groups.balloon_sprites.add(b)
+        elif client_message == '5':
+            b = balloon.create_balloon(balloon.BALLOON_L5, path.Path())
+            sprite_groups.balloon_sprites.add(b)
 
 
 def dedicated_sending_messages(server):

@@ -62,6 +62,10 @@ def push_update_tower_pop_power_message(tower_id, pop_power):
     formatted_tower_message = 'T={0}.p={1}.'.format(tower_id, pop_power)
     __push_message(formatted_tower_message)
 
+def push_update_tower_pop_count_message(tower_id, pop_count):
+    """Format: T=499984651.c=5"""
+    formatted_tower_message = 'T={0}.c={1}.'.format(tower_id, pop_count)
+    __push_message(formatted_tower_message)
 
 def push_sell_tower_message(tower_id):
     """Format: T=499984651."""

@@ -127,11 +127,11 @@ class Balloon(BalloonState):
                     return
                 if isinstance(collided_bullet, bullet.StandardBullet):
                     collided_bullet.handle_collision_with_balloon()
-                    self.peel_layer(collided_bullet.pop_power)  # represents should handle pop
+                    self.peel_layer(collided_bullet.pop_power, collided_bullet.tower_increment_pop_method)  # represents should handle pop
                 elif isinstance(collided_bullet, bullet.ExplosionBullet):
                     collided_bullet.handle_collision_with_balloon(
                         bullet_sprites)  # side note: explosion bullet will create more standard bullets
-                    self.peel_layer(collided_bullet.pop_power)  # represents should handle pop
+                    self.peel_layer(collided_bullet.pop_power, collided_bullet.tower_increment_pop_method)  # represents should handle pop
                 elif isinstance(collided_bullet, bullet.TeleportationBullet):
                     collided_bullet.handle_collision_with_balloon()
                     self.move(-20)
@@ -165,22 +165,24 @@ class Balloon(BalloonState):
         else:
             self.path_index += amount
 
-        # logger.debug('the value of the path_index after if statementis: ' + str(self.path_index))
+        # logger.debug('the value of the path_index after if statement is: ' + str(self.path_index))
         # logger.debug('the x coordinate of the path is: ' + str(self.balloon_path[self.path_index][0]))
         # logger.debug('the y coordinate of the path is: ' + str(self.balloon_path[self.path_index][1]))
 
         self.current_balloon_state.rect.centerx = self.balloon_path[self.path_index][0]
         self.current_balloon_state.rect.centery = self.balloon_path[self.path_index][1]
 
-    def peel_layer(self, number_of_layers=1):
+    def peel_layer(self, number_of_layers=1, tower_increment_pop_method=None):
         """
         :param number_of_layers: the number of layers to peel from the balloon state
+        :param tower_increment_pop_method: a method to call ever time a balloon's layer is peeled. Used to increase the pop count of a tower
         :return:
         """
         for _ in range(number_of_layers):
             # it's import to deposit here so that every deposit is made before the current ballon changes
             bank.deposit(self.current_balloon_state.bounty)
             self.current_balloon_state = self.current_balloon_state.peel_layer()
+            tower_increment_pop_method()
             if self.current_balloon_state is None:
                 self.kill()
                 break
