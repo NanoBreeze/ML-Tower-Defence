@@ -16,7 +16,9 @@ class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     """
     Base class for all bullets
     """
-    def __init__(self, start_position, end_position, pop_power, dimension=(10, 10), colour=colours.GREEN):
+
+    def __init__(self, start_position, end_position, pop_power, tower_increment_pop_count_method, dimension=(10, 10),
+                 colour=colours.GREEN):
         """
         :param start_position: 2-element tuple, the starting position of this bullet
         :param end_position: 2-element tuple, the intended final position of this bullet
@@ -49,6 +51,8 @@ class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self.step_x = (self.destination_x - self.rect.centerx) / self.frames_remaining_until_self_destroy
         self.step_y = (self.destination_y - self.rect.centery) / self.frames_remaining_until_self_destroy
 
+        self.tower_increment_pop_method = tower_increment_pop_count_method
+
     def update(self):
         """
         Called every frame. If the bullet is to continue moving, continue moving. If it has reached the end of its time (frames_remaining_until_self_destroy), kill self
@@ -69,7 +73,7 @@ class Bullet(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
 
 
 class StandardBullet(Bullet):
-    def __init__(self, start_position, end_position, pop_power):
+    def __init__(self, start_position, end_position, pop_power, tower_increment_pop_count_method):
         """
         :param start_position: 2-element tuple, the starting position of this bullet
         :param end_position: 2-element tuple, the intended final position of this bullet
@@ -79,7 +83,7 @@ class StandardBullet(Bullet):
         assert isinstance(end_position, tuple) and len(end_position) == 2, 'end_position must be a 2-element tuple'
         assert isinstance(pop_power, int), 'pop_power must be an integer'
 
-        super().__init__(start_position, end_position, pop_power)
+        super().__init__(start_position, end_position, pop_power, tower_increment_pop_count_method)
 
     def handle_collision_with_balloon(self):
         """If this bullet hits a balloon, destroy this bullet"""
@@ -87,7 +91,7 @@ class StandardBullet(Bullet):
 
 
 class ExplosionBullet(Bullet):
-    def __init__(self, start_position, end_position, pop_power):
+    def __init__(self, start_position, end_position, pop_power, tower_increment_pop_count_method):
         """
         :param start_position: 2-element tuple, the starting position of this bullet
         :param end_position: 2-element tuple, the intended final position of this bullet
@@ -97,7 +101,7 @@ class ExplosionBullet(Bullet):
         assert isinstance(end_position, tuple) and len(end_position) == 2, 'end_position must be a 2-element tuple'
         assert isinstance(pop_power, int), 'pop_power must be an integer'
 
-        super().__init__(start_position, end_position, pop_power)
+        super().__init__(start_position, end_position, pop_power, tower_increment_pop_count_method)
 
     def handle_collision_with_balloon(self, bullet_sprites):
         """
@@ -108,25 +112,30 @@ class ExplosionBullet(Bullet):
             create_bullet(bullet_type=STANDARD_BULLET,
                           start=(self.rect.centerx, self.rect.centery),
                           destination=(self.rect.centerx, self.rect.centery - 20),
-                          pop_power=self.pop_power),
+                          pop_power=self.pop_power,
+                          tower_increment_pop_method=self.tower_increment_pop_method),
+
             create_bullet(bullet_type=STANDARD_BULLET,
                           start=(self.rect.centerx, self.rect.centery),
                           destination=(self.rect.centerx + 20, self.rect.centery),
-                          pop_power=self.pop_power),
+                          pop_power=self.pop_power,
+                          tower_increment_pop_method=self.tower_increment_pop_method),
             create_bullet(bullet_type=STANDARD_BULLET,
                           start=(self.rect.centerx, self.rect.centery),
                           destination=(self.rect.centerx, self.rect.centery + 20),
-                          pop_power=self.pop_power),
+                          pop_power=self.pop_power,
+                          tower_increment_pop_method=self.tower_increment_pop_method),
             create_bullet(bullet_type=STANDARD_BULLET,
                           start=(self.rect.centerx, self.rect.centery),
                           destination=(self.rect.centerx - 20, self.rect.centery),
-                          pop_power=self.pop_power),
-        )
+                          pop_power=self.pop_power,
+                          tower_increment_pop_method=self.tower_increment_pop_method))
+
         self.kill()
 
 
 class TeleportationBullet(Bullet):
-    def __init__(self, start_position, end_position, pop_power):
+    def __init__(self, start_position, end_position, pop_power, tower_increment_pop_count_method):
         """
         :param start_position: 2-element tuple, the starting position of this bullet
         :param end_position: 2-element tuple, the intended final position of this bullet
@@ -137,14 +146,14 @@ class TeleportationBullet(Bullet):
         assert isinstance(end_position, tuple) and len(end_position) == 2, 'end_position must be a 2-element tuple'
         assert isinstance(pop_power, int), 'pop_power must be an integer'
 
-        super().__init__(start_position, end_position, pop_power)
+        super().__init__(start_position, end_position, pop_power, tower_increment_pop_count_method)
 
     def handle_collision_with_balloon(self):
         """Destroy this bullet upon collision with a balloon"""
         self.kill()
 
 
-def create_bullet(bullet_type, start, destination, pop_power):
+def create_bullet(bullet_type, start, destination, pop_power, tower_increment_pop_method):
     """
     :param bullet_type: str constant, which balloon will be the current starting balloon for this context
     :param start: 2-element tuple, the start position of the bullet
@@ -159,10 +168,10 @@ def create_bullet(bullet_type, start, destination, pop_power):
     assert isinstance(pop_power, int), 'pop_power must be an integer'
 
     if bullet_type == STANDARD_BULLET:
-        return StandardBullet(start, destination, pop_power)
+        return StandardBullet(start, destination, pop_power, tower_increment_pop_method)
     elif bullet_type == EXPLOSION_BULLET:
-        return ExplosionBullet(start, destination, pop_power)
+        return ExplosionBullet(start, destination, pop_power, tower_increment_pop_method)
     elif bullet_type == TELEPORTATION_BULLET:
-        return TeleportationBullet(start, destination, pop_power)
+        return TeleportationBullet(start, destination, pop_power, tower_increment_pop_method)
 
     raise NotImplementedError('the specified Bullet type is invalid')

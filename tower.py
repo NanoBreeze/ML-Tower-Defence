@@ -11,6 +11,7 @@ import sprite_groups
 import bank
 import message_buffer
 
+
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleLogger')
 
@@ -22,7 +23,6 @@ TELEPORTATION_TOWER = 'TELEPORTATION_TOWER'
 
 class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     """Base class for all Towers"""
-
 
     def __init__(self, colour, position, dimension, buy_price, sell_price, initial_attack_values,
                  speed_upgrade_values_and_prices_and_icons, radius_upgrade_values_and_prices_and_icons,
@@ -60,7 +60,13 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self._pop_power_upgrade_values_and_prices_and_icons = pop_power_upgrade_values_and_prices_and_icons
         self.frames_until_attack_again = self._attack_values.speed  # set the counter to the 'shoot' position
 
-        self.tower_type = tower_type #this is an enumerated string. We use this instead of type(...) to maintain consistency in specifying tower types
+        self.tower_type = tower_type  # this is an enumerated string. We use this instead of type(...) to maintain consistency in specifying tower types
+        self._pop_count = 0  # the number of balloons this tower popped
+
+    def increment_pop_count(self, amount=1):
+        self._pop_count += amount
+        message_buffer.push_update_tower_pop_count_message(id(self), self._pop_count)
+
 
     def general_upgrade(self, upgrade_object):
         """
@@ -120,7 +126,7 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self.kill()
         # logger.info(str(id(self)))
         message_buffer.push_sell_tower_message(id(self))
-        #logger.debug('selling tower: the sell price is' + str(self.sell_price))
+        # logger.debug('selling tower: the sell price is' + str(self.sell_price))
         bank.deposit(self.sell_price)
 
     def on_click(self, upgrade_icon_sprites, sell_tower_icon_sprite):
@@ -236,7 +242,8 @@ class LinearTower(Tower):
         return bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                     start=(self.rect.centerx, self.rect.centery),
                                     destination=(balloon.get_centerX(), balloon.get_centerY()),
-                                    pop_power=self._attack_values.pop_power)
+                                    pop_power=self._attack_values.pop_power,
+                                    tower_increment_pop_method=self.increment_pop_count)
 
 
 class ThreeSixtyTower(Tower):
@@ -282,42 +289,50 @@ class ThreeSixtyTower(Tower):
         return [bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                      start=(self.rect.centerx, self.rect.centery),
                                      destination=(self.rect.centerx, self.rect.centery - 100),
-                                     pop_power=self._attack_values.pop_power),
+                                     pop_power=self._attack_values.pop_power,
+                                     tower_increment_pop_method=self.increment_pop_count),
 
                 bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                      start=(self.rect.centerx, self.rect.centery),
                                      destination=(self.rect.centerx + 100, self.rect.centery - 100),
-                                     pop_power=self._attack_values.pop_power),
+                                     pop_power=self._attack_values.pop_power,
+                                     tower_increment_pop_method=self.increment_pop_count),
 
                 bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                      start=(self.rect.centerx, self.rect.centery),
                                      destination=(self.rect.centerx + 100, self.rect.centery),
-                                     pop_power=self._attack_values.pop_power),
+                                     pop_power=self._attack_values.pop_power,
+                                     tower_increment_pop_method=self.increment_pop_count),
 
                 bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                      start=(self.rect.centerx, self.rect.centery),
                                      destination=(self.rect.centerx + 100, self.rect.centery + 100),
-                                     pop_power=self._attack_values.pop_power),
+                                     pop_power=self._attack_values.pop_power,
+                                     tower_increment_pop_method=self.increment_pop_count),
 
                 bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                      start=(self.rect.centerx, self.rect.centery),
                                      destination=(self.rect.centerx, self.rect.centery + 100),
-                                     pop_power=self._attack_values.pop_power),
+                                     pop_power=self._attack_values.pop_power,
+                                     tower_increment_pop_method=self.increment_pop_count),
 
                 bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                      start=(self.rect.centerx, self.rect.centery),
                                      destination=(self.rect.centerx - 100, self.rect.centery + 100),
-                                     pop_power=self._attack_values.pop_power),
+                                     pop_power=self._attack_values.pop_power,
+                                     tower_increment_pop_method=self.increment_pop_count),
 
                 bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                      start=(self.rect.centerx, self.rect.centery),
                                      destination=(self.rect.centerx - 100, self.rect.centery),
-                                     pop_power=self._attack_values.pop_power),
+                                     pop_power=self._attack_values.pop_power,
+                                     tower_increment_pop_method=self.increment_pop_count),
 
                 bullet.create_bullet(bullet_type=bullet.STANDARD_BULLET,
                                      start=(self.rect.centerx, self.rect.centery),
                                      destination=(self.rect.centerx - 100, self.rect.centery - 100),
-                                     pop_power=self._attack_values.pop_power)
+                                     pop_power=self._attack_values.pop_power,
+                                     tower_increment_pop_method=self.increment_pop_count)
                 ]
 
 
@@ -366,7 +381,8 @@ class ExplosionTower(Tower):
         return bullet.create_bullet(bullet_type=bullet.EXPLOSION_BULLET,
                                     start=(self.rect.centerx, self.rect.centery),
                                     destination=(balloon.get_centerX(), balloon.get_centerY()),
-                                    pop_power=self._attack_values.pop_power)
+                                    pop_power=self._attack_values.pop_power,
+                                    tower_increment_pop_method=self.increment_pop_count)
 
 
 class TeleportationTower(Tower):
@@ -409,7 +425,8 @@ class TeleportationTower(Tower):
         return bullet.create_bullet(bullet_type=bullet.TELEPORTATION_BULLET,
                                     start=(self.rect.centerx, self.rect.centery),
                                     destination=(balloon.get_centerX(), balloon.get_centerY()),
-                                    pop_power=self._attack_values.pop_power)
+                                    pop_power=self._attack_values.pop_power,
+                                    tower_increment_pop_method=self.increment_pop_count)
 
 
 def create_tower(tower_type, position, DISPLAYSURF):

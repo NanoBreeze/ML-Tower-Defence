@@ -1,47 +1,46 @@
-import argparse, socket
-
-
-def recvall(sock, length):
-    data = b''
-    while len(data) < length:
-        more = sock.recv(length - len(data))
-        if not more:
-            raise EOFError('was expecting %d bytes but only received'
-                           ' %d bytes before the socket closed'
-                           % (length, len(data)))
-        data += more
-    return data
-
-
-def server(interface, port):
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    sock.bind(('127.0.0.1', 1060))
-    sock.listen(1)
-    print('Server waiting to accept a new connection')
-    sc, sockname = sock.accept()
-    print('Server accepted connection')
-    message = recvall(sc, 16)
-    print('Incoming sixteen-octet message:', repr(message))
-    sc.close()
-
-
-def client(host, port):
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(('127.0.0.1', 1060))
-    print('Client about to send to serve')
-    sock.sendall(b'Hi there, server')
-    sock.close()
-
-
-if __name__ == '__main__':
-    choices = {'client': client, 'server': server}
-    parser = argparse.ArgumentParser(description='Send and receive over TCP')
-    parser.add_argument('role', choices=choices, help='which role to play')
-    parser.add_argument('host', help='interface the server listens at;'
-                                     ' host the client sends to')
-    parser.add_argument('-p', metavar='PORT', type=int, default=1060,
-                        help='TCP port (default 1060)')
-    args = parser.parse_args()
-    function = choices[args.role]
-    function(args.host, args.p)
+# import numpy as np
+# import matplotlib.pyplot as plt
+# from matplotlib.colors import ListedColormap
+# from sklearn import neighbors, datasets
+#
+# def try_machine_learning():
+#     n_neighbors = 15
+#
+#     # import some data to play with
+#     iris = datasets.load_iris()
+#     X = iris.data[:, :2]  # we only take the first two features. We could
+#                           # avoid this ugly slicing by using a two-dim dataset
+#     y = iris.target
+#
+#     h = .02  # step size in the mesh
+#
+#     # Create color maps
+#     cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA', '#AAAAFF'])
+#     cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])
+#
+#     for weights in ['uniform', 'distance']:
+#         # we create an instance of Neighbours Classifier and fit the data.
+#         clf = neighbors.KNeighborsClassifier(n_neighbors, weights=weights)
+#         clf.fit(X, y)
+#
+#         # Plot the decision boundary. For that, we will assign a color to each
+#         # point in the mesh [x_min, m_max]x[y_min, y_max].
+#         x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+#         y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+#         xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+#                              np.arange(y_min, y_max, h))
+#         Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+#
+#         # Put the result into a color plot
+#         Z = Z.reshape(xx.shape)
+#         plt.figure()
+#         plt.pcolormesh(xx, yy, Z, cmap=cmap_light)
+#
+#         # Plot also the training points
+#         plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold)
+#         plt.xlim(xx.min(), xx.max())
+#         plt.ylim(yy.min(), yy.max())
+#         plt.title("3-Class classification (k = %i, weights = '%s')"
+#                   % (n_neighbors, weights))
+#
+#     plt.show()
