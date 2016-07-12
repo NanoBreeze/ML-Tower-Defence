@@ -39,9 +39,9 @@ def push_bank_balance_message(bank_balance):
     __push_message(formatted_bank_balance_message)
 
 
-def push_create_new_tower_message(tower_id, tower_type, speed, radius, pop_power):
-    """Format: T=499987854.t=LINEAR_TOWER.s=2.r=70.p=1."""
-    formatted_tower_message = 'T={0}.t={1}.s={2}.r={3}.p={4}.'.format(tower_id, tower_type, speed, radius, pop_power)
+def push_create_new_tower_message(tower_id, tower_type, speed, radius, pop_power, x_pos, y_pos):
+    """Format: T=499987854.t=LINEAR_TOWER.s=2.r=70.p=1.x=150.y=150"""
+    formatted_tower_message = 'T={0}.t={1}.s={2}.r={3}.p={4}.x={5}.y={6}'.format(tower_id, tower_type, speed, radius, pop_power, x_pos, y_pos)
     __push_message(formatted_tower_message)
 
 

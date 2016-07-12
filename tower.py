@@ -11,6 +11,7 @@ import sprite_groups
 import bank
 import message_buffer
 
+
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleLogger')
 
@@ -65,6 +66,7 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     def increment_pop_count(self, amount=1):
         self._pop_count += amount
         message_buffer.push_update_tower_pop_count_message(id(self), self._pop_count)
+
 
     def general_upgrade(self, upgrade_object):
         """

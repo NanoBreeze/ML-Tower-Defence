@@ -12,13 +12,15 @@ from collections import defaultdict
 import colours
 import socket
 
+import plotting_and_ML
+
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleLogger')
 
 pygame.init()
 DISPLAYSURF = pygame.display.set_mode((400, 400))
 pygame.display.set_caption('ML Tower Defence')
-
+fpsClock = pygame.time.Clock()
 
 def sanitize_message_and_add_to_stats(server_message, server_stats):
     """
@@ -34,14 +36,15 @@ def sanitize_message_and_add_to_stats(server_message, server_stats):
     T=499984651.
     Note: T represents tower. All values are delimited by .
     """
-    try: #adding try because if server presses button quickly, sometimes many delimited values come
+    try:  # adding try because if server presses button quickly, sometimes many delimited values come
         if server_message[0] == 'L':  # this is lifepoints
 
             lifepoint = server_message[2:-1]
             server_stats.lifepoint = int(lifepoint)
 
         elif server_message[0] == 'B':  # this is the bank balance
-            possible_bank_balances = [c for c in server_message.split('.') if c]#for error checking sometimes too many B's come in, eg, B=12.B=15.B=17. will overflow
+            possible_bank_balances = [c for c in server_message.split('.') if
+                                      c]  # for error checking sometimes too many B's come in, eg, B=12.B=15.B=17. will overflow
             for bank_balance in possible_bank_balances:
                 bank_balance = server_message[2:-1]
                 logger.debug('the bank balance is ' + bank_balance)
@@ -71,18 +74,26 @@ def sanitize_message_and_add_to_stats(server_message, server_stats):
                 else:
                     raise NotImplementedError('the specified letter is not valid')
 
-            elif len(delimited_values) == 5:  # a new tower is created
+            elif len(delimited_values) == 7:  # a new tower is created
                 tower_type = delimited_values[1][2:]
                 speed_update_value = delimited_values[2][2:]
                 radius_update_value = delimited_values[3][2:]
                 pop_power_update_value = delimited_values[4][2:]
+                x_pos = delimited_values[5][2:]
+                y_pos = delimited_values[6][2:]
 
-                server_stats.add_tower_stat(tower_id, tower_type, speed_update_value, radius_update_value, pop_power_update_value)
+                server_stats.add_tower_stat(tower_id, tower_type, speed_update_value, radius_update_value, pop_power_update_value,
+                                            x_pos, y_pos)
+
+                # update the matplotlib with new vaues (NOTE: not displaying graph here because matplotlib can only be shown on the main thread)
+                logger.debug('about to call plotting from client')
+                plotting_and_ML.update_plot_with_new_tower(int(x_pos), int(y_pos))
 
             else:
                 raise NotImplementedError('the tower creation pattern (number of delimiters) isnt correct')
     except:
-        logger.critical("an error occured in sanitization and was passed")
+        logger.critical("an error occured in sanitization and was passed. The server message was {}".format(server_message))
+
 
 def dedicated_handle_receiving_messages(client, server_stats, formatted_server_stats):
     """Client contains socket, server_stats contains all messages from server, and formatted_server_message formats them into blittable labels"""
@@ -141,13 +152,15 @@ class ServerStats:
     class TowerStat:
         "Stores the stats related to a tower, id, tower_type, speed, radius, pop_power"
 
-        def __init__(self, tower_id=-1, tower_type='Unavailable', speed=-1, radius=-1, pop_power=-1):
+        def __init__(self, tower_id=-1, tower_type='Unavailable', speed=-1, radius=-1, pop_power=-1, x_pos=-1, y_pos=-1):
             self.tower_id = tower_id
             self.tower_type = tower_type
             self.speed = speed
             self.radius = radius
             self.pop_power = pop_power
             self.pop_count = 0
+            self.x_pos = x_pos
+            self.y_pos = y_pos
 
     def __init__(self):
         self.tower_stats = defaultdict(lambda: self.TowerStat())
@@ -155,9 +168,9 @@ class ServerStats:
         self.lifepoint = -1
         self.bank_balance = -1
 
-    def add_tower_stat(self, tower_id, tower_type, speed, radius, pop_power):
+    def add_tower_stat(self, tower_id, tower_type, speed, radius, pop_power, x_pos, y_pos):
         "Save the stats related to the tower to the self.tower_stats dictionary"
-        self.tower_stats[tower_id] = self.TowerStat(tower_id, tower_type, speed, radius, pop_power)
+        self.tower_stats[tower_id] = self.TowerStat(tower_id, tower_type, speed, radius, pop_power, x_pos, y_pos)
 
     def update_tower_stat_speed(self, tower_id, speed):
         self.tower_stats[tower_id].speed = speed
@@ -170,9 +183,13 @@ class ServerStats:
 
     def update_tower_stat_pop_count(self, tower_id, pop_count):
         self.tower_stats[tower_id].pop_count = pop_count
+        # plotting_and_ML.update_plot_with_pop_count(int(self.tower_stats[tower_id].x_pos),
+        #                                            int(self.tower_stats[tower_id].y_pos),
+        #                                            pop_count)
 
     def remove_tower_stat(self, tower_id):
         del self.tower_stats[tower_id]
+        logger.debug('removed tower. the length of tower_stats is {}'.format(len(self.tower_stats)))
 
 
 class FormattedServerMessages:
@@ -191,10 +208,11 @@ class FormattedServerMessages:
             'Bank balance: {}'.format(server_stats.bank_balance), True, (255, 255, 0))
 
         self.tower_stats_labels = [
-            pygame.font.SysFont("freesansbold", 15).render('{0} - Speed: {1} - Radius: {2} - Pop power: {3} - Pop count: {4}'
-                                                           .format(tower_stat.tower_type, tower_stat.speed, tower_stat.radius,
-                                                                   tower_stat.pop_power, tower_stat.pop_count), True,
-                                                           (255, 255, 0))
+            pygame.font.SysFont("freesansbold", 15).render(
+                '{0} - Spd: {1} - Rad: {2} - Pop pow: {3} - Pop count: {4} - x: {5} - y {6}'
+                    .format(tower_stat.tower_type, tower_stat.speed, tower_stat.radius,
+                            tower_stat.pop_power, tower_stat.pop_count, tower_stat.x_pos, tower_stat.y_pos), True,
+                (255, 255, 0))
             for tower_stat in server_stats.tower_stats.values()
             ]
         # logger.debug('inside internally_make_fonts. The length of tower_stats_labels list is: ' + str(len(self.tower_stats_labels)))
@@ -230,8 +248,8 @@ def begin_game():
                                                    name='client_waiting_to_receive_thread')
     t_handle_receiving_messages.start()
 
-
     start_message_font = pygame.font.SysFont("freesansbold", 50)
+
 
     while True:
         for event in pygame.event.get():
@@ -273,5 +291,7 @@ def begin_game():
             DISPLAYSURF.blit(bank_balance_label, position)
         except:
             pass  # if can't show, labels, do nothing (aka, don't show them)
-
+        plotting_and_ML.set_up_values(server_stats.tower_stats)
+        plotting_and_ML.show_plot()
+        fpsClock.tick(15)
         pygame.display.update()

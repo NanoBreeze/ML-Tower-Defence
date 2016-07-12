@@ -123,7 +123,9 @@ class CreateNewTowerClickHandler(LeftMouseClickHandler):
                                                              tower_type=new_tower.tower_type,
                                                              speed=new_tower._attack_values.speed,
                                                              radius=new_tower._attack_values.radius,
-                                                             pop_power=new_tower._attack_values.pop_power)
+                                                             pop_power=new_tower._attack_values.pop_power,
+                                                             x_pos=new_tower.rect.centerx,
+                                                             y_pos=new_tower.rect.centery)
             sprite_groups.selected_tower_icon_sprite.empty()
             return True
         return False
