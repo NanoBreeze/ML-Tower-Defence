@@ -9,6 +9,7 @@ import icon
 import logging.config
 import sprite_groups
 import bank
+import message_buffer
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleLogger')
@@ -22,9 +23,10 @@ TELEPORTATION_TOWER = 'TELEPORTATION_TOWER'
 class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
     """Base class for all Towers"""
 
+
     def __init__(self, colour, position, dimension, buy_price, sell_price, initial_attack_values,
                  speed_upgrade_values_and_prices_and_icons, radius_upgrade_values_and_prices_and_icons,
-                 pop_power_upgrade_values_and_prices_and_icons, DISPLAYSURF):
+                 pop_power_upgrade_values_and_prices_and_icons, tower_type, DISPLAYSURF):
         """
         :param colour: colour.COLOUR_CONSTANT, the colour of the icon
         :param position: 2-element tuple, where this icon is to be placed
@@ -58,6 +60,8 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         self._pop_power_upgrade_values_and_prices_and_icons = pop_power_upgrade_values_and_prices_and_icons
         self.frames_until_attack_again = self._attack_values.speed  # set the counter to the 'shoot' position
 
+        self.tower_type = tower_type #this is an enumerated string. We use this instead of type(...) to maintain consistency in specifying tower types
+
     def general_upgrade(self, upgrade_object):
         """
         :param upgrade_object: a type inheriting from Upgrade, eg, SpeedUpgrade
@@ -86,6 +90,7 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         upgraded_speed_value = self.general_upgrade(self._speed_upgrade_values_and_prices_and_icons)
         if upgraded_speed_value:
             self._attack_values.speed = upgraded_speed_value
+            message_buffer.push_update_tower_speed_message(id(self), self._attack_values.speed)
 
     def upgrade_radius(self):
         """
@@ -95,6 +100,7 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         upgraded_radius_value = self.general_upgrade(self._radius_upgrade_values_and_prices_and_icons)
         if upgraded_radius_value:
             self._attack_values.radius = upgraded_radius_value
+            message_buffer.push_update_tower_radius_message(id(self), self._attack_values.radius)
 
     def upgrade_pop_power(self):
         """
@@ -104,6 +110,7 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         upgraded_pop_power_value = self.general_upgrade(self._pop_power_upgrade_values_and_prices_and_icons)
         if upgraded_pop_power_value:
             self._attack_values.pop_power = upgraded_pop_power_value
+            message_buffer.push_update_tower_pop_power_message(id(self), self._attack_values.pop_power)
 
     def sell_tower(self):
         """
@@ -111,7 +118,9 @@ class Tower(pygame.sprite.Sprite, metaclass=abc.ABCMeta):
         Destroys this tower and returns the price. Maybe this name is a bit misleading
         """
         self.kill()
-        logger.debug('selling tower: the sell price is' + str(self.sell_price))
+        # logger.info(str(id(self)))
+        message_buffer.push_sell_tower_message(id(self))
+        #logger.debug('selling tower: the sell price is' + str(self.sell_price))
         bank.deposit(self.sell_price)
 
     def on_click(self, upgrade_icon_sprites, sell_tower_icon_sprite):
@@ -215,6 +224,7 @@ class LinearTower(Tower):
                          speed_upgrade_values_and_prices_and_icons=speed_upgrade_values_and_prices_and_icons,
                          radius_upgrade_values_and_prices_and_icons=radius_upgrade_values_and_prices_and_icons,
                          pop_power_upgrade_values_and_prices_and_icons=pop_power_upgrade_values_and_prices_and_icons,
+                         tower_type=LINEAR_TOWER,
                          DISPLAYSURF=DISPLAYSURF)
 
     def create_bullets(self, balloon):
@@ -265,6 +275,7 @@ class ThreeSixtyTower(Tower):
                          speed_upgrade_values_and_prices_and_icons=speed_upgrade_values_and_prices_and_icons,
                          radius_upgrade_values_and_prices_and_icons=radius_upgrade_values_and_prices_and_icons,
                          pop_power_upgrade_values_and_prices_and_icons=pop_power_upgrade_values_and_prices_and_icons,
+                         tower_type=THREE_SIXTY_TOWER,
                          DISPLAYSURF=DISPLAYSURF)
 
     def create_bullets(self, balloons):
@@ -348,6 +359,7 @@ class ExplosionTower(Tower):
                          speed_upgrade_values_and_prices_and_icons=speed_upgrade_values_and_prices_and_icons,
                          radius_upgrade_values_and_prices_and_icons=radius_upgrade_values_and_prices_and_icons,
                          pop_power_upgrade_values_and_prices_and_icons=pop_power_upgrade_values_and_prices_and_icons,
+                         tower_type=EXPLOSION_TOWER,
                          DISPLAYSURF=DISPLAYSURF)
 
     def create_bullets(self, balloon):
@@ -390,6 +402,7 @@ class TeleportationTower(Tower):
                          speed_upgrade_values_and_prices_and_icons=speed_upgrade_values_and_prices_and_icons,
                          radius_upgrade_values_and_prices_and_icons=radius_upgrade_values_and_prices_and_icons,
                          pop_power_upgrade_values_and_prices_and_icons=pop_power_upgrade_values_and_prices_and_icons,
+                         tower_type=TELEPORTATION_TOWER,
                          DISPLAYSURF=DISPLAYSURF)
 
     def create_bullets(self, balloon):

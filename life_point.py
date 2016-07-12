@@ -1,4 +1,4 @@
-import logging
+import message_buffer
 import logging.config
 
 logging.config.fileConfig('logging.conf')
@@ -19,6 +19,10 @@ def increase(amount=1):
     global life_balance
     life_balance += amount
 
+    # if client & server, they will use this value balance from message_buffer. If solo, adding this to message_buffer doesn't affect game play
+    # thus, add new balance to message_buffer
+    message_buffer.push_lifepoint_message(life_balance)
+
 
 def decrease(amount=1):
     """
@@ -29,3 +33,7 @@ def decrease(amount=1):
 
     global life_balance
     life_balance -= amount
+
+    # if client & server, they will use this value balance from message_buffer. If solo, adding this to message_buffer doesn't affect game play
+    # thus, add new balance to message_buffer
+    message_buffer.push_lifepoint_message(life_balance)

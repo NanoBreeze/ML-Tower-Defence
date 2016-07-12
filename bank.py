@@ -1,3 +1,5 @@
+import message_buffer
+
 import logging.config
 
 logging.config.fileConfig('logging.conf')
@@ -14,6 +16,10 @@ def deposit(amount):
 
     global balance
     balance += amount
+    
+    #if client & server, they will use this value balance from message_buffer. If solo, adding this to message_buffer doesn't affect game play
+    #thus, add new balance to message_buffer
+    message_buffer.push_bank_balance_message(balance)
 
 
 def withdraw(amount):
@@ -24,3 +30,7 @@ def withdraw(amount):
 
     global balance
     balance -= amount
+
+    #if client & server, they will use this value balance from message_buffer. If solo, adding this to message_buffer doesn't affect game play
+    #thus, add new balance to message_buffer
+    message_buffer.push_bank_balance_message(balance)

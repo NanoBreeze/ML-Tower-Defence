@@ -19,6 +19,7 @@ import bank
 import life_point
 import level
 import game_utility
+import message_buffer
 
 logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleLogger')
@@ -46,14 +47,14 @@ class LeftMouseClickHandler(metaclass=abc.ABCMeta):
 
         self.next_handler = next_handler
 
-    def handle_click(self, mouse_position, message_buffer):
+    def handle_click(self, mouse_position):
         """Wrapper for handling click, contains conditional for letting next handler try"""
-        is_click_handled = self.try_handle_click(mouse_position, message_buffer)
+        is_click_handled = self.try_handle_click(mouse_position)
 
         assert is_click_handled is True or is_click_handled is False, 'is_handled must be either true or false'
 
         if is_click_handled is False:
-            self.next_handler.handle_click(mouse_position, message_buffer)
+            self.next_handler.handle_click(mouse_position)
 
     @abc.abstractmethod
     def try_handle_click(self, mouse_position):
@@ -61,7 +62,7 @@ class LeftMouseClickHandler(metaclass=abc.ABCMeta):
 
 
 class TowerIconClickHandler(LeftMouseClickHandler):
-    def try_handle_click(self, mouse_position, message_buffer):
+    def try_handle_click(self, mouse_position):
         # logger.debug('towerIconCLickHandler')
         for tower_icon in sprite_groups.tower_icon_sprites:
             if tower_icon.rect.collidepoint(mouse_position):
@@ -74,7 +75,7 @@ class TowerIconClickHandler(LeftMouseClickHandler):
 
 
 class TowerClickHandler(LeftMouseClickHandler):
-    def try_handle_click(self, mouse_position, message_buffer):
+    def try_handle_click(self, mouse_position):
         # logger.debug('towerCLickHandler')
         for tow in sprite_groups.tower_sprites:  # must not be named with tower, will result in name clashes
             if tow.rect.collidepoint(mouse_position):
@@ -85,23 +86,21 @@ class TowerClickHandler(LeftMouseClickHandler):
 
 
 class UpgradeIconClickHandler(LeftMouseClickHandler):
-    def try_handle_click(self, mouse_position, message_buffer):
+    def try_handle_click(self, mouse_position):
         # logger.debug('UpgradeIconClickHandler')
         for upgrade_icon in sprite_groups.upgrade_icon_sprites:
             if upgrade_icon.rect.collidepoint(mouse_position):  # upgrade and add message to buffer
                 upgrade_icon.on_click(sprite_groups.upgrade_icon_sprites)
-                message_buffer.push_message('UpgradeIconClickHandler clicked')
                 return True
         return False
 
 
 class SellTowerIconClickHandler(LeftMouseClickHandler):
-    def try_handle_click(self, mouse_position, message_buffer):
+    def try_handle_click(self, mouse_position):
         # logger.debug('SellTowerIconClickHndler')
         if sprite_groups.sell_tower_icon_sprite:
             if sprite_groups.sell_tower_icon_sprite.sprite.rect.collidepoint(mouse_position):
                 sprite_groups.sell_tower_icon_sprite.sprite.on_click()
-                message_buffer.push_message('SellTowerIconClickHandler')
                 sprite_groups.sell_tower_icon_sprite.empty()
                 sprite_groups.upgrade_icon_sprites.empty()
                 return True
@@ -109,7 +108,7 @@ class SellTowerIconClickHandler(LeftMouseClickHandler):
 
 
 class CreateNewTowerClickHandler(LeftMouseClickHandler):
-    def try_handle_click(self, mouse_position, message_buffer):
+    def try_handle_click(self, mouse_position):
         # logger.debug('CreateNewTowerClickHandler')
         if sprite_groups.selected_tower_icon_sprite:
             new_tower = tower.create_tower(sprite_groups.selected_tower_icon_sprite.sprite._tower_type, mouse_position,
@@ -118,28 +117,31 @@ class CreateNewTowerClickHandler(LeftMouseClickHandler):
             if bank.balance >= new_tower.buy_price:
                 bank.withdraw(new_tower.buy_price)
                 sprite_groups.tower_sprites.add(new_tower)
-                logger.debug('about to send message')
-                message_buffer.push_message('NewTowercreated')
+                # logger.debug('about to send message')
+                message_buffer.push_create_new_tower_message(tower_id=id(new_tower),
+                                                             tower_type=new_tower.tower_type,
+                                                             speed=new_tower._attack_values.speed,
+                                                             radius=new_tower._attack_values.radius,
+                                                             pop_power=new_tower._attack_values.pop_power)
             sprite_groups.selected_tower_icon_sprite.empty()
             return True
         return False
 
 
 class NullClickHandler(LeftMouseClickHandler):
-    def try_handle_click(self, mouse_position, message_buffer):
+    def try_handle_click(self, mouse_position):
         # logger.debug('NullClickHandler')
         # do nothing
         return True
 
 
-def handle_left_mouse_click(tower_icon_click_handler, mouse_position, message_buffer):
-    tower_icon_click_handler.handle_click(mouse_position, message_buffer)
+def handle_left_mouse_click(tower_icon_click_handler, mouse_position):
+    tower_icon_click_handler.handle_click(mouse_position)
 
 
 """========================================================================"""
 """============================= GAME ====================================="""
 """========================================================================"""
-
 
 
 def dedicated_wait_for_client_connection_and_receive_message(server):
@@ -148,27 +150,18 @@ def dedicated_wait_for_client_connection_and_receive_message(server):
     server.wait_for_client_to_connect()
     # time.sleep(5)
     while True:
-        server.wait_to_receive_message_from_client()
+        client_message = server.wait_for_message()
+        # do something with the message
 
 
-
-
-class MessageBuffer:
-    """Contains the messages for server to send to client. These messages include the stats of tower"""
-
-    def __init__(self, server):
-        """Creates the buffer and a reference of the server."""
-        self.buffer = []
-        self.server = server
-
-    def push_message(self, message):
-        """Adds message to buffer and calls server to display that message"""
-        self.buffer.append(message)
-        self.notify_server_to_send_message()
-
-    def notify_server_to_send_message(self):
-        message = self.buffer.pop(0)
-        self.server.send_message_to_client(message)
+def dedicated_sending_messages(server):
+    """This function/thread has one purpose, check the MessageBuffer for messages and if so, let server send them.
+    It continnuously polls the message's buffer"""
+    while True:
+        if server.connected_socket:
+            message = message_buffer.get_zeroth_message()
+            if message is not None:
+                server.send_message(message)
 
 
 class Server:
@@ -183,8 +176,6 @@ class Server:
         self.listening_socket = None  # represents the listening socket
         self.connected_socket = None  # represents the connected socket, comes from listening_socket
 
-        self.is_connected = False  # represents if the server is connected to the client
-
     def create_listening_socket(self):
         self.listening_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.listening_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -192,24 +183,28 @@ class Server:
         self.listening_socket.listen(1)
 
     def wait_for_client_to_connect(self):
-        # logger.info('Server waiting to accept a new connection')
         self.connected_socket, client_address = self.listening_socket.accept()
-        # logger.info('Server connected to client, whose address is {}'.format(client_address))
-        self.is_connected = True
-        # message = recvall(sc, 16)
-        # print('Incoming sixteen-octet message:', repr(message))
 
-    def send_message_to_client(self, message):
-        """Sends something to the client"""
-        # logger.info('about to send message to client')
+    def send_message(self, message):
+        """Sends message to the client
+        The message can be of three types and some way to distinguish which one is sent
+            - server's life points.
+                - eg, L=18. where, the value between : and . is the life points
+            - server's bank balance.
+                - eg, B=625. where, the value between : and . is the bank balance
+            - each tower's type and attack value (speed, radius, pop_power), must also identify which tower since there are so many
+              linear = LINEAR_TOWER, ThreeSixty = THREE_SIXTY_TOWER, etc. These come from tower enumerated strings
+              Speed = s, Radius = r, Pop_power = p
+                - eg, T=t.s=2.r=70.p=1.  where periods are used as delimiters
+        """
         message = message.encode('ascii')
         self.connected_socket.sendall(message)
-        # logger.info('message sent')
 
-    def wait_to_receive_message_from_client(self):
+    def wait_for_message(self):
         client_message = self.connected_socket.recv(1000)
         client_message = client_message.decode('ascii')
         logger.debug('The client message is: {}'.format(client_message))
+        return client_message
 
     def close_server(self):
         """Closes the listening socket"""
@@ -222,10 +217,19 @@ def begin_game():
     server = Server()
     server.create_listening_socket()
 
-    server_thread = threading.Thread(target=dedicated_wait_for_client_connection_and_receive_message, args=(server,), name='server_thread')
-    server_thread.start()
+    t_handle_receiving_messages = threading.Thread(target=dedicated_wait_for_client_connection_and_receive_message,
+                                                   args=(server,),
+                                                   name='t_handle_receiving_messages')
+    t_handle_receiving_messages.start()
 
-    message_buffer = MessageBuffer(server) #might be bad design. Takinga  reference to server so that it can be operated upon by two threads
+    t_handle_sending_messages = threading.Thread(target=dedicated_sending_messages, args=(server,),
+                                                 name='t_handle_sending_messages')
+    t_handle_sending_messages.start()
+
+    # server sends values to client
+    # server.send_lifepoint_to_client(life_point.life_balance)
+    # server.send_bank_balance_to_client(bank.balance)
+    message_buffer.push_lifepoint_message(life_point.life_balance)
 
     # setup
     sprite_groups.tower_icon_sprites.add(icon.create_tower_icon(icon.LINEAR_TOWER_ICON, (300, 100)),
@@ -295,7 +299,7 @@ def begin_game():
             if event.type == pygame.locals.MOUSEBUTTONUP and event.button == 1:
                 mouse_position = pygame.mouse.get_pos()
                 handle_left_mouse_click(tower_icon_click_handler, mouse_position,
-                                        message_buffer)  # start of chain of responsibility.
+                                        )  # start of chain of responsibility.
 
             # right mouse button is clicked. Remove the tower icon currently on the cursor (if it exists)
             elif event.type == pygame.locals.MOUSEBUTTONUP and event.button == 3:
